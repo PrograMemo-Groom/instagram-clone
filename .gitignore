@@ -1,6 +1,7 @@
 # github
 !/src
 !/public
+.env
 
 # Logs
 logs
