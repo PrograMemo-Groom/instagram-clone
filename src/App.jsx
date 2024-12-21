@@ -1,6 +1,8 @@
 import './index.css';
 import MainPage from "@/pages/MainPage.jsx";
 import {Outlet, Route, Routes} from "react-router-dom";
+import PrivacyPolicy from "@/pages/PrivacyPolicy.jsx";
+import DataDeletion from "@/pages/DataDeletion.jsx";
 
 function LayOut() {
     return (
@@ -22,6 +24,8 @@ function App() {
           <Routes>
               <Route path="/" element={<LayOut/>}>
                   <Route index element={<MainPage/>}/>
+                  <Route path="/privacy" element={<PrivacyPolicy/>}/>
+                  <Route path="/data-deletion" element={<DataDeletion/>}/>
                   {/*<Route path="main/*" element={<MainPage/>}/>*/}
               </Route>
           </Routes>
