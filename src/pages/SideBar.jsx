@@ -15,20 +15,25 @@ const SideBar = () => {
       
     return (
         <nav className="fixed top-0 left-0 h-screen 
-        w-18 hidden md:flex lg:w-80 bg-white border-r border-gray-300 flex-col items-center py-4">
+        w-18 hidden md:flex sidebarpoint:w-[16rem]
+         bg-white border-r border-gray-300 
+         flex-col py-4">
         <div className="mb-6">
-          <img src="/img/icons/instagram_line_icon.png" alt="Logo" className="h-6 lg:hidden" />
-          <img src="/img/icons/instagram_text_logo.png" alt="Logo" className="hidden lg:block h-8" />
+          <img src="/img/icons/instagram_line_icon.png" alt="Instagram" 
+          className="h-6 sidebarpoint:hidden" />
+          <img src="/img/icons/instagram_text_logo.png" alt="Instagram" 
+          className="hidden sidebarpoint:block h-7" />
         </div>
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-4 sidebarpoint:pl-4">
           {menuItems.map((item, idx) => (
             <a
               key={idx}
               href="#"
-              className="flex items-center space-x-4 hover:bg-gray-100 px-4 py-2 rounded"
+              className="flex items-center space-x-4 
+              hover:bg-gray-100 px-4 py-2 rounded"
             >
               <img src={item.icon} alt={item.label} className="h-6" />
-              <span className="hidden lg:inline text-sm">{item.label}</span>
+              <span className="hidden sidebarpoint:inline text-sm">{item.label}</span>
             </a>
           ))}
         </div>
