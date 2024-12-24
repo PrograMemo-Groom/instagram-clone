@@ -3,6 +3,7 @@ import MainPage from "@/pages/MainPage.jsx";
 import {Outlet, Route, Routes} from "react-router-dom";
 import PrivacyPolicy from "@/pages/PrivacyPolicy.jsx";
 import DataDeletion from "@/pages/DataDeletion.jsx";
+import ProfilePage from "@/pages/ProfilePage.jsx";
 
 function LayOut() {
     return (
@@ -20,12 +21,13 @@ function App() {
 
   return (
       <div>
-          <h1 className="text-4xl font-bold">App component Loaded</h1>
+          {/*<h1 className="text-4xl font-bold">App component Loaded</h1>*/}
           <Routes>
               <Route path="/" element={<LayOut/>}>
                   <Route index element={<MainPage/>}/>
                   <Route path="/privacy" element={<PrivacyPolicy/>}/>
                   <Route path="/data-deletion" element={<DataDeletion/>}/>
+                  <Route path="/profile-page" element={<ProfilePage/>}/>
                   {/*<Route path="main/*" element={<MainPage/>}/>*/}
               </Route>
           </Routes>
