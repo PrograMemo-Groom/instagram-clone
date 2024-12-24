@@ -20,7 +20,7 @@ function App() {
 
   return (
       <div>
-          <h1 className="text-4xl font-bold">App component Loaded</h1>
+          {/* <h1 className="text-4xl font-bold">App component Loaded</h1> */}
           <Routes>
               <Route path="/" element={<LayOut/>}>
                   <Route index element={<MainPage/>}/>
