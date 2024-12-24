@@ -3,11 +3,14 @@ import MainPage from "@/pages/MainPage.jsx";
 import {Outlet, Route, Routes} from "react-router-dom";
 import PrivacyPolicy from "@/pages/PrivacyPolicy.jsx";
 import DataDeletion from "@/pages/DataDeletion.jsx";
+import Header from "@/pages/Header.jsx";
+import SideBar from '@/pages/SideBar.jsx';
 
 function LayOut() {
     return (
         <>
-            {/*<Header />*/}
+            <Header />
+            <SideBar />
             <div>
                 <Outlet /> {/* 현재 라우터에 따라 변경 되는 내용 */}
             </div>
