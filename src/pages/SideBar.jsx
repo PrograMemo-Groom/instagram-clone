@@ -18,13 +18,13 @@ const SideBar = () => {
         w-18 hidden md:flex sidebarpoint:w-[16rem]
          bg-white border-r border-gray-300 
          flex-col py-4">
-        <div className="mb-6">
+        <div className="mb-6.5 px-7 py-7">
           <img src="/img/icons/instagram_line_icon.png" alt="Instagram" 
           className="h-6 sidebarpoint:hidden" />
           <img src="/img/icons/instagram_text_logo.png" alt="Instagram" 
           className="hidden sidebarpoint:block h-7" />
         </div>
-        <div className="flex flex-col space-y-4 sidebarpoint:pl-4">
+        <div className="flex px-3 flex-col space-y-4 sidebarpoint:pl-4">
           {menuItems.map((item, idx) => (
             <a
               key={idx}
@@ -33,7 +33,9 @@ const SideBar = () => {
               hover:bg-gray-100 px-4 py-2 rounded"
             >
               <img src={item.icon} alt={item.label} className="h-6" />
-              <span className="hidden sidebarpoint:inline text-sm">{item.label}</span>
+              <span className="hidden sidebarpoint:inline text-sm">
+                {item.label}
+            </span>
             </a>
           ))}
         </div>
