@@ -18,7 +18,7 @@ const ReelsComment = ({ onClose }) => {
 
             </div>
 
-            <div className="overflow-y-auto flex-1 mb-4">
+            <div className="overflow-y-auto flex-1 mb-4  pt-4">
                 <div className="mb-4">
                     <p className="font-bold">사용자1</p>
                     <p className="text-sm ">댓글 내용 1</p>
@@ -37,6 +37,22 @@ const ReelsComment = ({ onClose }) => {
                 </div>
                 <div className="mb-4">
                     <p className="font-bold">사용자5</p>
+                    <p className="text-sm ">댓글 내용 3</p>
+                </div>
+                <div className="mb-4">
+                    <p className="font-bold">사용자6</p>
+                    <p className="text-sm ">댓글 내용 3</p>
+                </div>
+                <div className="mb-4">
+                    <p className="font-bold">사용자7</p>
+                    <p className="text-sm ">댓글 내용 3</p>
+                </div>
+                <div className="mb-4">
+                    <p className="font-bold">사용자8</p>
+                    <p className="text-sm ">댓글 내용 3</p>
+                </div>
+                <div className="mb-4">
+                    <p className="font-bold">사용자9</p>
                     <p className="text-sm ">댓글 내용 3</p>
                 </div>
             </div>
