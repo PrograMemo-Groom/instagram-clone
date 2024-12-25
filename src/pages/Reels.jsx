@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ReelsComment from './ReelsComment.jsx';
 
 const Reels = () => {
@@ -56,6 +56,7 @@ const Reels = () => {
                             src="/assets/comment_btn.svg"
                             alt="Comment"
                             className="w-6 h-6 mt-2 cursor-pointer"
+                            onClick={() => setShowComments(true)}
                         />
                         <p className="text-xs">223</p>
                     </div>
@@ -65,7 +66,6 @@ const Reels = () => {
                             src="/assets/share_btn.svg"
                             alt="Share"
                             className="w-6 h-6 mt-2 cursor-pointer"
-                            onClick={() => setShowComments(true)}
                         />
                     </div>
 
