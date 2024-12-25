@@ -9,6 +9,8 @@ import {useEffect} from "react";
 import Header from "@/pages/Header.jsx";
 import SideBar from '@/pages/SideBar.jsx';
 import ProfilePage from "@/pages/ProfilePage.jsx";
+import Reels from "@/pages/Reels.jsx";
+
 
 function LayOut() {
     const {isLoading} = useSelector((state) => state.common);
@@ -50,9 +52,11 @@ function App() {
                 <Route path="/data-deletion" element={<DataDeletion/>}/>
                 {/*<Route path="main/*" element={<MainPage/>}/>*/}
                 <Route path="/profile-page" element={<ProfilePage/>}/>
+                <Route path="/reels" element={<Reels/>}/>
             </Route>
         </Routes>
     )
+
 }
 
 export default App
