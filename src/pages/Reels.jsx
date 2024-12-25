@@ -35,28 +35,44 @@ const Reels = () => {
 
                 <div className="absolute bottom-4 right-[-60px] flex flex-col items-center space-y-4">
                     <div className="flex flex-col items-center">
-                        <button className="text-2xl">❤️</button>
+                        <img
+                            src=""
+                            alt="Like"
+                            className="w-8 h-8"
+                        />
                         <p className="text-xs">5.8만</p>
-                    </div>
-
-                    <div className="flex flex-col items-center">
-                        <button className="text-2xl">💬</button>
-                        <p className="text-xs">223</p>
-                    </div>
-
-                    <div className="flex flex-col items-center">
-                        <button className="text-2xl">✈️</button>
-                    </div>
-
-                    <div className="flex flex-col items-center">
-                        <button className="text-2xl">🔗</button>
                     </div>
 
                     <div className="flex flex-col items-center">
                         <img
                             src=""
-                            alt="Profile"
-                            className="mt-5 w-7 h-7 rounded-full border border-white"
+                            alt="Comment"
+                            className="w-8 h-8"
+                        />
+                        <p className="text-xs">223</p>
+                    </div>
+
+                    <div className="flex flex-col items-center">
+                        <img
+                            src=""
+                            alt="Share"
+                            className="w-8 h-8"
+                        />
+                    </div>
+
+                    <div className="flex flex-col items-center">
+                        <img
+                            src=""
+                            alt="Save"
+                            className="w-8 h-8"
+                        />
+                    </div>
+
+                    <div className="flex flex-col items-center">
+                        <img
+                            src=""
+                            alt="Song"
+                            className="w-7 h-7 rounded-full border border-white"
                         />
                     </div>
                 </div>
