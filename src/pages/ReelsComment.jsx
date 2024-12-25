@@ -23,24 +23,24 @@ const ReelsComment = ({ onClose }) => {
                     <img
                         src="/assets/reels_profile.png"
                         alt="프로필"
-                        className="w-8 h-8 rounded-full mr-3"
+                        className="w-8 h-8 rounded-full mr-3 cursor-pointer"
                     />
                     <div className="flex-1">
                         <div className="flex">
-                            <p className="text-sm font-bold">사용자1</p>
-                            <p className="text-sm text-neutral-500">&nbsp;1일</p>
+                            <p className="text-sm font-bold cursor-pointer">사용자1</p>
+                            <p className="text-sm text-neutral-500 cursor-pointer">&nbsp;1일</p>
                         </div>
                         <p className="text-sm ">댓글 내용</p>
                         <div className="flex items-center mt-1 text-neutral-500 text-sm">
-                            <span className="text-xs">좋아요 10개</span>
-                            <span className="text-xs ml-3">답글 달기</span>
+                            <span className="text-xs cursor-pointer">좋아요 10개</span>
+                            <span className="text-xs ml-3 cursor-pointer">답글 달기</span>
                         </div>
                     </div>
                     <div className="flex items-center justify-center">
                         <img
                             src="/assets/like_btn.svg"
                             alt="좋아요"
-                            className="w-5 h-5 mr-3 "
+                            className="w-5 h-5 mr-3 cursor-pointer"
                         />
                     </div>
                 </div>
@@ -49,124 +49,128 @@ const ReelsComment = ({ onClose }) => {
                     <img
                         src="/assets/reels_profile.png"
                         alt="프로필"
-                        className="w-8 h-8 rounded-full mr-3"
+                        className="w-8 h-8 rounded-full mr-3 cursor-pointer"
                     />
                     <div className="flex-1">
                         <div className="flex">
-                            <p className="text-sm font-bold">사용자2</p>
-                            <p className="text-sm text-neutral-500">&nbsp;1일</p>
+                            <p className="text-sm font-bold cursor-pointer">사용자2</p>
+                            <p className="text-sm text-neutral-500 cursor-pointer">&nbsp;1일</p>
                         </div>
                         <p className="text-sm ">댓글 내용</p>
                         <div className="flex items-center mt-1 text-neutral-500 text-sm">
-                            <span className="text-xs">좋아요 10개</span>
-                            <span className="text-xs ml-3">답글 달기</span>
+                            <span className="text-xs cursor-pointer">좋아요 10개</span>
+                            <span className="text-xs ml-3 cursor-pointer">답글 달기</span>
                         </div>
                     </div>
                     <div className="flex items-center justify-center">
                         <img
                             src="/assets/like_btn.svg"
                             alt="좋아요"
-                            className="w-5 h-5 mr-3 "
+                            className="w-5 h-5 mr-3 cursor-pointer"
                         />
                     </div>
                 </div>
+
                 <div className="mb-4 flex items-star">
                     <img
                         src="/assets/reels_profile.png"
                         alt="프로필"
-                        className="w-8 h-8 rounded-full mr-3"
+                        className="w-8 h-8 rounded-full mr-3 cursor-pointer"
                     />
                     <div className="flex-1">
                         <div className="flex">
-                            <p className="text-sm font-bold">사용자3</p>
-                            <p className="text-sm text-neutral-500">&nbsp;1일</p>
+                            <p className="text-sm font-bold cursor-pointer">사용자3</p>
+                            <p className="text-sm text-neutral-500 cursor-pointer">&nbsp;1일</p>
                         </div>
                         <p className="text-sm ">댓글 내용</p>
                         <div className="flex items-center mt-1 text-neutral-500 text-sm">
-                            <span className="text-xs">좋아요 10개</span>
-                            <span className="text-xs ml-3">답글 달기</span>
+                            <span className="text-xs cursor-pointer">좋아요 10개</span>
+                            <span className="text-xs ml-3 cursor-pointer">답글 달기</span>
                         </div>
                     </div>
                     <div className="flex items-center justify-center">
                         <img
                             src="/assets/like_btn.svg"
                             alt="좋아요"
-                            className="w-5 h-5 mr-3 "
+                            className="w-5 h-5 mr-3 cursor-pointer"
                         />
                     </div>
                 </div>
+
                 <div className="mb-4 flex items-star">
                     <img
                         src="/assets/reels_profile.png"
                         alt="프로필"
-                        className="w-8 h-8 rounded-full mr-3"
+                        className="w-8 h-8 rounded-full mr-3 cursor-pointer"
                     />
                     <div className="flex-1">
                         <div className="flex">
-                            <p className="text-sm font-bold">사용자4</p>
-                            <p className="text-sm text-neutral-500">&nbsp;1일</p>
+                            <p className="text-sm font-bold cursor-pointer">사용자4</p>
+                            <p className="text-sm text-neutral-500 cursor-pointer">&nbsp;1일</p>
                         </div>
                         <p className="text-sm ">댓글 내용</p>
                         <div className="flex items-center mt-1 text-neutral-500 text-sm">
-                            <span className="text-xs">좋아요 10개</span>
-                            <span className="text-xs ml-3">답글 달기</span>
+                            <span className="text-xs cursor-pointer">좋아요 10개</span>
+                            <span className="text-xs ml-3 cursor-pointer">답글 달기</span>
                         </div>
                     </div>
                     <div className="flex items-center justify-center">
                         <img
                             src="/assets/like_btn.svg"
                             alt="좋아요"
-                            className="w-5 h-5 mr-3 "
+                            className="w-5 h-5 mr-3 cursor-pointer"
                         />
                     </div>
                 </div>
+
                 <div className="mb-4 flex items-star">
                     <img
                         src="/assets/reels_profile.png"
                         alt="프로필"
-                        className="w-8 h-8 rounded-full mr-3"
+                        className="w-8 h-8 rounded-full mr-3 cursor-pointer"
                     />
                     <div className="flex-1">
                         <div className="flex">
-                            <p className="text-sm font-bold">사용자5</p>
-                            <p className="text-sm text-neutral-500">&nbsp;1일</p>
+                            <p className="text-sm font-bold cursor-pointer">사용자5</p>
+                            <p className="text-sm text-neutral-500 cursor-pointer">&nbsp;1일</p>
                         </div>
                         <p className="text-sm ">댓글 내용</p>
                         <div className="flex items-center mt-1 text-neutral-500 text-sm">
-                            <span className="text-xs">좋아요 10개</span>
-                            <span className="text-xs ml-3">답글 달기</span>
+                            <span className="text-xs cursor-pointer">좋아요 10개</span>
+                            <span className="text-xs ml-3 cursor-pointer">답글 달기</span>
                         </div>
                     </div>
                     <div className="flex items-center justify-center">
                         <img
                             src="/assets/like_btn.svg"
                             alt="좋아요"
-                            className="w-5 h-5 mr-3 "
+                            className="w-5 h-5 mr-3 cursor-pointer"
                         />
                     </div>
                 </div>
+
                 <div className="mb-4 flex items-star">
                     <img
                         src="/assets/reels_profile.png"
                         alt="프로필"
-                        className="w-8 h-8 rounded-full mr-3"
+                        className="w-8 h-8 rounded-full mr-3 cursor-pointer"
                     />
                     <div className="flex-1">
                         <div className="flex">
-                            <p className="text-sm font-bold">사용자6</p>
-                            <p className="text-sm text-neutral-500">&nbsp;1일</p>
+                            <p className="text-sm font-bold cursor-pointer">사용자6</p>
+                            <p className="text-sm text-neutral-500 cursor-pointer">&nbsp;1일</p>
                         </div>
                         <p className="text-sm ">댓글 내용</p>
                         <div className="flex items-center mt-1 text-neutral-500 text-sm">
-                            <span className="text-xs">좋아요 10개</span>
-                            <span className="text-xs ml-3">답글 달기</span>
+                            <span className="text-xs cursor-pointer">좋아요 10개</span>
+                            <span className="text-xs ml-3 cursor-pointer">답글 달기</span>
                         </div>
                     </div>
                     <div className="flex items-center justify-center">
                         <img
                             src="/assets/like_btn.svg"
                             alt="좋아요"
-                            className="w-5 h-5 mr-3 "
+                            className="w-5 h-5 mr-3 cursor-pointer"
                         />
                     </div>
                 </div>
