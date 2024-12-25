@@ -8,6 +8,7 @@ import {useSelector} from "react-redux";
 import {useEffect} from "react";
 import Header from "@/pages/Header.jsx";
 import SideBar from '@/pages/SideBar.jsx';
+import Reels from "@/pages/Reels.jsx";
 
 function LayOut() {
     const {isLoading} = useSelector((state) => state.common);
@@ -47,9 +48,11 @@ function App() {
                 <Route path="/privacy" element={<PrivacyPolicy/>}/>
                 <Route path="/data-deletion" element={<DataDeletion/>}/>
                 {/*<Route path="main/*" element={<MainPage/>}/>*/}
+                <Route path="/reels" element={<Reels/>}/>
             </Route>
         </Routes>
     )
+
 }
 
 export default App
