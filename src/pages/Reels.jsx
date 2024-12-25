@@ -34,7 +34,7 @@ const Reels = () => {
                 </div>
 
                 <div className="absolute bottom-4 right-[-60px] flex flex-col items-center space-y-4">
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center hover:opacity-40">
                         <img
                             src="/assets/like_btn.svg"
                             alt="Like"
@@ -43,7 +43,7 @@ const Reels = () => {
                         <p className="text-xs">5.8만</p>
                     </div>
 
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center hover:opacity-40">
                         <img
                             src="/assets/comment_btn.svg"
                             alt="Comment"
@@ -52,7 +52,7 @@ const Reels = () => {
                         <p className="text-xs">223</p>
                     </div>
 
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center hover:opacity-40">
                         <img
                             src="/assets/share_btn.svg"
                             alt="Share"
@@ -60,7 +60,7 @@ const Reels = () => {
                         />
                     </div>
 
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center hover:opacity-40">
                         <img
                             src="/assets/bookmark_btn.svg"
                             alt="Bookmark"
@@ -68,7 +68,7 @@ const Reels = () => {
                         />
                     </div>
 
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center hover:opacity-40">
                         <img
                             src="/assets/menu_btn.svg"
                             alt="Menu"
@@ -76,7 +76,7 @@ const Reels = () => {
                         />
                     </div>
 
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center hover:opacity-60">
                         <img
                             src="/assets/song.png"
                             alt="Song"
