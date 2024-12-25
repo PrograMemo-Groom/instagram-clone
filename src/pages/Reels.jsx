@@ -96,7 +96,11 @@ const Reels = () => {
             </div>
 
             {/* 댓글 화면 */}
-            {showComments && <ReelsComment onClose={() => setShowComments(false)} />}
+            {showComments && (
+                <div className="relative">
+                    <ReelsComment onClose={() => setShowComments(false)} />
+                </div>
+            )}
 
         </div>
     );
