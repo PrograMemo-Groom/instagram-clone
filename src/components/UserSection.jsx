@@ -1,7 +1,7 @@
 // import React from 'react';
 
 const UserSection = () => {
-    return (<div className="flex items-center justify-start w-full bg-black h-[198px] p-4 text-white">
+    return (<div className="flex items-center justify-items-center w-full bg-black h-[198px] p-4 text-white">
         <div className="w-[280px] h-[155px] bg-black flex justify-center items-center">
             <div
                 className="w-[155px] h-[155px] rounded-full border-4 border-pink-300 flex justify-center items-center">
@@ -14,7 +14,7 @@ const UserSection = () => {
         </div>
 
 
-        <div className="flex flex-col text-xs h-full justify-evenly mr-auto">
+        <div className="flex flex-col text-xs h-full justify-evenly">
             <div className="gap-2 flex items-center">
                 <span className="pt-2 pb-2 h-full font-bold text-[20px]">winter_aespaera</span>
                 <button className="pl-3 pr-3 pt-1 pb-1 bg-blue-600 hover:bg-blue-800 0 rounded ">팔로우</button>
