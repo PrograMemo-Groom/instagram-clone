@@ -1,6 +1,9 @@
-//import React from 'react';
+import React, { useState } from 'react';
+import ReelsComment from './ReelsComment.jsx';
 
 const Reels = () => {
+    const [showComments, setShowComments] = useState(false);
+
     return (
         <div className="flex justify-center items-start h-screen mt-10">
             <div className="relative flex">
@@ -62,6 +65,7 @@ const Reels = () => {
                             src="/assets/share_btn.svg"
                             alt="Share"
                             className="w-6 h-6 mt-2 cursor-pointer"
+                            onClick={() => setShowComments(true)}
                         />
                     </div>
 
@@ -90,6 +94,10 @@ const Reels = () => {
                     </div>
                 </div>
             </div>
+
+            {/* 댓글 화면 */}
+            {showComments && <ReelsComment onClose={() => setShowComments(false)} />}
+
         </div>
     );
 };
