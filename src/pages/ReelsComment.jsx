@@ -4,6 +4,7 @@ const ReelsComment = ({ onClose }) => {
             lg:w-[350px] lg:h-[500px]
             sm:w-[350px] sm:h-[470px]
             w-[350px] h-[370px]
+            flex flex-col
         ">
             <div className="flex items-center justify-between mb-4 relative">
                 <button
