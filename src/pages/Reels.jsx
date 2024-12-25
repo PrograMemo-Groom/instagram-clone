@@ -2,7 +2,7 @@
 
 const Reels = () => {
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-start h-screen mt-10">
             <div className="relative flex">
                 <div className="relative bg-gray-300 rounded overflow-hidden cursor-pointer
                      lg:w-[440px] lg:h-[780px]
