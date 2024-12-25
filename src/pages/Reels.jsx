@@ -3,7 +3,7 @@ import React from 'react';
 const Reels = () => {
     return (
         <div className="flex justify-center items-center h-screen">
-            <div className="w-[440px] h-[780px] bg-gray-300 rounded  overflow-hidden relative">
+            <div className="relative w-[440px] h-[780px] bg-gray-300 rounded  overflow-hidden">
                 <div className="absolute bottom-0 left-0 w-full p-4">
                     <div className="flex items-center">
                         <img
@@ -33,6 +33,39 @@ const Reels = () => {
                     </div>
                 </div>
             </div>
+            <div className="absolute top-2/4 right-[19%] space-y-6">
+                <div className="flex flex-col items-center">
+                    <button className="text-2xl">❤️</button>
+                    <p className="text-xs">5.8만</p>
+                </div>
+
+                <div className="flex flex-col items-center">
+                    <button className="text-2xl">💬</button>
+                    <p className="text-xs">223</p>
+                </div>
+
+                <div className="flex flex-col items-center">
+                    <button className="text-2xl">✈️</button>
+                </div>
+
+                <div className="flex flex-col items-center">
+                    <button className="text-2xl">🔗</button>
+                </div>
+
+                <div className="flex flex-col items-center">
+                    <button className="text-2xl">🔗</button>
+                </div>
+
+                <div className="flex flex-col items-center">
+                    <img
+                        src=""
+                        alt="Profile"
+                        className="mt-5 w-7 h-7 rounded "
+                    />
+                </div>
+            </div>
+
+
         </div>
     );
 };
