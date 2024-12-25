@@ -19,47 +19,37 @@ const ReelsComment = ({ onClose }) => {
             </div>
 
             <div className="overflow-y-auto flex-1 mb-4  pt-4">
-                <div className="mb-4">
-                    <p className="font-bold">사용자1</p>
-                    <p className="text-sm ">댓글 내용 1</p>
+                <div className="mb-4 flex items-star">
+                    <img
+                        src="/assets/reels_profile.png"
+                        alt="프로필"
+                        className="w-8 h-8 rounded-full mr-3"
+                    />
+                    <div className="flex-1">
+                        <div className="flex">
+                            <p className="text-sm font-bold">사용자1</p>
+                            <p className="text-sm text-neutral-500">&nbsp;1일</p>
+                        </div>
+                        <p className="text-sm ">댓글 내용</p>
+                        <div className="flex items-center mt-1 text-neutral-500 text-sm">
+                            <span className="text-xs">좋아요 10개</span>
+                            <span className="text-xs ml-3">답글 달기</span>
+                        </div>
+                    </div>
+                    <div className="flex items-center justify-center">
+                        <img
+                            src="/assets/like_btn.svg"
+                            alt="좋아요"
+                            className="w-5 h-5 mr-3 "
+                        />
+                    </div>
                 </div>
-                <div className="mb-4">
-                    <p className="font-bold">사용자2</p>
-                    <p className="text-sm ">댓글 내용 2</p>
-                </div>
-                <div className="mb-4">
-                    <p className="font-bold">사용자3</p>
-                    <p className="text-sm ">댓글 내용 3</p>
-                </div>
-                <div className="mb-4">
-                    <p className="font-bold">사용자4</p>
-                    <p className="text-sm ">댓글 내용 3</p>
-                </div>
-                <div className="mb-4">
-                    <p className="font-bold">사용자5</p>
-                    <p className="text-sm ">댓글 내용 3</p>
-                </div>
-                <div className="mb-4">
-                    <p className="font-bold">사용자6</p>
-                    <p className="text-sm ">댓글 내용 3</p>
-                </div>
-                <div className="mb-4">
-                    <p className="font-bold">사용자7</p>
-                    <p className="text-sm ">댓글 내용 3</p>
-                </div>
-                <div className="mb-4">
-                    <p className="font-bold">사용자8</p>
-                    <p className="text-sm ">댓글 내용 3</p>
-                </div>
-                <div className="mb-4">
-                    <p className="font-bold">사용자9</p>
-                    <p className="text-sm ">댓글 내용 3</p>
-                </div>
-            </div>
 
-            <div className="flex items-center bg-gray-100 rounded-full p-1 border">
+                </div>
+
+                <div className="flex items-center bg-gray-100 rounded-full p-1 border">
                 <img
-                    src=""
+                    src="/assets/reels_profile.png"
                     alt="프로필"
                     className="w-8 h-8 rounded-full mr-3"
                 />
