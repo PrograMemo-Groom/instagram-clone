@@ -3,6 +3,7 @@ import MainPage from "@/pages/MainPage.jsx";
 import {Outlet, Route, Routes} from "react-router-dom";
 import PrivacyPolicy from "@/pages/PrivacyPolicy.jsx";
 import DataDeletion from "@/pages/DataDeletion.jsx";
+import Reels from "@/pages/Reels.jsx";
 
 function LayOut() {
     return (
@@ -27,6 +28,7 @@ function App() {
                   <Route path="/privacy" element={<PrivacyPolicy/>}/>
                   <Route path="/data-deletion" element={<DataDeletion/>}/>
                   {/*<Route path="main/*" element={<MainPage/>}/>*/}
+                  <Route path="/reels" element={<Reels/>}/>
               </Route>
           </Routes>
       </div>
