@@ -38,7 +38,7 @@ const Reels = () => {
                         <img
                             src="/assets/like_btn.svg"
                             alt="Like"
-                            className="w-8 h-8"
+                            className="w-6 h-6"
                         />
                         <p className="text-xs">5.8만</p>
                     </div>
@@ -47,7 +47,7 @@ const Reels = () => {
                         <img
                             src="/assets/comment_btn.svg"
                             alt="Comment"
-                            className="w-8 h-8"
+                            className="w-6 h-6 mt-2"
                         />
                         <p className="text-xs">223</p>
                     </div>
@@ -56,7 +56,7 @@ const Reels = () => {
                         <img
                             src="/assets/share_btn.svg"
                             alt="Share"
-                            className="w-8 h-8"
+                            className="w-6 h-6 mt-2"
                         />
                     </div>
 
@@ -64,15 +64,16 @@ const Reels = () => {
                         <img
                             src="/assets/bookmark_btn.svg"
                             alt="Bookmark"
-                            className="w-8 h-8"
+                            className="w-6 h-6 mt-3"
                         />
                     </div>
+
 
                     <div className="flex flex-col items-center">
                         <img
                             src="/assets/song.png"
                             alt="Song"
-                            className="w-7 h-7 rounded-full border border-white"
+                            className="w-7 h-7 mt-10 rounded border-1 border-black"
                         />
                     </div>
                 </div>
