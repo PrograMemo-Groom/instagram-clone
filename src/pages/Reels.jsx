@@ -22,6 +22,9 @@ const Reels = () => {
                         </div>
                     </div>
 
+                    <div className="mt-3">
+                        <p className="text-sm text-white">내용</p>
+                    </div>
                 </div>
             </div>
         </div>
