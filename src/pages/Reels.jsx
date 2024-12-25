@@ -4,6 +4,10 @@ import ReelsComment from './ReelsComment.jsx';
 const Reels = () => {
     const [showComments, setShowComments] = useState(false);
 
+    const toggleComments = () => {
+        setShowComments((prev) => !prev);
+    };
+
     return (
         <div className="flex justify-center items-start h-screen mt-10">
             <div className="relative flex">
@@ -56,7 +60,7 @@ const Reels = () => {
                             src="/assets/comment_btn.svg"
                             alt="Comment"
                             className="w-6 h-6 mt-2 cursor-pointer"
-                            onClick={() => setShowComments(true)}
+                            onClick={toggleComments}
                         />
                         <p className="text-xs">223</p>
                     </div>
@@ -98,7 +102,7 @@ const Reels = () => {
             {/* 댓글 화면 */}
             {showComments && (
                 <div className="relative">
-                    <ReelsComment onClose={() => setShowComments(false)} />
+                    <ReelsComment onClose={toggleComments} />
                 </div>
             )}
 
