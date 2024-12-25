@@ -68,12 +68,19 @@ const Reels = () => {
                         />
                     </div>
 
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="/assets/menu_btn.svg"
+                            alt="Menu"
+                            className="w-5 h-5 mt-3"
+                        />
+                    </div>
 
                     <div className="flex flex-col items-center">
                         <img
                             src="/assets/song.png"
                             alt="Song"
-                            className="w-7 h-7 mt-10 rounded border-1 border-black"
+                            className="w-7 h-7 mt-4 rounded border-1 border-black"
                         />
                     </div>
                 </div>
