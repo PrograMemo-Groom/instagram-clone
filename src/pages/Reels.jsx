@@ -3,7 +3,6 @@ import React from 'react';
 const Reels = () => {
     return (
         <div className="flex justify-center items-center h-screen">
-            {/* 릴스 컨테이너와 사이드 메뉴를 감싸는 wrapper */}
             <div className="relative flex">
                 <div className="relative w-[440px] h-[780px] bg-gray-300 rounded overflow-hidden">
                     <div className="absolute bottom-0 left-0 w-full p-4">
@@ -34,7 +33,7 @@ const Reels = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col items-center space-y-6 ml-4">
+                <div className="absolute bottom-4 right-[-60px] flex flex-col items-center space-y-4">
                     <div className="flex flex-col items-center">
                         <button className="text-2xl">❤️</button>
                         <p className="text-xs">5.8만</p>
