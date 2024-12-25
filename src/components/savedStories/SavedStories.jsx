@@ -8,17 +8,18 @@ const SavedStories = () => {
                 msOverflowStyle: "none", // IE and Edge
                 scrollbarWidth: "none"   // Firefox
             }}
-            className="flex flex-nowrap gap-x-10 overflow-x-auto scrollbar-hide justify-items-start p-4 w-full bg-black">
+            className="bg-white text-black dark:bg-black dark:text-white flex flex-nowrap gap-x-12 overflow-x-auto scrollbar-hide justify-items-start p-4 w-full">
             {data.map((data, index) => {
                 return (
                     <div key={index}
-                         className="relative flex flex-col flex-shrink-0 justify-evenly text-white items-center cursor-pointer">
-                        <img className="w-[85px] h-[85px] rounded-full" src={data.src}/>
+                         className="relative flex flex-col flex-shrink-0 justify-evenly items-center cursor-pointer">
+                        <img className="border-2 border-pink-600 w-[80px] h-[80px] rounded-full" src={data.src}/>
                         <span>{data.text}</span>
                     </div>
                 )
             })}
         </div>
+
     );
 };
 

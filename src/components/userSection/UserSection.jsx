@@ -1,10 +1,29 @@
 // import React from 'react';
 import data from './data.json'
+import {useDispatch, useSelector} from "react-redux";
+import {setIsDark} from "@/store/action/MainAction.js";
+import React from "react";
 
 const UserSection = () => {
+    const { isDark } = useSelector((state) => state.main);
+    const dispatch = useDispatch();
+
+    const toggleTheme = () => {
+        const root = document.documentElement; // <html> 요소
+
+        dispatch(setIsDark(!isDark)); // isDark 반전
+        if (isDark) {
+            root.classList.add('dark');
+        } else {
+            root.classList.remove('dark');
+        }
+    };
+
     return (
-        <div className="flex items-center justify-items-center w-full bg-black h-[198px] p-4 text-white">
-            <div className="w-[280px] h-[155px] bg-black flex justify-center items-center">
+        <div
+            className="bg-white text-black dark:bg-black dark:text-white flex items-center justify-items-center w-full  h-[198px] p-4 ">
+            <button onClick={toggleTheme}>버튼</button>
+            <div className="w-[280px] h-[155px] flex justify-center items-center">
                 <div
                     className="w-[155px] h-[155px] rounded-full border-4 border-pink-300 flex justify-center items-center">
                     <img
@@ -14,12 +33,11 @@ const UserSection = () => {
                     />
                 </div>
             </div>
-
             <div className="flex flex-col text-xs h-full justify-evenly">
                 <div className="gap-2 flex items-center">
                     <span className="pt-2 pb-2 h-full font-bold text-[20px]">{data.username}</span>
-                    <button className="pl-3 pr-3 pt-1 pb-1 bg-blue-600 hover:bg-blue-800 0 rounded ">팔로우</button>
-                    <button className="pl-3 pr-3 pt-1 pb-1 bg-gray-700 hover:bg-gray-800 rounded">
+                    <button className="bg-blue-500 text-white pl-3 pr-3 pt-1 pb-1 dark:bg-blue-600 dark:hover:bg-blue-800 dark:text-white rounded ">팔로우</button>
+                    <button className="bg-gray-200 pl-3 pr-3 pt-1 pb-1 dark:bg-gray-700 dark:hover:bg-gray-800 rounded">
                         <svg
                             aria-label="비슷한 계정"
                             className="x1lliihq x1n2onr6 x5n08af"
