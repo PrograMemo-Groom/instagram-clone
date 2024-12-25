@@ -9,16 +9,16 @@ const Reels = () => {
                         <img
                             src=""
                             alt="Profile"
-                            className="w-12 h-12 rounded-full"
+                            className="w-8 h-8 rounded-full"
                         />
                         <div className="ml-3">
-                            <p className="font-bold text-white">사용자 id</p>
+                            <p className="font-bold text-white text-sm">사용자 id</p>
                         </div>
                         <div className="ml-3">
                             <p className="text-white"> • </p>
                         </div>
                         <div className="ml-3">
-                            <button className="text-white border rounded-lg px-2 py-1">팔로우</button>
+                            <button className="font-bold text-white text-sm border rounded-lg px-1.5 py-1">팔로우</button>
                         </div>
                     </div>
 
