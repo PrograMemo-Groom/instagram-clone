@@ -4,7 +4,12 @@ const Reels = () => {
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="relative flex">
-                <div className="relative w-[440px] h-[780px] bg-gray-300 rounded overflow-hidden cursor-pointer">
+                <div className="relative bg-gray-300 rounded overflow-hidden cursor-pointer
+                     lg:w-[440px] lg:h-[780px]
+                     sm:w-[400px] sm:h-[720px]
+                      w-[350px] h-[620px]
+                     ">
+
                     <div className="absolute bottom-0 left-0 w-full p-4">
                         <div className="flex items-center">
                             <img
