@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const ReelsComment = ({ onClose }) => {
     return (
         <div className="absolute top-[40px] left-[-320px] bg-white rounded-lg shadow-lg z-50 p-6
@@ -192,6 +194,10 @@ const ReelsComment = ({ onClose }) => {
         </div>
 
     );
+};
+
+ReelsComment.propTypes = {
+    onClose: PropTypes.func.isRequired,
 };
 
 export default ReelsComment;
