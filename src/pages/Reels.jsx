@@ -8,7 +8,7 @@ const Reels = () => {
                     <div className="absolute bottom-0 left-0 w-full p-4">
                         <div className="flex items-center">
                             <img
-                                src=""
+                                src="/assets/reels_profile.png"
                                 alt="Profile"
                                 className="w-8 h-8 rounded-full"
                             />
@@ -36,7 +36,7 @@ const Reels = () => {
                 <div className="absolute bottom-4 right-[-60px] flex flex-col items-center space-y-4">
                     <div className="flex flex-col items-center">
                         <img
-                            src=""
+                            src="/assets/like_btn.svg"
                             alt="Like"
                             className="w-8 h-8"
                         />
@@ -45,7 +45,7 @@ const Reels = () => {
 
                     <div className="flex flex-col items-center">
                         <img
-                            src=""
+                            src="/assets/comment_btn.svg"
                             alt="Comment"
                             className="w-8 h-8"
                         />
@@ -54,7 +54,7 @@ const Reels = () => {
 
                     <div className="flex flex-col items-center">
                         <img
-                            src=""
+                            src="/assets/share_btn.svg"
                             alt="Share"
                             className="w-8 h-8"
                         />
@@ -62,15 +62,15 @@ const Reels = () => {
 
                     <div className="flex flex-col items-center">
                         <img
-                            src=""
-                            alt="Save"
+                            src="/assets/bookmark_btn.svg"
+                            alt="Bookmark"
                             className="w-8 h-8"
                         />
                     </div>
 
                     <div className="flex flex-col items-center">
                         <img
-                            src=""
+                            src="/assets/song.png"
                             alt="Song"
                             className="w-7 h-7 rounded-full border border-white"
                         />
