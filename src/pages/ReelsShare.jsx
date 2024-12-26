@@ -24,7 +24,8 @@ const ReelsShare = ({ onClose }) => {
                         <input
                             type="text"
                             placeholder="검색"
-                            className="flex-1 bg-gray-100"
+                            className="flex-1 bg-gray-100 focus:outline-none focus:ring-0
+                                    placeholder-neutral-500"
                         />
                     </div>
                 </div>
