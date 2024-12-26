@@ -24,7 +24,7 @@ const Reels = () => {
                     <div className="absolute bottom-0 left-0 w-full p-4">
                         <div className="flex items-center">
                             <img
-                                src="/assets/reels_profile.png"
+                                src="/assets/reels/reels_profile.png"
                                 alt="Profile"
                                 className="w-8 h-8 rounded-full cursor-pointer"
                             />
@@ -52,7 +52,7 @@ const Reels = () => {
                 <div className="absolute bottom-4 right-[-60px] flex flex-col items-center space-y-4">
                     <div className="flex flex-col items-center hover:opacity-40">
                         <img
-                            src="/assets/like_btn.svg"
+                            src="/assets/reels/like_btn.svg"
                             alt="Like"
                             className="w-6 h-6 cursor-pointer"
                         />
@@ -61,7 +61,7 @@ const Reels = () => {
 
                     <div className="flex flex-col items-center hover:opacity-40">
                         <img
-                            src="/assets/comment_btn.svg"
+                            src="/assets/reels/comment_btn.svg"
                             alt="Comment"
                             className="w-6 h-6 mt-2 cursor-pointer"
                             onClick={toggleComments}
@@ -71,7 +71,7 @@ const Reels = () => {
 
                     <div className="flex flex-col items-center hover:opacity-40">
                         <img
-                            src="/assets/share_btn.svg"
+                            src="/assets/reels/share_btn.svg"
                             alt="Share"
                             className="w-6 h-6 mt-2 cursor-pointer"
                             onClick={toggleShare}
@@ -80,7 +80,7 @@ const Reels = () => {
 
                     <div className="flex flex-col items-center hover:opacity-40">
                         <img
-                            src="/assets/bookmark_btn.svg"
+                            src="/assets/reels/bookmark_btn.svg"
                             alt="Bookmark"
                             className="w-6 h-6 mt-3 cursor-pointer"
                         />
@@ -88,7 +88,7 @@ const Reels = () => {
 
                     <div className="flex flex-col items-center hover:opacity-40">
                         <img
-                            src="/assets/menu_btn.svg"
+                            src="/assets/reels/menu_btn.svg"
                             alt="Menu"
                             className="w-5 h-5 mt-3 cursor-pointer"
                         />
@@ -96,7 +96,7 @@ const Reels = () => {
 
                     <div className="flex flex-col items-center hover:opacity-60">
                         <img
-                            src="/assets/song.png"
+                            src="/assets/reels/song.png"
                             alt="Song"
                             className="w-7 h-7 mt-4 rounded border-1 border-black cursor-pointer"
                         />

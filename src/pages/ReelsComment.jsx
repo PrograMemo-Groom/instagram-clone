@@ -23,7 +23,7 @@ const ReelsComment = ({ onClose }) => {
             <div className="overflow-y-auto flex-1 mb-4  pt-4">
                 <div className="mb-4 flex items-star">
                     <img
-                        src="/assets/reels_profile.png"
+                        src="/assets/reels/reels_profile.png"
                         alt="프로필"
                         className="w-8 h-8 rounded-full mr-3 cursor-pointer"
                     />
@@ -40,7 +40,7 @@ const ReelsComment = ({ onClose }) => {
                     </div>
                     <div className="flex items-center justify-center">
                         <img
-                            src="/assets/like_btn2.svg"
+                            src="/assets/reels/like_btn2.svg"
                             alt="좋아요"
                             className="w-5 h-5 mr-3 cursor-pointer"
                         />
@@ -49,7 +49,7 @@ const ReelsComment = ({ onClose }) => {
 
                 <div className="mb-4 flex items-star">
                     <img
-                        src="/assets/reels_profile.png"
+                        src="/assets/reels/reels_profile.png"
                         alt="프로필"
                         className="w-8 h-8 rounded-full mr-3 cursor-pointer"
                     />
@@ -66,7 +66,7 @@ const ReelsComment = ({ onClose }) => {
                     </div>
                     <div className="flex items-center justify-center">
                         <img
-                            src="/assets/like_btn2.svg"
+                            src="/assets/reels/like_btn2.svg"
                             alt="좋아요"
                             className="w-5 h-5 mr-3 cursor-pointer"
                         />
@@ -75,7 +75,7 @@ const ReelsComment = ({ onClose }) => {
 
                 <div className="mb-4 flex items-star">
                     <img
-                        src="/assets/reels_profile.png"
+                        src="/assets/reels/reels_profile.png"
                         alt="프로필"
                         className="w-8 h-8 rounded-full mr-3 cursor-pointer"
                     />
@@ -92,7 +92,7 @@ const ReelsComment = ({ onClose }) => {
                     </div>
                     <div className="flex items-center justify-center">
                         <img
-                            src="/assets/like_btn2.svg"
+                            src="/assets/reels/like_btn2.svg"
                             alt="좋아요"
                             className="w-5 h-5 mr-3 cursor-pointer"
                         />
@@ -101,7 +101,7 @@ const ReelsComment = ({ onClose }) => {
 
                 <div className="mb-4 flex items-star">
                     <img
-                        src="/assets/reels_profile.png"
+                        src="/assets/reels/reels_profile.png"
                         alt="프로필"
                         className="w-8 h-8 rounded-full mr-3 cursor-pointer"
                     />
@@ -118,7 +118,7 @@ const ReelsComment = ({ onClose }) => {
                     </div>
                     <div className="flex items-center justify-center">
                         <img
-                            src="/assets/like_btn2.svg"
+                            src="/assets/reels/like_btn2.svg"
                             alt="좋아요"
                             className="w-5 h-5 mr-3 cursor-pointer"
                         />
@@ -127,7 +127,7 @@ const ReelsComment = ({ onClose }) => {
 
                 <div className="mb-4 flex items-star">
                     <img
-                        src="/assets/reels_profile.png"
+                        src="/assets/reels/reels_profile.png"
                         alt="프로필"
                         className="w-8 h-8 rounded-full mr-3 cursor-pointer"
                     />
@@ -144,7 +144,7 @@ const ReelsComment = ({ onClose }) => {
                     </div>
                     <div className="flex items-center justify-center">
                         <img
-                            src="/assets/like_btn2.svg"
+                            src="/assets/reels/like_btn2.svg"
                             alt="좋아요"
                             className="w-5 h-5 mr-3 cursor-pointer"
                         />
@@ -153,7 +153,7 @@ const ReelsComment = ({ onClose }) => {
 
                 <div className="mb-4 flex items-star">
                     <img
-                        src="/assets/reels_profile.png"
+                        src="/assets/reels/reels_profile.png"
                         alt="프로필"
                         className="w-8 h-8 rounded-full mr-3 cursor-pointer"
                     />
@@ -170,7 +170,7 @@ const ReelsComment = ({ onClose }) => {
                     </div>
                     <div className="flex items-center justify-center">
                         <img
-                            src="/assets/like_btn2.svg"
+                            src="/assets/reels/like_btn2.svg"
                             alt="좋아요"
                             className="w-5 h-5 mr-3 cursor-pointer"
                         />
@@ -180,7 +180,7 @@ const ReelsComment = ({ onClose }) => {
 
             <div className="flex items-center bg-gray-100 rounded-full p-1 border">
                 <img
-                    src="/assets/reels_profile.png"
+                    src="/assets/reels/reels_profile.png"
                     alt="프로필"
                     className="w-8 h-8 rounded-full mr-3"
                 />
