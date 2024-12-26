@@ -1,5 +1,6 @@
-import {useDispatch, useSelector} from "react-redux";
-import {setModalIsOepn} from "@/store/action/ProfilePageAction.js";
+import { useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setModalIsOepn } from "@/store/action/ProfilePageAction.js";
 
 const MoreModal = () => {
     const options = [
@@ -11,21 +12,40 @@ const MoreModal = () => {
         { text: "메시지 보내기", onClick: null },
         { text: "취소", style: "text-blue-500 font-bold", onClick: "toggleModal" },
     ];
+
     const { modalIsOpen } = useSelector((state) => state.profile);
     const dispatch = useDispatch();
+    const modalRef = useRef(null);
 
     const toggleModal = () => {
         dispatch(setModalIsOepn(!modalIsOpen));
     };
 
+    const handleOutsideClick = (event) => {
+        if (modalRef.current && !modalRef.current.contains(event.target)) {
+            toggleModal(); // 외부 클릭 시 모달 닫기
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleOutsideClick);
+
+        return () => {
+            document.removeEventListener("mousedown", handleOutsideClick);
+        };
+    }, []);
+
     return (
-        <div className="bg-black fixed inset-0  bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white dark:bg-gray-700 rounded-lg shadow-lg w-80">
-                <ul className="divide-y divide-gray-200 dark:divide-gray-600">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+            <div
+                ref={modalRef} // 모달 DOM 참조
+                className="bg-white rounded-lg shadow-lg w-80"
+            >
+                <ul className="divide-y divide-gray-200">
                     {options.map((option, index) => (
                         <li
                             key={index}
-                            className={`py-3 px-4 text-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-400 ${option.style || ""}`}
+                            className={`py-3 px-4 text-center cursor-pointer hover:bg-gray-100 ${option.style || ""}`}
                             onClick={option.onClick === "toggleModal" ? toggleModal : undefined}
                         >
                             {option.text}
