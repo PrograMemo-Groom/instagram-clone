@@ -36,7 +36,7 @@ const MoreModal = () => {
     }, []);
 
     return (
-        <div className="fixed inset-0 bg-black text-black dark:text-black bg-opacity-50 flex justify-center items-center">
+        <div className="fixed inset-0 bg-black text-black dark:text-black bg-opacity-50 flex justify-center items-center z-10">
             <div
                 ref={modalRef} // 모달 DOM 참조
                 className="bg-white rounded-lg shadow-lg w-80"
