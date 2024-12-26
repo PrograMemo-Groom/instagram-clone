@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const ReelsShare = ({ onClose }) => {
     const [isFocused, setIsFocused] = useState(false);
-    const [scrollPosition, setScrollPosition] = useState(0);
-
+    const [canScrollLeft, setCanScrollLeft] = useState(false);
+    const [canScrollRight, setCanScrollRight] = useState(true);
 
     const handleFocus = () => {
         setIsFocused(true);
@@ -17,19 +17,36 @@ const ReelsShare = ({ onClose }) => {
     const handleNext = () => {
         const scrollContainer = document.getElementById("share-scroll-container");
         if (scrollContainer) {
+            const scrollAmount = scrollContainer.clientWidth; // Amount to scroll equals container width
             const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-            setScrollPosition((prev) => Math.min(prev + 300, maxScrollLeft));
-            scrollContainer.scrollLeft = Math.min(scrollPosition + 100, maxScrollLeft);
+            const newScrollPosition = Math.min(scrollContainer.scrollLeft + scrollAmount, maxScrollLeft);
+            scrollContainer.scrollTo({ left: newScrollPosition, behavior: "smooth" });
+            updateScrollButtons(newScrollPosition, maxScrollLeft);
         }
     };
 
     const handlePrev = () => {
         const scrollContainer = document.getElementById("share-scroll-container");
         if (scrollContainer) {
-            setScrollPosition((prev) => Math.max(prev - 300, 0));
-            scrollContainer.scrollLeft = Math.max(scrollPosition - 300, 0);
+            const scrollAmount = scrollContainer.clientWidth; // Amount to scroll equals container width
+            const newScrollPosition = Math.max(scrollContainer.scrollLeft - scrollAmount, 0);
+            scrollContainer.scrollTo({ left: newScrollPosition, behavior: "smooth" });
+            updateScrollButtons(newScrollPosition, scrollContainer.scrollWidth - scrollContainer.clientWidth);
         }
     };
+
+    const updateScrollButtons = (currentPosition, maxScrollLeft) => {
+        setCanScrollLeft(currentPosition > 0);
+        setCanScrollRight(currentPosition < maxScrollLeft);
+    };
+
+    useEffect(() => {
+        const scrollContainer = document.getElementById("share-scroll-container");
+        if (scrollContainer) {
+            const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+            updateScrollButtons(scrollContainer.scrollLeft, maxScrollLeft);
+        }
+    }, []);
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
@@ -196,12 +213,14 @@ const ReelsShare = ({ onClose }) => {
                 </div>
 
                 <div className="flex justify-between items-center border-t py-4 px-5 relative">
-                    <button
-                        className="font-bold text-white p-2 w-7 h-7 rounded-full bg-gray-600 bg-opacity-70 flex justify-center items-center absolute top-1/2 left-2 transform -translate-y-1/2 z-10"
-                        onClick={handlePrev}
-                    >
-                        ＜
-                    </button>
+                    {canScrollLeft && (
+                        <button
+                            className="font-bold text-white p-2 w-7 h-7 rounded-full bg-gray-600 bg-opacity-70 flex justify-center items-center absolute top-1/2 left-2 transform -translate-y-1/2 z-10"
+                            onClick={handlePrev}
+                        >
+                            ＜
+                        </button>
+                    )}
 
                     <div
                         id="share-scroll-container"
@@ -307,12 +326,14 @@ const ReelsShare = ({ onClose }) => {
                         </div>
                     </div>
 
-                    <button
-                        className="font-bold text-white p-2 w-7 h-7 rounded-full bg-gray-600 bg-opacity-70 flex justify-center items-center absolute top-1/2 right-2 transform -translate-y-1/2 z-10"
-                        onClick={handleNext}
-                    >
-                        ＞
-                    </button>
+                    {canScrollRight && (
+                        <button
+                            className="font-bold text-white p-2 w-7 h-7 rounded-full bg-gray-600 bg-opacity-70 flex justify-center items-center absolute top-1/2 right-2 transform -translate-y-1/2 z-10"
+                            onClick={handleNext}
+                        >
+                            ＞
+                        </button>
+                    )}
                 </div>
 
             </div>
