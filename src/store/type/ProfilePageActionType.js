@@ -1,1 +1,2 @@
 export const SET_MODAL_IS_OPEN = "SET_MODAL_IS_OPEN";
+export const SET_IS_FOLLOWED = "SET_IS_FOLLOWED";

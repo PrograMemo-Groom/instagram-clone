@@ -36,7 +36,7 @@ const MoreModal = () => {
     }, []);
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+        <div className="fixed inset-0 bg-black text-black dark:text-black bg-opacity-50 flex justify-center items-center">
             <div
                 ref={modalRef} // 모달 DOM 참조
                 className="bg-white rounded-lg shadow-lg w-80"
@@ -45,7 +45,7 @@ const MoreModal = () => {
                     {options.map((option, index) => (
                         <li
                             key={index}
-                            className={`py-3 px-4 text-center cursor-pointer hover:bg-gray-100 ${option.style || ""}`}
+                            className={`py-3 px-4 text-center cursor-pointer hover:bg-gray-200 ${option.style || ""}`}
                             onClick={option.onClick === "toggleModal" ? toggleModal : undefined}
                         >
                             {option.text}
