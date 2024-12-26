@@ -60,7 +60,7 @@ const UserSection = () => {
                     </button>
                     {isFollowed && (
                         <button
-                            className="ml-3 pl-3 pr-3 pt-1 pb-1 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white rounded border border-gray-300 dark:border-gray-500">
+                            className="ml-3 pl-3 pr-3 pt-1 pb-1 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white rounded border border-gray-300 dark:border-gray-500 whitespace-nowrap">
                             메시지 보내기
                         </button>
                     )}
