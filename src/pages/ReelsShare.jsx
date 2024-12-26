@@ -59,6 +59,12 @@ const ReelsShare = ({ onClose }) => {
         { src: "/assets/reels/share.svg", alt: "모두보기", label: "모두보기", link: "#" },
     ];
 
+    const users = Array.from({ length: 12 }, (_, i) => ({
+        src: "/assets/reels/reels_profile.png",
+        alt: `프로필 ${i + 1}`,
+        label: `사용자${i + 1}`
+    }));
+
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
             <div className="bg-white w-[550px] rounded-lg shadow-lg">
@@ -100,127 +106,18 @@ const ReelsShare = ({ onClose }) => {
                 </div>
 
                 <div className="overflow-y-auto max-h-[300px] px-4 py-2 grid grid-cols-4 gap-8">
-                    <div className="flex flex-col items-center">
-                        <img
-                            src="/assets/reels/reels_profile.png"
-                            alt="프로필"
-                            className="w-20 h-20 rounded-full mb-2"
-                        />
-                        <div>
-                            <p className="text-xs">사용자1</p>
+                    {users.map((user, index) => (
+                        <div key={index} className="flex flex-col items-center">
+                            <img
+                                src={user.src}
+                                alt={user.alt}
+                                className="w-20 h-20 rounded-full mb-2"
+                            />
+                            <div>
+                                <p className="text-xs">{user.label}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="flex flex-col items-center ">
-                        <img
-                            src="/assets/reels/reels_profile.png"
-                            alt="프로필"
-                            className="w-20 h-20 rounded-full mb-2"
-                        />
-                        <div>
-                            <p className="text-xs">사용자2</p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-center ">
-                        <img
-                            src="/assets/reels/reels_profile.png"
-                            alt="프로필"
-                            className="w-20 h-20 rounded-full mb-2"
-                        />
-                        <div>
-                            <p className="text-xs">사용자3</p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-center ">
-                        <img
-                            src="/assets/reels/reels_profile.png"
-                            alt="프로필"
-                            className="w-20 h-20 rounded-full mb-2"
-                        />
-                        <div>
-                            <p className="text-xs">사용자4</p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-center ">
-                        <img
-                            src="/assets/reels/reels_profile.png"
-                            alt="프로필"
-                            className="w-20 h-20 rounded-full mb-2"
-                        />
-                        <div>
-                            <p className="text-xs">사용자5</p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-center ">
-                        <img
-                            src="/assets/reels/reels_profile.png"
-                            alt="프로필"
-                            className="w-20 h-20 rounded-full mb-2"
-                        />
-                        <div>
-                            <p className="text-xs">사용자6</p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-center ">
-                        <img
-                            src="/assets/reels/reels_profile.png"
-                            alt="프로필"
-                            className="w-20 h-20 rounded-full mb-2"
-                        />
-                        <div>
-                            <p className="text-xs">사용자7</p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-center ">
-                        <img
-                            src="/assets/reels/reels_profile.png"
-                            alt="프로필"
-                            className="w-20 h-20 rounded-full mb-2"
-                        />
-                        <div>
-                            <p className="text-xs">사용자8</p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-center ">
-                        <img
-                            src="/assets/reels/reels_profile.png"
-                            alt="프로필"
-                            className="w-20 h-20 rounded-full mb-2"
-                        />
-                        <div>
-                            <p className="text-xs">사용자9</p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-center ">
-                        <img
-                            src="/assets/reels/reels_profile.png"
-                            alt="프로필"
-                            className="w-20 h-20 rounded-full mb-2"
-                        />
-                        <div>
-                            <p className="text-xs">사용자10</p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-center ">
-                        <img
-                            src="/assets/reels/reels_profile.png"
-                            alt="프로필"
-                            className="w-20 h-20 rounded-full mb-2"
-                        />
-                        <div>
-                            <p className="text-xs">사용자11</p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-center ">
-                        <img
-                            src="/assets/reels/reels_profile.png"
-                            alt="프로필"
-                            className="w-20 h-20 rounded-full mb-2"
-                        />
-                        <div>
-                            <p className="text-xs">사용자12</p>
-                        </div>
-                    </div>
-
+                    ))}
                 </div>
 
                 <div className="flex justify-between items-center border-t py-4 px-5 relative">
