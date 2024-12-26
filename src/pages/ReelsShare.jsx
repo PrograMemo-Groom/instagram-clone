@@ -48,6 +48,17 @@ const ReelsShare = ({ onClose }) => {
         }
     }, []);
 
+    const shareItems = [
+        { src: "/assets/reels/link.svg", alt: "링크복사", label: "링크 복사", link: "#" },
+        { src: "/assets/reels/facebook.svg", alt: "페이스북", label: "Facebook", link: "https://www.facebook.com/sharer/sharer.php?app_id=1217981644879628&u=https%3A%2F%2Fwww.instagram.com%2Freel%2FDEAU-H-T7Ff%2F%3Figsh%3DMjAyZTYwOWFjOA%3D%3D" },
+        { src: "/assets/reels/messenger.svg", alt: "메신저", label: "Messenger", link: "https://www.facebook.com/login.php?api_key=1217981644879628&skip_api_login=1&display=page&cancel_url=https%3A%2F%2Fwww.instagram.com%2Freel%2FDEAU-H-T7Ff%2F%3Figsh%3DM2ViY2RjMDFkMA%3D%3D&next=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fsend%3F_path%3Dsend%26app_id%3D1217981644879628%26client_id%3D1217981644879628%26redirect_uri%3Dhttps%253A%252F%252Fwww.instagram.com%252Freel%252FDEAU-H-T7Ff%252F%253Figsh%253DM2ViY2RjMDFkMA%253D%253D%26display%3Dpage%26link%3Dhttps%253A%252F%252Fwww.instagram.com%252Freel%252FDEAU-H-T7Ff%252F%253Figsh%253DM2ViY2RjMDFkMA%253D%253D%26from_login%3D1" },
+        { src: "/assets/reels/whatsapp.svg", alt: "whatsApp", label: "WhatsApp", link: "https://api.whatsapp.com/send/?text=%40vkvkvk_11%EB%8B%98%EC%9D%98+%EC%9D%B4+Instagram+%EA%B2%8C%EC%8B%9C%EB%AC%BC+%EB%B3%B4%EA%B8%B0%3A+https%3A%2F%2Fwww.instagram.com%2Freel%2FDEAU-H-T7Ff%2F%3Figsh%3DYzAyMDM1MGJkZA%3D%3D&type=custom_url&app_absent=0" },
+        { src: "/assets/reels/email.svg", alt: "이메일", label: "Email", link: "https://mail.google.com/mail" },
+        { src: "/assets/reels/threads.svg", alt: "스레드", label: "Threads", link: "https://www.threads.net/login?hl=ko" },
+        { src: "/assets/reels/x.svg", alt: "x", label: "X", link: "https://x.com/intent/post?text=%40vkvkvk_11%EB%8B%98%EC%9D%98+%EC%9D%B4+Instagram+%EA%B2%8C%EC%8B%9C%EB%AC%BC+%EB%B3%B4%EA%B8%B0&url=https%3A%2F%2Fwww.instagram.com%2Freel%2FDEAU-H-T7Ff%2F%3Figsh%3DY2Q0NmNiMjc3NQ%3D%3D" },
+        { src: "/assets/reels/share.svg", alt: "모두보기", label: "모두보기", link: "#" },
+    ];
+
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
             <div className="bg-white w-[550px] rounded-lg shadow-lg">
@@ -226,104 +237,21 @@ const ReelsShare = ({ onClose }) => {
                         id="share-scroll-container"
                         className="flex overflow-x-scroll gap-4 scrollbar-hide w-full"
                     >
-                        <div className="flex flex-col items-center mr-2">
-                            <button className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center">
-                                <img
-                                    src="/assets/reels/link.svg"
-                                    alt="링크복사"
-                                    className="w-5 h-5"
-                                />
-                            </button>
-                            <p className="text-xs mt-2">링크 복사</p>
-                        </div>
-                        <div className="flex flex-col items-center mr-2">
-                            <button
-                                className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center"
-                                onClick={() => window.location.href = 'https://www.facebook.com/sharer/sharer.php?app_id=1217981644879628&u=https%3A%2F%2Fwww.instagram.com%2Freel%2FDEAU-H-T7Ff%2F%3Figsh%3DMjAyZTYwOWFjOA%3D%3D'}
-                            >
-                                <img
-                                    src="/assets/reels/facebook.svg"
-                                    alt="페이스북"
-                                    className="w-6 h-6"
-                                />
-                            </button>
-                            <p className="text-xs mt-2">Facebook</p>
-                        </div>
-                        <div className="flex flex-col items-center mr-2">
-                            <button
-                                className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center"
-                                onClick={() => window.location.href = 'https://www.facebook.com/login.php?api_key=1217981644879628&skip_api_login=1&display=page&cancel_url=https%3A%2F%2Fwww.instagram.com%2Freel%2FDEAU-H-T7Ff%2F%3Figsh%3DM2ViY2RjMDFkMA%3D%3D&next=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fsend%3F_path%3Dsend%26app_id%3D1217981644879628%26client_id%3D1217981644879628%26redirect_uri%3Dhttps%253A%252F%252Fwww.instagram.com%252Freel%252FDEAU-H-T7Ff%252F%253Figsh%253DM2ViY2RjMDFkMA%253D%253D%26display%3Dpage%26link%3Dhttps%253A%252F%252Fwww.instagram.com%252Freel%252FDEAU-H-T7Ff%252F%253Figsh%253DM2ViY2RjMDFkMA%253D%253D%26from_login%3D1'}
-                            >
-                                <img
-                                    src="/assets/reels/messenger.svg"
-                                    alt="메신저"
-                                    className="w-6 h-6"
-                                />
-                            </button>
-                            <p className="text-xs mt-2">Messenger</p>
-                        </div>
-                        <div className="flex flex-col items-center mr-2">
-                            <button
-                                className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center"
-                                onClick={() => window.location.href = 'https://api.whatsapp.com/send/?text=%40vkvkvk_11%EB%8B%98%EC%9D%98+%EC%9D%B4+Instagram+%EA%B2%8C%EC%8B%9C%EB%AC%BC+%EB%B3%B4%EA%B8%B0%3A+https%3A%2F%2Fwww.instagram.com%2Freel%2FDEAU-H-T7Ff%2F%3Figsh%3DYzAyMDM1MGJkZA%3D%3D&type=custom_url&app_absent=0'}
-                            >
-                                <img
-                                    src="/assets/reels/whatsapp.svg"
-                                    alt="whatsApp"
-                                    className="w-5 h-5"
-                                />
-                            </button>
-                            <p className="text-xs mt-2">WhatsApp</p>
-                        </div>
-                        <div className="flex flex-col items-center mr-2">
-                            <button
-                                className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center"
-                                onClick={() => window.location.href = 'https://mail.google.com/mail'}
-                            >
-                                <img
-                                    src="/assets/reels/email.svg"
-                                    alt="이메일"
-                                    className="w-5 h-5"
-                                />
-                            </button>
-                            <p className="text-xs mt-2">Email</p>
-                        </div>
-                        <div className="flex flex-col items-center mr-2">
-                            <button
-                                className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center"
-                                onClick={() => window.location.href = 'https://www.threads.net/login?hl=ko'}
-                            >
-                                <img
-                                    src="/assets/reels/threads.svg"
-                                    alt="스레드"
-                                    className="w-5 h-5"
-                                />
-                            </button>
-                            <p className="text-xs mt-2">Threads</p>
-                        </div>
-                        <div className="flex flex-col items-center mr-2">
-                            <button
-                                className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center"
-                                onClick={() => window.location.href = 'https://x.com/intent/post?text=%40vkvkvk_11%EB%8B%98%EC%9D%98+%EC%9D%B4+Instagram+%EA%B2%8C%EC%8B%9C%EB%AC%BC+%EB%B3%B4%EA%B8%B0&url=https%3A%2F%2Fwww.instagram.com%2Freel%2FDEAU-H-T7Ff%2F%3Figsh%3DY2Q0NmNiMjc3NQ%3D%3D'}
-                            >
-                                <img
-                                    src="/assets/reels/x.svg"
-                                    alt="x"
-                                    className="w-5 h-5"
-                                />
-                            </button>
-                            <p className="text-xs mt-2">X</p>
-                        </div>
-                        <div className="flex flex-col items-center mr-2">
-                            <button className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center">
-                                <img
-                                    src="/assets/reels/share.svg"
-                                    alt="모두보기"
-                                    className="w-4 h-4"
-                                />
-                            </button>
-                            <p className="text-xs mt-2">모두보기</p>
-                        </div>
+                        {shareItems.map((item, index) => (
+                            <div key={index} className="flex flex-col items-center mr-2">
+                                <button
+                                    className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center"
+                                    onClick={() => window.location.href = item.link}
+                                >
+                                    <img
+                                        src={item.src}
+                                        alt={item.alt}
+                                        className="w-5 h-5"
+                                    />
+                                </button>
+                                <p className="text-xs mt-2">{item.label}</p>
+                            </div>
+                        ))}
                     </div>
 
                     {canScrollRight && (
