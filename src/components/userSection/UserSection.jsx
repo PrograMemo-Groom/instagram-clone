@@ -2,10 +2,12 @@
 import data from './data.json'
 import {useDispatch, useSelector} from "react-redux";
 import {setIsDark} from "@/store/action/MainAction.js";
-import React from "react";
+import {setModalIsOepn} from "@/store/action/ProfilePageAction.js";
+import MoreModal from "@/components/userSection/MoreModal.jsx";
 
 const UserSection = () => {
     const { isDark } = useSelector((state) => state.main);
+    const { modalIsOpen } = useSelector((state) => state.profile)
     const dispatch = useDispatch();
 
     const toggleTheme = () => {
@@ -18,6 +20,10 @@ const UserSection = () => {
             root.classList.remove('dark');
         }
     };
+
+    const toggleModal = () => {
+        dispatch(setModalIsOepn(!modalIsOpen));
+    }
 
     return (
         <div
@@ -88,7 +94,7 @@ const UserSection = () => {
                         </svg>
 
                     </button>
-                    <button>
+                    <button onClick={toggleModal}>
                         <svg aria-label="옵션" className="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="32"
                              role="img" viewBox="0 0 24 24" width="32"><title>옵션</title>
                             <circle cx="12" cy="12" r="1.5"></circle>
@@ -96,6 +102,7 @@ const UserSection = () => {
                             <circle cx="18" cy="12" r="1.5"></circle>
                         </svg>
                     </button>
+                    {modalIsOpen && <MoreModal />}
                 </div>
                 <div className="flex w-full justify-between font-bold">
                     <span>게시물 {data.posts}</span>
