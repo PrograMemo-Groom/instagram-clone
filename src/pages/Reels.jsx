@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ReelsComment from './ReelsComment.jsx';
+import ReelsShare from "@/pages/ReelsShare.jsx";
 
 const Reels = () => {
     const [showComments, setShowComments] = useState(false);
