@@ -42,8 +42,8 @@ const UserSection = () => {
             <div className="flex flex-col text-xs h-full justify-evenly">
                 <div className="gap-2 flex items-center">
                     <span className="pt-2 pb-2 h-full font-bold text-[20px]">{data.username}</span>
-                    <button className="bg-blue-500 text-white pl-3 pr-3 pt-1 pb-1 dark:bg-blue-600 dark:hover:bg-blue-800 dark:text-white rounded ">팔로우</button>
-                    <button className="bg-gray-200 pl-3 pr-3 pt-1 pb-1 dark:bg-gray-700 dark:hover:bg-gray-800 rounded">
+                    <button className="bg-blue-500 text-white hover:bg-blue-800 pl-3 pr-3 pt-1 pb-1 dark:bg-blue-600 dark:hover:bg-blue-800 dark:text-white rounded ">팔로우</button>
+                    <button className="bg-gray-200 hover:bg-gray-400 pl-3 pr-3 pt-1 pb-1 dark:bg-gray-700 dark:hover:bg-gray-800 rounded">
                         <svg
                             aria-label="비슷한 계정"
                             className="x1lliihq x1n2onr6 x5n08af"
