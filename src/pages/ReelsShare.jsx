@@ -15,16 +15,18 @@ const ReelsShare = ({ onClose }) => {
                 </div>
 
                 <div className="px-6 py-5">
-                    <img
-                        src="/assets/reels/search.svg"
-                        alt="검색"
-                        className="w-5 h-5 mr-3 cursor-pointer"
-                    />
-                    <input
-                        type="text"
-                        placeholder="검색"
-                        className="text-black w-full px-3 py-2 rounded-lg bg-gray-100 "
-                    />
+                    <div className="flex text-black w-full px-3 py-2 rounded-lg bg-gray-100">
+                        <img
+                            src="/assets/reels/search.svg"
+                            alt="검색"
+                            className="flex w-5 h-5 mr-3 cursor-pointer"
+                        />
+                        <input
+                            type="text"
+                            placeholder="검색"
+                            className="flex-1 bg-gray-100"
+                        />
+                    </div>
                 </div>
 
             </div>
