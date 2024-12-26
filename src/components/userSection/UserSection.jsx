@@ -46,12 +46,12 @@ const UserSection = () => {
                 </div>
             </div>
             <div className="flex flex-col text-xs h-full justify-evenly">
-                <div className="gap-2 flex items-center">
+                <div className="gap-2 flex items-center flex-shrink">
                     <span className="pt-2 pb-2 h-full font-bold text-[20px]">{data.username}</span>
 
                     <button
                         onClick={toggleFollowed}
-                        className={`pl-3 pr-3 pt-1 pb-1 rounded text-white ${
+                        className={`pl-3 pr-3 pt-1 pb-1 rounded text-white whitespace-nowrap ${
                             isFollowed
                                 ? "bg-gray-500 hover:bg-gray-700 dark:bg-gray-600 dark:hover:bg-gray-800"
                                 : "bg-blue-500 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-800"
