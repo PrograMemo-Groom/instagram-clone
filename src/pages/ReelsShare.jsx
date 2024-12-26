@@ -111,7 +111,7 @@ const ReelsShare = ({ onClose }) => {
                             <img
                                 src={user.src}
                                 alt={user.alt}
-                                className="w-20 h-20 rounded-full mb-2"
+                                className="w-20 h-20 rounded-full mb-2 cursor-pointer"
                             />
                             <div>
                                 <p className="text-xs">{user.label}</p>
