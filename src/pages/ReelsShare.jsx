@@ -178,50 +178,82 @@ const ReelsShare = ({ onClose }) => {
 
                 <div className="flex justify-start border-t py-4 mb-3 px-5">
                     <div className="flex flex-col items-center mr-6">
-                        <button className="w-14 h-14 rounded-full bg-gray-100">
-                            <img/>
+                        <button className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center">
+                            <img
+                                src="/assets/reels/link.svg"
+                                alt="링크복사"
+                                className="w-5 h-5"
+                            />
                         </button>
                         <p className="text-xs mt-2">링크 복사</p>
                     </div>
                     <div className="flex flex-col items-center mr-6">
-                        <button className="w-14 h-14 rounded-full bg-gray-100">
-                            <img/>
+                        <button className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center">
+                            <img
+                                src="/assets/reels/facebook.svg"
+                                alt="페이스북"
+                                className="w-6 h-6"
+                            />
                         </button>
                         <p className="text-xs mt-2">Facebook</p>
                     </div>
-                    <div className="flex flex-col items-center mr-6">
-                        <button className="w-14 h-14 rounded-full bg-gray-100">
-                            <img/>
+                    <div className="flex flex-col items-center mr-6 ">
+                        <button className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center">
+                            <img
+                                src="/assets/reels/messenger.svg"
+                                alt="메신저"
+                                className="w-6 h-6"
+                            />
                         </button>
                         <p className="text-xs mt-2">Messenger</p>
                     </div>
                     <div className="flex flex-col items-center mr-6">
-                        <button className="w-14 h-14 rounded-full bg-gray-100">
-                            <img/>
+                        <button className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center">
+                            <img
+                                src="/assets/reels/whatsapp.svg"
+                                alt="whatsApp"
+                                className="w-5 h-5"
+                            />
                         </button>
                         <p className="text-xs mt-2">WhatsApp</p>
                     </div>
                     <div className="flex flex-col items-center mr-6">
-                        <button className="w-14 h-14 rounded-full bg-gray-100">
-                            <img/>
+                        <button className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center">
+                            <img
+                                src="/assets/reels/email.svg"
+                                alt="이메일"
+                                className="w-5 h-5"
+                            />
                         </button>
                         <p className="text-xs mt-2">Email</p>
                     </div>
                     <div className="flex flex-col items-center mr-6">
-                        <button className="w-14 h-14 rounded-full bg-gray-100">
-                            <img/>
+                        <button className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center">
+                            <img
+                                src="/assets/reels/threads.svg"
+                                alt="스레드"
+                                className="w-5 h-5"
+                            />
                         </button>
                         <p className="text-xs mt-2">Threads</p>
                     </div>
                     <div className="flex flex-col items-center mr-6">
-                        <button className="w-14 h-14 rounded-full bg-gray-100">
-                            <img/>
+                        <button className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center">
+                            <img
+                                src="/assets/reels/x.svg"
+                                alt="x"
+                                className="w-5 h-5"
+                            />
                         </button>
                         <p className="text-xs mt-2">X</p>
                     </div>
                     <div className="flex flex-col items-center mr-6">
-                        <button className="w-14 h-14 rounded-full bg-gray-100">
-                            <img/>
+                        <button className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center">
+                            <img
+                                src="/assets/reels/share.svg"
+                                alt="모두보기"
+                                className="w-4 h-4"
+                            />
                         </button>
                         <p className="text-xs mt-2">모두보기</p>
                     </div>
