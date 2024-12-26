@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import ReelsComment from './ReelsComment.jsx';
+import ReelsShare from "@/pages/ReelsShare.jsx";
 
 const Reels = () => {
     const [showComments, setShowComments] = useState(false);
-
+    const [showShare, setShowShare] = useState(false);
     const toggleComments = () => {
         setShowComments((prev) => !prev);
     };
+    const toggleShare = () => {
+        setShowShare((prev) => !prev);
+    }
 
     return (
         <div className="flex justify-center items-start h-screen mt-10">
@@ -70,6 +74,7 @@ const Reels = () => {
                             src="/assets/share_btn.svg"
                             alt="Share"
                             className="w-6 h-6 mt-2 cursor-pointer"
+                            onClick={toggleShare}
                         />
                     </div>
 
@@ -105,7 +110,12 @@ const Reels = () => {
                     <ReelsComment onClose={toggleComments} />
                 </div>
             )}
-
+            {/* 공유 화면 */}
+            {showShare && (
+                <div className="relative">
+                    <ReelsShare onClose={toggleShare} />
+                </div>
+            )}
         </div>
     );
 };
