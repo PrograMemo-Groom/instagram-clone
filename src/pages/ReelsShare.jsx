@@ -14,6 +14,17 @@ const ReelsShare = ({ onClose }) => {
                     </button>
                 </div>
 
+                <div className="px-6 py-5">
+                    <img
+
+                    />
+                    <input
+                        type="text"
+                        placeholder="검색"
+                        className="text-black w-full px-3 py-2 rounded-lg bg-gray-100 "
+                    />
+                </div>
+
             </div>
         </div>
     );
