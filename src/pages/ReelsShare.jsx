@@ -25,7 +25,7 @@ const ReelsShare = ({ onClose }) => {
                     </button>
                 </div>
 
-                <div className="px-6 py-5">
+                <div className="px-6 py-4">
                     <div className="flex items-center justify-between">
                         <div className="flex text-black w-full px-3 py-2 rounded-lg bg-gray-100">
                             <img
@@ -52,7 +52,7 @@ const ReelsShare = ({ onClose }) => {
                     </div>
                 </div>
 
-                <div className="overflow-y-auto max-h-[320px] px-4 py-2 grid grid-cols-4 gap-10">
+                <div className="overflow-y-auto max-h-[300px] px-4 py-2 grid grid-cols-4 gap-8">
                     <div className="flex flex-col items-center">
                         <img
                             src="/assets/reels/reels_profile.png"
@@ -176,7 +176,7 @@ const ReelsShare = ({ onClose }) => {
 
                 </div>
 
-                <div className="flex justify-start border-t py-4 mb-4 px-5">
+                <div className="flex justify-start border-t py-4 mb-3 px-5">
                     <div className="flex flex-col items-center mr-6">
                         <button className="w-14 h-14 rounded-full bg-gray-100">
                             <img/>
