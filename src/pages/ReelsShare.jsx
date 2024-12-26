@@ -16,7 +16,9 @@ const ReelsShare = ({ onClose }) => {
 
                 <div className="px-6 py-5">
                     <img
-
+                        src="/assets/reels/search.svg"
+                        alt="검색"
+                        className="w-5 h-5 mr-3 cursor-pointer"
                     />
                     <input
                         type="text"
