@@ -1,31 +1,16 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { setActiveModal, toggleLike } from "@/store/action/ReelsAction";
 import ReelsComment from './ReelsComment.jsx';
 import ReelsShare from "./ReelsShare.jsx";
 import ReelsMenu from "@/pages/Reels/ReelsMenu.jsx";
 
 const Reels = () => {
-    const [isLiked, setIsLiked] = useState(false);
-    const [activeModal, setActiveModal] = useState(null); // 하나의 상태로 모달 관리
+    const dispatch = useDispatch();
+    const { isLiked, activeModal } = useSelector((state) => state.reels);
 
-    const toggleLike = () => {
-        setIsLiked((prev) => !prev);
-    };
-
-    const openComments = () => {
-        setActiveModal((prev) => (prev === 'comments' ? null : 'comments')); // 댓글 창 열기/닫기
-    };
-
-    const openShare = () => {
-        setActiveModal((prev) => (prev === 'share' ? null : 'share')); // 공유 창 열기/닫기
-    };
-
-    const openMenu = () => {
-        setActiveModal((prev) => (prev === 'menu' ? null : 'menu')); // 메뉴 창 열기/닫기
-    };
-
-    const closeModal = () => {
-        setActiveModal(null); // 모달 닫기
-    };
+    const handleToggleLike = () => dispatch(toggleLike());
+    const handleOpenModal = (modal) => dispatch(setActiveModal(modal));
+    const handleCloseModal = () => dispatch(setActiveModal(null));
 
     return (
         <div className="flex justify-center items-start h-screen mt-10">
@@ -70,7 +55,7 @@ const Reels = () => {
                             src={isLiked ? "/assets/reels/liked_btn.svg" : "/assets/reels/like_btn.svg"}
                             alt="Like"
                             className="w-6 h-6 cursor-pointer"
-                            onClick={toggleLike}
+                            onClick={handleToggleLike}
                         />
                         <p className="text-xs">5.8만</p>
                     </div>
@@ -80,7 +65,7 @@ const Reels = () => {
                             src="/assets/reels/comment_btn.svg"
                             alt="Comment"
                             className="w-6 h-6 mt-2 cursor-pointer"
-                            onClick={openComments}
+                            onClick={() => handleOpenModal("comments")}
                         />
                         <p className="text-xs">223</p>
                     </div>
@@ -90,7 +75,7 @@ const Reels = () => {
                             src="/assets/reels/share_btn.svg"
                             alt="Share"
                             className="w-6 h-6 mt-2 cursor-pointer"
-                            onClick={openShare}
+                            onClick={() => handleOpenModal("share")}
                         />
                     </div>
 
@@ -108,7 +93,7 @@ const Reels = () => {
                             src="/assets/reels/menu_btn.svg"
                             alt="Menu"
                             className="w-5 h-5 mt-3 cursor-pointer"
-                            onClick={openMenu}
+                            onClick={() => handleOpenModal("menu")}
                         />
                     </div>
 
@@ -122,32 +107,12 @@ const Reels = () => {
                 </div>
             </div>
 
-            {/* 배경 클릭 시 모달 닫기 */}
-            {activeModal && (
-                <div
-                    className="fixed inset-0  z-40"
-                    onClick={closeModal}
-                ></div>
-            )}
+            {/* 모달 */}
+            {activeModal && <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={handleCloseModal}></div>}
+            {activeModal === "comments" && <ReelsComment onClose={handleCloseModal} />}
+            {activeModal === "share" && <ReelsShare onClose={handleCloseModal} />}
+            {activeModal === "menu" && <ReelsMenu onClose={handleCloseModal} />}
 
-            {/* 댓글 화면 */}
-            {activeModal === 'comments' && (
-                <div className="relative">
-                    <ReelsComment onClose={() => setActiveModal(null)} />
-                </div>
-            )}
-            {/* 공유 화면 */}
-            {activeModal === 'share' && (
-                <div className="relative">
-                    <ReelsShare onClose={() => setActiveModal(null)} />
-                </div>
-            )}
-            {/* 메뉴 화면 */}
-            {activeModal === 'menu' && (
-                <div className="relative">
-                    <ReelsMenu onClose={() => setActiveModal(null)} />
-                </div>
-            )}
         </div>
     );
 };
