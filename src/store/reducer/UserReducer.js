@@ -3,14 +3,17 @@ const userState = {
         id: "",
         password: "",
     },
+    showPassword: false,
 }
 
 const UserReducer = (state = userState, action) => {
     switch (action.type) {
-        case 'SET_USER_ID':
-            return {...state, user: {id: action.payload}}
-        case 'SET_USER_PW':
-            return {...state, user: {password: action.payload}}
+        case 'SET_LOGIN_USER':
+            // console.log("PayLoad: ", action.payload);
+            return {...state, user: {id: action.payload.id, password: action.payload.password}}
+        case 'SHOW_PASSWORD':
+            // console.log("showPassword:",state.showPassword);
+            return {...state, showPassword: !state.showPassword}
         default:
             return state;
     }

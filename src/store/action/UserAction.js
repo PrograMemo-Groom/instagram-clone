@@ -1,11 +1,9 @@
-import {SET_USER_ID, SET_USER_PW} from "@/store/type/UserActionType.js";
+import {SET_LOGIN_USER, SHOW_PASSWORD} from "@/store/type/UserActionType.js";
 
-export const setUserId = (isLoading) => ({
-    type: SET_USER_ID,
-    payload: isLoading
+export const setUserLogin = (user) => ({
+    type: SET_LOGIN_USER,
+    payload: user
 })
-
-export const setUserPw = (isLogin) => ({
-    type: SET_USER_PW,
-    payload: isLogin
+export const toggleShowPassword = () => ({
+    type: SHOW_PASSWORD,
 })
