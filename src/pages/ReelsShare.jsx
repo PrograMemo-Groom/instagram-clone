@@ -147,27 +147,37 @@ const ReelsShare = ({ onClose }) => {
                                             <p className="text-xs text-gray-500">{user.username}</p>
                                         </div>
                                     </div>
-                                    <div
-                                        className="w-5 h-5 border-2 rounded-full border-gray-300 cursor-pointer"
-                                        onClick={handleCircleClick}
-                                    ></div>
+                                    <div className="flex items-center">
+                                        {selectedUsers.includes(index) ? (
+                                            <div
+                                                className="w-6 h-6 flex items-center justify-center rounded-full bg-black text-white font-bold"
+                                                onClick={handleCircleClick}
+                                            >
+                                                ✓
+                                            </div>
+                                        ) : (
+                                            <div className="w-6 h-6 border-2 rounded-full border-gray-300"
+                                                 onClick={handleCircleClick}
+                                            ></div>
+                                        )}
+                                    </div>
                                 </li>
-                            ))}
+                            ))}✓
                         </ul>
                     ) : (
 
-                    <div
-                        className="grid gap-8"
-                        style={{
-                            gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
-                            maxWidth: "550px",
-                            margin: "0 auto",
-                        }}
-                    >
-                        {users.map((user, index) => (
-                            <div
-                                key={index}
-                                className={`flex flex-col items-center cursor-pointer ${selectedUsers.includes(index) ? 'ring-2 ring-gray-300' : ''}`}
+                        <div
+                            className="grid gap-8"
+                            style={{
+                                gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
+                                maxWidth: "550px",
+                                margin: "0 auto",
+                            }}
+                        >
+                            {users.map((user, index) => (
+                                <div
+                                    key={index}
+                                    className={`flex flex-col items-center cursor-pointer ${selectedUsers.includes(index) ? 'ring-2 ring-gray-300' : ''}`}
                                 onClick={() => handleUserClick(index)}
                             >
                                 <div
