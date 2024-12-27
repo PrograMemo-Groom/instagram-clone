@@ -4,8 +4,8 @@ import data from './data.json';
 const Posts = () => {
     const [activeIndex, setActiveIndex] = useState(0); // 0: 게시물, 1: 릴스, 2: 태그됨
     const isPin = false;
-    const hasManyImages = true;
-    const isShorts = false;
+    const hasManyImages = false;
+    const isShorts = true;
 
     const handleButtonClick = (index) => {
         setActiveIndex(index);
@@ -36,13 +36,17 @@ const Posts = () => {
             {data.map((data, index) => {
                 return (
                     <div
-                        className="relative h-[308px] group" // 그룹화하여 하위 요소의 호버 효과 관리
+                        className="relative group"
                         key={index}>
-                        <img
-                            className="w-full h-full object-cover cursor-pointer"
-                            src={data.thumnailSrc}
-                            alt="thumbnail"
-                        />
+                        {/* 정사각형 비율 유지 */}
+                        <div className="w-full aspect-square relative">
+                            <img
+                                className="absolute inset-0 w-full h-full object-cover cursor-pointer"
+                                src={data.thumnailSrc}
+                                alt="thumbnail"
+                            />
+                        </div>
+
                         {isPin && (
                             <img
                                 className="absolute top-[10px] right-[10px] w-5 h-5"
@@ -74,6 +78,7 @@ const Posts = () => {
                 );
             })}
         </div>
+
     </div>);
 };
 
