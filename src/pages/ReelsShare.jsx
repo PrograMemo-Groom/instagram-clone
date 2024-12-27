@@ -80,7 +80,7 @@ const ReelsShare = ({ onClose }) => {
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-            <div className="bg-white w-[550px] rounded-lg shadow-lg">
+            <div className="bg-white w-full max-w-[100%] sm:max-w-[550px] rounded-lg shadow-lg mx-4">
                 <div className="flex items-center justify-between px-4 py-2 border-b">
                     <h2 className="text-center font-bold flex-1">공유</h2>
                     <button
@@ -93,7 +93,7 @@ const ReelsShare = ({ onClose }) => {
 
                 <div className="px-6 py-4">
                     <div className="flex items-center justify-between">
-                        <div className="flex text-black w-full px-3 py-2 rounded-lg bg-gray-100">
+                        <div className="flex text-black w-[550px] px-3 py-2 rounded-lg bg-gray-100">
                             <img
                                 src="/assets/reels/search.svg"
                                 alt="검색"
