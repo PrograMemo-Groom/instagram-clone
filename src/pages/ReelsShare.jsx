@@ -3,16 +3,24 @@ import { useState, useEffect } from 'react';
 
 const ReelsShare = ({ onClose }) => {
     const [isFocused, setIsFocused] = useState(false);
+    const [isGridView, setIsGridView] = useState(false);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
     const [selectedUsers, setSelectedUsers] = useState([]);
 
     const handleFocus = () => {
         setIsFocused(true);
+        setIsGridView(false);
     };
 
     const handleCancel = () => {
         setIsFocused(false);
+        setIsGridView(false);
+    };
+
+    const handleCircleClick = () => {
+        setIsFocused(false);
+        setIsGridView(true);
     };
 
     const handleNext = () => {
@@ -120,7 +128,7 @@ const ReelsShare = ({ onClose }) => {
                 </div>
 
                 <div className="overflow-y-auto max-h-[300px] px-4 py-2">
-                    {isFocused ? (
+                    {isFocused && !isGridView ? (
                         <ul className="space-y-4">
                             {users.map((user, index) => (
                                 <li
@@ -140,7 +148,8 @@ const ReelsShare = ({ onClose }) => {
                                         </div>
                                     </div>
                                     <div
-                                        className={`w-5 h-5 border-2 rounded-full border-gray-300}`}
+                                        className="w-5 h-5 border-2 rounded-full border-gray-300 cursor-pointer"
+                                        onClick={handleCircleClick}
                                     ></div>
                                 </li>
                             ))}
