@@ -1,39 +1,62 @@
 [
   {
-    "thumnailSrc": "assets/image/postImg.jpg"
+    "thumnailSrc": "assets/image/postImg.jpg",
+    "likes": 3,
+    "comments": 15
   },
   {
-    "thumnailSrc": "/assets/image/postImg.jpg"
+    "thumnailSrc": "/assets/image/postImg.jpg",
+    "likes": 1,
+    "comments": 10
   },
   {
-    "thumnailSrc": "/assets/image/postImg.jpg"
+    "thumnailSrc": "/assets/image/postImg.jpg",
+    "likes": 3,
+    "comments": 0
   },
   {
-    "thumnailSrc": "/assets/image/postImg.jpg"
+    "thumnailSrc": "/assets/image/postImg.jpg",
+    "likes": 3,
+    "comments": 0
   },
   {
-    "thumnailSrc": "/assets/image/postImg.jpg"
+    "thumnailSrc": "/assets/image/postImg.jpg",
+    "likes": 3,
+    "comments": 0
   },
   {
-    "thumnailSrc": "/assets/image/postImg.jpg"
+    "thumnailSrc": "/assets/image/postImg.jpg",
+    "likes": 3,
+    "comments": 0
   },
   {
-    "thumnailSrc": "assets/image/postImg.jpg"
+    "thumnailSrc": "assets/image/postImg.jpg",
+    "likes": 3,
+    "comments": 0
   },
   {
-    "thumnailSrc": "/assets/image/postImg.jpg"
+    "thumnailSrc": "/assets/image/postImg.jpg",
+    "likes": 3,
+    "comments": 0
   },
   {
-    "thumnailSrc": "/assets/image/postImg.jpg"
+    "thumnailSrc": "/assets/image/postImg.jpg",
+    "likes": 3,
+    "comments": 0
   },
   {
-    "thumnailSrc": "/assets/image/postImg.jpg"
+    "thumnailSrc": "/assets/image/postImg.jpg",
+    "likes": 3,
+    "comments": 0
   },
   {
-    "thumnailSrc": "/assets/image/postImg.jpg"
+    "thumnailSrc": "/assets/image/postImg.jpg",
+    "likes": 3,
+    "comments": 0
   },
   {
-    "thumnailSrc": "/assets/image/postImg.jpg"
+    "thumnailSrc": "/assets/image/postImg.jpg",
+    "likes": 3,
+    "comments": 0
   }
-
 ]
