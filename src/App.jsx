@@ -11,6 +11,8 @@ import SideBar from '@/pages/SideBar.jsx';
 import ProfilePage from "@/pages/ProfilePage.jsx";
 import Reels from "@/pages/Reels.jsx";
 import LoginPage from "@/pages/login/LoginPage.jsx";
+import JoinPage from "@/pages/login/JoinPage.jsx";
+import ForgetPasswordPage from "@/pages/login/ForgetPasswordPage.jsx";
 
 
 function LayOut() {
@@ -51,6 +53,8 @@ function App() {
                 <Route path="/">
                     <Route index element={<LoginPage/>}/>
                     <Route path="/account" element={<LoginPage/>}/>
+                    <Route path="/account/join" element={<JoinPage/>}/>
+                    <Route path="/account/password" element={<ForgetPasswordPage/>}/>
                     <Route path="*" element={<Navigate to="/" replace/>}/>
                 </Route>
                 :
