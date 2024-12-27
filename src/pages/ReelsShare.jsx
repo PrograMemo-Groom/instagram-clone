@@ -132,7 +132,7 @@ const ReelsShare = ({ onClose }) => {
                         <input
                             type="text"
                             placeholder="메시지 쓰기..."
-                            className="w-full p-1 rounded mt-1 text-sm"
+                            className="w-full p-1 rounded mt-1 text-sm focus:outline-none focus:ring-0 placeholder-neutral-500"
                         />
                         <button className="bg-blue-500 text-white w-full py-1 rounded-lg mt-4 mb-3 text">
                             보내기
