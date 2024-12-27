@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ReelsComment from './ReelsComment.jsx';
 import ReelsShare from "./ReelsShare.jsx";
-import ReelsMenu from "@/pages/ReelsMenu.jsx";
+import ReelsMenu from "@/pages/Reels/ReelsMenu.jsx";
 
 const Reels = () => {
     const [isLiked, setIsLiked] = useState(false);
