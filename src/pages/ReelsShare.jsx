@@ -74,6 +74,10 @@ const ReelsShare = ({ onClose }) => {
         label: `사용자${i + 1}`
     }));
 
+    const getButtonLabel = () => {
+        return selectedUsers.length > 1 ? "따로 보내기" : "보내기";
+    };
+
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
             <div className="bg-white w-[550px] rounded-lg shadow-lg">
@@ -142,7 +146,7 @@ const ReelsShare = ({ onClose }) => {
                             className="w-full p-1 rounded mt-1 text-sm focus:outline-none focus:ring-0 placeholder-neutral-500"
                         />
                         <button className="bg-blue-500 text-white w-full py-1 rounded-lg mt-4 mb-3 text">
-                            보내기
+                            {getButtonLabel()}
                         </button>
                     </div>
                 ) : (
