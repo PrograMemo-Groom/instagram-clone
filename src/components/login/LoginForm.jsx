@@ -3,6 +3,7 @@ import {setUserLogin, toggleShowPassword} from "@/store/action/UserAction.js";
 import unShowPasswordImg from "@/assets/login/unShowPassword.svg";
 import showPasswordImg from "@/assets/login/showPassword.svg";
 import {useDispatch, useSelector} from "react-redux";
+import SubmitButton from "@/components/login/SubmitButton.jsx";
 
 const LoginForm = () => {
     const {user, showPassword} = useSelector((state) => state.user);
@@ -46,11 +47,7 @@ const LoginForm = () => {
                     }
                 </span>
             </label>
-            <button type="submit"
-                    className=" w-[250px] h-[30px] rounded-[5px] border bg-sky-500 hover:bg-blue-500 disabled:bg-sky-400 border-gray-200 disabled:border-gray-200 text-white text-[14px] font-semibold"
-                    disabled={userIdInputValue.trim().length === 0 || userPwInputValue.trim().length === 0 || userPwInputValue.trim().length < 6}
-            >로그인
-            </button>
+            <SubmitButton text="로그인" userId={userIdInputValue} userPw={userPwInputValue}/>
         </form>
     );
 };
