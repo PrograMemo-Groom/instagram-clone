@@ -10,10 +10,10 @@ import Header from "@/pages/Header.jsx";
 import SideBar from '@/pages/SideBar.jsx';
 import ProfilePage from "@/pages/ProfilePage.jsx";
 import Reels from "@/pages/Reels.jsx";
+import Search from "@/pages/Search.jsx";
 import LoginPage from "@/pages/login/LoginPage.jsx";
 import JoinPage from "@/pages/login/JoinPage.jsx";
 import ForgetPasswordPage from "@/pages/login/ForgetPasswordPage.jsx";
-
 
 function LayOut() {
     const {isLoading} = useSelector((state) => state.common);
@@ -27,21 +27,21 @@ function LayOut() {
     }, [isLoading]);
 
     return (
-    <>
-      {isLoading ?
-        <div className="flex items-center justify-center h-screen">
-          <Loading/>
-        </div>
-        :
         <>
-          <Header/>
-          <SideBar/>
-          <div className='mt-16 md:mt-0 md:ml-20 sidebarpoint:ml-[16rem] flex items-center justify-center'>
-            <Outlet/> {/* 현재 라우터에 따라 변경 되는 내용 */}
-          </div>
+            {isLoading ?
+                <div className="flex items-center justify-center h-screen">
+                    <Loading/>
+                </div>
+                :
+                <>
+                    <Header/>
+                    <SideBar/>
+                    <div className='mt-16 md:mt-0 md:ml-20 sidebarpoint:ml-[16rem] flex items-center justify-center'>
+                        <Outlet/> {/* 현재 라우터에 따라 변경 되는 내용 */}
+                    </div>
+                </>
+            }
         </>
-      }
-    </>
     )
 }
 
@@ -60,6 +60,7 @@ function App() {
                 :
             <Route path="/" element={<LayOut/>}>
                 <Route index element={<MainPage/>}/>
+                <Route path="/search" element={<Search/>}/>
                 {/*<Route path="main/*" element={<MainPage/>}/>*/}
                 <Route path="/profile-page" element={<ProfilePage/>}/>
                 <Route path="/reels" element={<Reels/>}/>
