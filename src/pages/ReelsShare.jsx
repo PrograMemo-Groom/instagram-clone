@@ -71,7 +71,8 @@ const ReelsShare = ({ onClose }) => {
     const users = Array.from({ length: 12 }, (_, i) => ({
         src: "/assets/reels/reels_profile.png",
         alt: `프로필 ${i + 1}`,
-        label: `사용자${i + 1}`
+        label: `사용자${i + 1}`,
+        username: `username${i + 1}`,
     }));
 
     const getButtonLabel = () => {
@@ -119,6 +120,33 @@ const ReelsShare = ({ onClose }) => {
                 </div>
 
                 <div className="overflow-y-auto max-h-[300px] px-4 py-2">
+                    {isFocused ? (
+                        <ul className="space-y-4">
+                            {users.map((user, index) => (
+                                <li
+                                    key={index}
+                                    className="flex items-center justify-between"
+                                    onClick={() => handleUserClick(index)}
+                                >
+                                    <div className="flex items-center">
+                                        <img
+                                            src={user.src}
+                                            alt={user.alt}
+                                            className="w-10 h-10 rounded-full mr-4"
+                                        />
+                                        <div>
+                                            <p className="text-sm font-medium">{user.label}</p>
+                                            <p className="text-xs text-gray-500">{user.username}</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className={`w-5 h-5 border-2 rounded-full border-gray-300}`}
+                                    ></div>
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+
                     <div
                         className="grid gap-8"
                         style={{
@@ -147,8 +175,9 @@ const ReelsShare = ({ onClose }) => {
                             </div>
                         ))}
                     </div>
-                </div>
 
+                    )}
+                </div>
 
                 {selectedUsers.length > 0 ? (
                     <div className="py-4 px-7 border-t">
