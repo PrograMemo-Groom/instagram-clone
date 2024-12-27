@@ -3,19 +3,19 @@ import ReelsComment from './ReelsComment.jsx';
 import ReelsShare from "./ReelsShare.jsx";
 
 const Reels = () => {
-    const [showComments, setShowComments] = useState(false);
-    const [showShare, setShowShare] = useState(false);
     const [isLiked, setIsLiked] = useState(false);
-
-    const toggleComments = () => {
-        setShowComments((prev) => !prev);
-    };
-    const toggleShare = () => {
-        setShowShare((prev) => !prev);
-    }
+    const [activeModal, setActiveModal] = useState(null); // 하나의 상태로 모달 관리
 
     const toggleLike = () => {
         setIsLiked((prev) => !prev);
+    };
+
+    const openComments = () => {
+        setActiveModal((prev) => (prev === 'comments' ? null : 'comments')); // 댓글 창 열기/닫기
+    };
+
+    const openShare = () => {
+        setActiveModal((prev) => (prev === 'share' ? null : 'share')); // 공유 창 열기/닫기
     };
 
     return (
@@ -71,7 +71,7 @@ const Reels = () => {
                             src="/assets/reels/comment_btn.svg"
                             alt="Comment"
                             className="w-6 h-6 mt-2 cursor-pointer"
-                            onClick={toggleComments}
+                            onClick={openComments}
                         />
                         <p className="text-xs">223</p>
                     </div>
@@ -81,7 +81,7 @@ const Reels = () => {
                             src="/assets/reels/share_btn.svg"
                             alt="Share"
                             className="w-6 h-6 mt-2 cursor-pointer"
-                            onClick={toggleShare}
+                            onClick={openShare}
                         />
                     </div>
 
@@ -112,15 +112,15 @@ const Reels = () => {
             </div>
 
             {/* 댓글 화면 */}
-            {showComments && (
+            {activeModal === 'comments' && (
                 <div className="relative">
-                    <ReelsComment onClose={toggleComments} />
+                    <ReelsComment onClose={() => setActiveModal(null)} />
                 </div>
             )}
             {/* 공유 화면 */}
-            {showShare && (
+            {activeModal === 'share' && (
                 <div className="relative">
-                    <ReelsShare onClose={toggleShare} />
+                    <ReelsShare onClose={() => setActiveModal(null)} />
                 </div>
             )}
         </div>
