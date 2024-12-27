@@ -10,7 +10,7 @@ const JoinPage = () => {
     return (
         <div className="flex flex-col items-center justify-center">
             <section className="flex flex-col items-center justify-center mb-2">
-                <article className="border-2 flex flex-col items-center w-[300px] h-[520px] mt-2">
+                <article className="border-2 flex flex-col items-center w-[300px] h-[520px] mt-4">
                     <div className="flex flex-col items-center justify-center mt-4">
                         <img className="w-[160px] m-4" src="/img/icons/instagram_text_logo.png"
                              alt="instagramlogo"/>
