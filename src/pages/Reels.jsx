@@ -5,12 +5,18 @@ import ReelsShare from "./ReelsShare.jsx";
 const Reels = () => {
     const [showComments, setShowComments] = useState(false);
     const [showShare, setShowShare] = useState(false);
+    const [isLiked, setIsLiked] = useState(false);
+
     const toggleComments = () => {
         setShowComments((prev) => !prev);
     };
     const toggleShare = () => {
         setShowShare((prev) => !prev);
     }
+
+    const toggleLike = () => {
+        setIsLiked((prev) => !prev);
+    };
 
     return (
         <div className="flex justify-center items-start h-screen mt-10">
@@ -52,9 +58,10 @@ const Reels = () => {
                 <div className="absolute bottom-4 right-[-60px] flex flex-col items-center space-y-4">
                     <div className="flex flex-col items-center hover:opacity-40">
                         <img
-                            src="/assets/reels/like_btn.svg"
+                            src={isLiked ? "/assets/reels/liked_btn.svg" : "/assets/reels/like_btn.svg"}
                             alt="Like"
                             className="w-6 h-6 cursor-pointer"
+                            onClick={toggleLike}
                         />
                         <p className="text-xs">5.8만</p>
                     </div>
