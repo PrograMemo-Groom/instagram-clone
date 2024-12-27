@@ -1,16 +1,27 @@
 import { useState } from 'react';
 import ReelsComment from './ReelsComment.jsx';
-import ReelsShare from "@/pages/ReelsShare.jsx";
+import ReelsShare from "./ReelsShare.jsx";
+import ReelsMenu from "@/pages/ReelsMenu.jsx";
 
 const Reels = () => {
-    const [showComments, setShowComments] = useState(false);
-    const [showShare, setShowShare] = useState(false);
-    const toggleComments = () => {
-        setShowComments((prev) => !prev);
+    const [isLiked, setIsLiked] = useState(false);
+    const [activeModal, setActiveModal] = useState(null); // 하나의 상태로 모달 관리
+
+    const toggleLike = () => {
+        setIsLiked((prev) => !prev);
     };
-    const toggleShare = () => {
-        setShowShare((prev) => !prev);
-    }
+
+    const openComments = () => {
+        setActiveModal((prev) => (prev === 'comments' ? null : 'comments')); // 댓글 창 열기/닫기
+    };
+
+    const openShare = () => {
+        setActiveModal((prev) => (prev === 'share' ? null : 'share')); // 공유 창 열기/닫기
+    };
+
+    const openMenu = () => {
+        setActiveModal((prev) => (prev === 'menu' ? null : 'menu')); // 메뉴 창 열기/닫기
+    };
 
     return (
         <div className="flex justify-center items-start h-screen mt-10">
@@ -24,7 +35,7 @@ const Reels = () => {
                     <div className="absolute bottom-0 left-0 w-full p-4">
                         <div className="flex items-center">
                             <img
-                                src="/assets/reels_profile.png"
+                                src="/assets/reels/reels_profile.png"
                                 alt="Profile"
                                 className="w-8 h-8 rounded-full cursor-pointer"
                             />
@@ -52,51 +63,54 @@ const Reels = () => {
                 <div className="absolute bottom-4 right-[-60px] flex flex-col items-center space-y-4">
                     <div className="flex flex-col items-center hover:opacity-40">
                         <img
-                            src="/assets/like_btn.svg"
+                            src={isLiked ? "/assets/reels/liked_btn.svg" : "/assets/reels/like_btn.svg"}
                             alt="Like"
                             className="w-6 h-6 cursor-pointer"
+                            onClick={toggleLike}
                         />
                         <p className="text-xs">5.8만</p>
                     </div>
 
                     <div className="flex flex-col items-center hover:opacity-40">
                         <img
-                            src="/assets/comment_btn.svg"
+                            src="/assets/reels/comment_btn.svg"
                             alt="Comment"
                             className="w-6 h-6 mt-2 cursor-pointer"
-                            onClick={toggleComments}
+                            onClick={openComments}
                         />
                         <p className="text-xs">223</p>
                     </div>
 
                     <div className="flex flex-col items-center hover:opacity-40">
                         <img
-                            src="/assets/share_btn.svg"
+                            src="/assets/reels/share_btn.svg"
                             alt="Share"
                             className="w-6 h-6 mt-2 cursor-pointer"
-                            onClick={toggleShare}
+                            onClick={openShare}
                         />
                     </div>
 
                     <div className="flex flex-col items-center hover:opacity-40">
                         <img
-                            src="/assets/bookmark_btn.svg"
+                            src="/assets/reels/bookmark_btn.svg"
                             alt="Bookmark"
                             className="w-6 h-6 mt-3 cursor-pointer"
+
                         />
                     </div>
 
                     <div className="flex flex-col items-center hover:opacity-40">
                         <img
-                            src="/assets/menu_btn.svg"
+                            src="/assets/reels/menu_btn.svg"
                             alt="Menu"
                             className="w-5 h-5 mt-3 cursor-pointer"
+                            onClick={openMenu}
                         />
                     </div>
 
                     <div className="flex flex-col items-center hover:opacity-60">
                         <img
-                            src="/assets/song.png"
+                            src="/assets/reels/song.png"
                             alt="Song"
                             className="w-7 h-7 mt-4 rounded border-1 border-black cursor-pointer"
                         />
@@ -105,15 +119,21 @@ const Reels = () => {
             </div>
 
             {/* 댓글 화면 */}
-            {showComments && (
+            {activeModal === 'comments' && (
                 <div className="relative">
-                    <ReelsComment onClose={toggleComments} />
+                    <ReelsComment onClose={() => setActiveModal(null)} />
                 </div>
             )}
             {/* 공유 화면 */}
-            {showShare && (
+            {activeModal === 'share' && (
                 <div className="relative">
-                    <ReelsShare onClose={toggleShare} />
+                    <ReelsShare onClose={() => setActiveModal(null)} />
+                </div>
+            )}
+            {/* 메뉴 화면 */}
+            {activeModal === 'menu' && (
+                <div className="relative">
+                    <ReelsMenu onClose={() => setActiveModal(null)} />
                 </div>
             )}
         </div>
