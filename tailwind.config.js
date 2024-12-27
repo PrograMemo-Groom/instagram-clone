@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       screens: {
-        'sidebarpoint' : '1264px'
+        'sidebarpoint' : '1264px',
+        'rightbarpoint' : '1159px'
       }
     },
   
