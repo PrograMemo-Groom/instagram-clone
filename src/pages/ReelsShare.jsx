@@ -162,7 +162,7 @@ const ReelsShare = ({ onClose }) => {
                                         )}
                                     </div>
                                 </li>
-                            ))}✓
+                            ))}
                         </ul>
                     ) : (
 
