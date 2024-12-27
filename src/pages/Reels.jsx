@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ReelsComment from './ReelsComment.jsx';
 import ReelsShare from "./ReelsShare.jsx";
+import ReelsMenu from "@/pages/ReelsMenu.jsx";
 
 const Reels = () => {
     const [isLiked, setIsLiked] = useState(false);
@@ -16,6 +17,10 @@ const Reels = () => {
 
     const openShare = () => {
         setActiveModal((prev) => (prev === 'share' ? null : 'share')); // 공유 창 열기/닫기
+    };
+
+    const openMenu = () => {
+        setActiveModal((prev) => (prev === 'menu' ? null : 'menu')); // 메뉴 창 열기/닫기
     };
 
     return (
@@ -90,6 +95,7 @@ const Reels = () => {
                             src="/assets/reels/bookmark_btn.svg"
                             alt="Bookmark"
                             className="w-6 h-6 mt-3 cursor-pointer"
+                            onClick={openMenu}
                         />
                     </div>
 
@@ -121,6 +127,12 @@ const Reels = () => {
             {activeModal === 'share' && (
                 <div className="relative">
                     <ReelsShare onClose={() => setActiveModal(null)} />
+                </div>
+            )}
+            {/* 메뉴 화면 */}
+            {activeModal === 'menu' && (
+                <div className="relative">
+                    <ReelsMenu onClose={() => setActiveModal(null)} />
                 </div>
             )}
         </div>
