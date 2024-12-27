@@ -7,7 +7,7 @@ const MainPage = () => {
             <section style={{backgroundColor:"lightblue"}}> 
                 왼쪽 섹션 
             </section>
-            <aside className="" 
+            <aside className="hidden rightbarpoint:block" 
             style={{backgroundColor:"pink"}}>
                 오른쪽 사이드바
                 <footer>
