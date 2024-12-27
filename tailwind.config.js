@@ -11,10 +11,9 @@ export default {
         'rightbarpoint' : '1159px'
       },
       fontSize: {
-        'main-story-size' : '12px'
+        'main-story-size' : '12px',
       }
     },
-  
   },
   darkMode: 'class',
   plugins: [],
