@@ -3,7 +3,8 @@ import login_img from "@/assets/login/login-img.svg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import imgConfig from "@/pages/login/imgConfig.js";
+import imgConfig from "@/components/login/imgConfig.js";
+import LoginForm from "@/components/login/LoginForm.jsx";
 
 const LoginPage = () => {
     const settings = {
@@ -31,7 +32,12 @@ const LoginPage = () => {
                         </Slider>
                     </div>
                 </div>
-                <div>아 슬라이드 개꿀띠</div>
+                <div className="border-2 flex flex-col items-center justify-center w-[300px] h-[415px]">
+                    <div className="flex flex-col items-center justify-center">
+                        <img className="w-[160px] m-4" src="/img/icons/instagram_text_logo.png" alt="instagramlogo"/>
+                    </div>
+                    <LoginForm/>
+                </div>
             </section>
         </div>
     );
