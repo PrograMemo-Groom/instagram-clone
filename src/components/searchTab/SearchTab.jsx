@@ -5,8 +5,9 @@ const SearchTab = () => {
     const isOpen = useSelector((state) => state.search.isOpen);
 
     return (
-        <div className={`fixed top-0 left-[16rem] h-screen w-80 bg-white shadow-lg transform transition-transform duration-300
-            ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-[calc(100%+16rem)] opacity-0'}`}
+        <div className={`fixed top-0 h-screen w-80 bg-white shadow-lg transform transition-transform duration-300
+             ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}
+             sidebarpoint:left-[16rem] left-[4.5rem]`}
              style={{visibility: isOpen ? 'visible' : 'hidden',}}>
             <h2 className="p-4 font-bold">검색</h2>
             <input type="text"
