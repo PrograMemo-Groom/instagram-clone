@@ -1,6 +1,6 @@
 import './index.css';
 import MainPage from "@/pages/MainPage.jsx";
-import {Outlet, Route, Routes} from "react-router-dom";
+import {Navigate, Outlet, Route, Routes} from "react-router-dom";
 import PrivacyPolicy from "@/pages/PrivacyPolicy.jsx";
 import DataDeletion from "@/pages/DataDeletion.jsx";
 import Loading from "@/pages/loading/Loading.jsx";
@@ -10,6 +10,9 @@ import Header from "@/pages/Header.jsx";
 import SideBar from '@/pages/SideBar.jsx';
 import ProfilePage from "@/pages/ProfilePage.jsx";
 import Reels from "@/pages/Reels.jsx";
+import LoginPage from "@/pages/login/LoginPage.jsx";
+import JoinPage from "@/pages/login/JoinPage.jsx";
+import ForgetPasswordPage from "@/pages/login/ForgetPasswordPage.jsx";
 
 
 function LayOut() {
@@ -43,17 +46,28 @@ function LayOut() {
 }
 
 function App() {
-
+    const {isLogin} = useSelector((state) => state.common);
     return (
         <Routes>
+            {!isLogin ?
+                <Route path="/">
+                    <Route index element={<LoginPage/>}/>
+                    <Route path="/account" element={<LoginPage/>}/>
+                    <Route path="/account/join" element={<JoinPage/>}/>
+                    <Route path="/account/password" element={<ForgetPasswordPage/>}/>
+                    <Route path="*" element={<Navigate to="/" replace/>}/>
+                </Route>
+                :
             <Route path="/" element={<LayOut/>}>
                 <Route index element={<MainPage/>}/>
-                <Route path="/privacy" element={<PrivacyPolicy/>}/>
-                <Route path="/data-deletion" element={<DataDeletion/>}/>
                 {/*<Route path="main/*" element={<MainPage/>}/>*/}
                 <Route path="/profile-page" element={<ProfilePage/>}/>
                 <Route path="/reels" element={<Reels/>}/>
             </Route>
+            }
+            <Route path="/privacy" element={<PrivacyPolicy/>}/>
+            <Route path="/data-deletion" element={<DataDeletion/>}/>
+            {/*<Route path="*" element={<Navigate to="/" replace />} />*/}
         </Routes>
     )
 
