@@ -125,11 +125,13 @@ const ReelsShare = ({ onClose }) => {
                             className={`flex flex-col items-center cursor-pointer ${selectedUsers.includes(index) ? 'ring-2 ring-gray-300' : ''}`}
                             onClick={() => handleUserClick(index)}
                         >
-                            <img
-                                src={user.src}
-                                alt={user.alt}
-                                className="w-20 h-20 rounded-full mb-2"
-                            />
+                            <div className="w-20 h-20 rounded-full overflow-hidden flex items-center justify-center mb-2">
+                                <img
+                                    src={user.src}
+                                    alt={user.alt}
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
                             <div>
                                 <p className="text-xs">{user.label}</p>
                             </div>
