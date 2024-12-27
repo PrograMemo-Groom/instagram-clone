@@ -19,8 +19,8 @@ const LoginForm = () => {
     }
 
     return (
-        <form className="flex flex-col items-center justify-center gap-1 w-[250px]" onSubmit={handleFormSubmit}>
-            <label className="flex flex-col relative w-[250px] border border-gray-500 " htmlFor="userId">
+        <form className="flex flex-col items-center justify-center w-[250px]" onSubmit={handleFormSubmit}>
+            <label className="flex flex-col relative w-[250px] border border-gray-500 mb-1" htmlFor="userId">
                 <span
                     className={`absolute text-gray-500 font-thin text-[8px] ml-1 mt-1 ${userIdInputValue.trim().length === 0 ? "hidden" : ""} select-none`}>전화번호, 사용자 이름 또는 이메일</span>
                 <input
@@ -30,7 +30,7 @@ const LoginForm = () => {
                     onChange={(e) => setUserIdInputValue(e.target.value)}
                 />
             </label>
-            <label className="flex flex-col relative w-[250px] border border-gray-500 " htmlFor="userpw">
+            <label className="flex flex-col relative w-[250px] border border-gray-500 mb-3" htmlFor="userpw">
                 <span
                     className={`absolute text-gray-500 font-thin text-[8px] ml-1 mt-1 ${userPwInputValue.trim().length === 0 ? "hidden" : ""} select-none`}>비밀번호</span>
                 <input
