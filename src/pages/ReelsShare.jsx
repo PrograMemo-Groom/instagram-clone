@@ -118,25 +118,35 @@ const ReelsShare = ({ onClose }) => {
                     </div>
                 </div>
 
-                <div className="overflow-y-auto max-h-[300px] px-4 py-2 grid grid-cols-4 gap-8">
-                    {users.map((user, index) => (
-                        <div
-                            key={index}
-                            className={`flex flex-col items-center cursor-pointer ${selectedUsers.includes(index) ? 'ring-2 ring-gray-300' : ''}`}
-                            onClick={() => handleUserClick(index)}
-                        >
-                            <div className="w-20 h-20 rounded-full overflow-hidden flex items-center justify-center mb-2">
-                                <img
-                                    src={user.src}
-                                    alt={user.alt}
-                                    className="w-full h-full object-cover"
-                                />
+                <div className="overflow-y-auto max-h-[300px] px-4 py-2">
+                    <div
+                        className="grid gap-8"
+                        style={{
+                            gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
+                            maxWidth: "550px",
+                            margin: "0 auto",
+                        }}
+                    >
+                        {users.map((user, index) => (
+                            <div
+                                key={index}
+                                className={`flex flex-col items-center cursor-pointer ${selectedUsers.includes(index) ? 'ring-2 ring-gray-300' : ''}`}
+                                onClick={() => handleUserClick(index)}
+                            >
+                                <div
+                                    className="w-20 h-20 rounded-full overflow-hidden flex items-center justify-center mb-2">
+                                    <img
+                                        src={user.src}
+                                        alt={user.alt}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <div>
+                                    <p className="text-xs">{user.label}</p>
+                                </div>
                             </div>
-                            <div>
-                                <p className="text-xs">{user.label}</p>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
 
 
