@@ -23,9 +23,9 @@ const LoginPage = () => {
 
     return (
         <div className="flex flex-col items-center justify-center">
-            <section className="flex flex-row items-center justify-center">
-                <div className="relative flex flex-col items-center justify-center">
-                    <img src={login_img} alt="logo"/>
+            <section className="flex flex-row items-center justify-center h-[450px]">
+                <div className="relative flex-col items-center justify-center hidden sm:flex mr-4">
+                    <img src={login_img} alt="login_img"/>
                     <div
                         className="absolute left-[90px] top-[20px] w-[190px] h-[415px] rounded-2xl object-contain overflow-hidden bg-black">
                         <Slider {...settings} >
