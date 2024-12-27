@@ -5,6 +5,7 @@ const ReelsShare = ({ onClose }) => {
     const [isFocused, setIsFocused] = useState(false);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
+    const [selectedUser, setSelectedUser] = useState(null);
 
     const handleFocus = () => {
         setIsFocused(true);
@@ -47,6 +48,7 @@ const ReelsShare = ({ onClose }) => {
             updateScrollButtons(scrollContainer.scrollLeft, maxScrollLeft);
         }
     }, []);
+
 
     const shareItems = [
         { src: "/assets/reels/link.svg", alt: "링크복사", label: "링크 복사", link: "#" },
@@ -107,11 +109,15 @@ const ReelsShare = ({ onClose }) => {
 
                 <div className="overflow-y-auto max-h-[300px] px-4 py-2 grid grid-cols-4 gap-8">
                     {users.map((user, index) => (
-                        <div key={index} className="flex flex-col items-center">
+                        <div
+                            key={index}
+                            className={`flex flex-col items-center cursor-pointer ${selectedUser === index ? 'ring-2 ring-gray-300' : ''}`}
+                            onClick={() => setSelectedUser(selectedUser === index ? null : index)}
+                        >
                             <img
                                 src={user.src}
                                 alt={user.alt}
-                                className="w-20 h-20 rounded-full mb-2 cursor-pointer"
+                                className="w-20 h-20 rounded-full mb-2"
                             />
                             <div>
                                 <p className="text-xs">{user.label}</p>
@@ -120,47 +126,58 @@ const ReelsShare = ({ onClose }) => {
                     ))}
                 </div>
 
-                <div className="flex justify-between items-center border-t py-4 px-5 relative">
-                    {canScrollLeft && (
-                        <button
-                            className="font-bold text-white p-2 w-7 h-7 rounded-full bg-gray-600 bg-opacity-70 flex justify-center items-center absolute top-1/2 left-2 transform -translate-y-1/2 z-10"
-                            onClick={handlePrev}
-                        >
-                            ＜
-                        </button>
-                    )}
 
-                    <div
-                        id="share-scroll-container"
-                        className="flex overflow-x-scroll gap-4 scrollbar-hide w-full"
-                    >
-                        {shareItems.map((item, index) => (
-                            <div key={index} className="flex flex-col items-center mr-2">
-                                <button
-                                    className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center"
-                                    onClick={() => window.location.href = item.link}
-                                >
-                                    <img
-                                        src={item.src}
-                                        alt={item.alt}
-                                        className="w-5 h-5"
-                                    />
-                                </button>
-                                <p className="text-xs mt-2">{item.label}</p>
-                            </div>
-                        ))}
+                {selectedUser !== null ? (
+                    <div className="py-4 px-7 border-t">
+                        <input
+                            type="text"
+                            placeholder="메시지 쓰기..."
+                            className="w-full p-1 rounded mt-1 text-sm"
+                        />
+                        <button className="bg-blue-500 text-white w-full py-1 rounded-lg mt-4 mb-3 text">
+                            보내기
+                        </button>
                     </div>
+                ) : (
+                    <>
+                        <div className="flex justify-between items-center border-t py-4 px-5 relative">
+                            {canScrollLeft && (
+                                <button
+                                    className="font-bold text-white p-2 w-7 h-7 rounded-full bg-gray-600 bg-opacity-70 flex justify-center items-center absolute top-1/2 left-2 transform -translate-y-1/2 z-10"
+                                    onClick={handlePrev}
+                                >
+                                    ＜
+                                </button>
+                            )}
 
-                    {canScrollRight && (
-                        <button
-                            className="font-bold text-white p-2 w-7 h-7 rounded-full bg-gray-600 bg-opacity-70 flex justify-center items-center absolute top-1/2 right-2 transform -translate-y-1/2 z-10"
-                            onClick={handleNext}
-                        >
-                            ＞
-                        </button>
-                    )}
-                </div>
+                            <div
+                                id="share-scroll-container"
+                                className="flex overflow-x-scroll gap-4 scrollbar-hide w-full"
+                            >
+                                {shareItems.map((item, index) => (
+                                    <div key={index} className="flex flex-col items-center mr-2">
+                                        <button
+                                            className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center"
+                                            onClick={() => window.location.href = item.link}
+                                        >
+                                            <img src={item.src} alt={item.alt} className="w-5 h-5"/>
+                                        </button>
+                                        <p className="text-xs mt-2 mb-3">{item.label}</p>
+                                    </div>
+                                ))}
+                            </div>
 
+                            {canScrollRight && (
+                                <button
+                                    className="font-bold text-white p-2 w-7 h-7 rounded-full bg-gray-600 bg-opacity-70 flex justify-center items-center absolute top-1/2 right-2 transform -translate-y-1/2 z-10"
+                                    onClick={handleNext}
+                                >
+                                    ＞
+                                </button>
+                            )}
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     );
