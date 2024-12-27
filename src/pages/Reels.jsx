@@ -23,6 +23,10 @@ const Reels = () => {
         setActiveModal((prev) => (prev === 'menu' ? null : 'menu')); // 메뉴 창 열기/닫기
     };
 
+    const closeModal = () => {
+        setActiveModal(null); // 모달 닫기
+    };
+
     return (
         <div className="flex justify-center items-start h-screen mt-10">
             <div className="relative flex">
@@ -117,6 +121,14 @@ const Reels = () => {
                     </div>
                 </div>
             </div>
+
+            {/* 배경 클릭 시 모달 닫기 */}
+            {activeModal && (
+                <div
+                    className="fixed inset-0  z-40"
+                    onClick={closeModal}
+                ></div>
+            )}
 
             {/* 댓글 화면 */}
             {activeModal === 'comments' && (
