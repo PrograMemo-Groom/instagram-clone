@@ -1,7 +1,11 @@
 const PostContainer = () => {
     return (
-       <div>
-         PostContainer
+       <div className="flex justify-center">
+         <div className="w-[470px]"
+          style={{backgroundColor:"lightgreen"}}>
+          PostContainer
+          <p>dd</p>
+         </div>
        </div>
     );
 };
