@@ -5,7 +5,7 @@ const ReelsShare = ({ onClose }) => {
     const [isFocused, setIsFocused] = useState(false);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
-    const [selectedUser, setSelectedUser] = useState(null);
+    const [selectedUsers, setSelectedUsers] = useState([]);
 
     const handleFocus = () => {
         setIsFocused(true);
@@ -49,6 +49,13 @@ const ReelsShare = ({ onClose }) => {
         }
     }, []);
 
+    const handleUserClick = (index) => {
+        if (selectedUsers.includes(index)) {
+            setSelectedUsers(selectedUsers.filter((userIndex) => userIndex !== index));
+        } else {
+            setSelectedUsers([...selectedUsers, index]);
+        }
+    };
 
     const shareItems = [
         { src: "/assets/reels/link.svg", alt: "링크복사", label: "링크 복사", link: "#" },
@@ -111,8 +118,8 @@ const ReelsShare = ({ onClose }) => {
                     {users.map((user, index) => (
                         <div
                             key={index}
-                            className={`flex flex-col items-center cursor-pointer ${selectedUser === index ? 'ring-2 ring-gray-300' : ''}`}
-                            onClick={() => setSelectedUser(selectedUser === index ? null : index)}
+                            className={`flex flex-col items-center cursor-pointer ${selectedUsers.includes(index) ? 'ring-2 ring-gray-300' : ''}`}
+                            onClick={() => handleUserClick(index)}
                         >
                             <img
                                 src={user.src}
@@ -127,7 +134,7 @@ const ReelsShare = ({ onClose }) => {
                 </div>
 
 
-                {selectedUser !== null ? (
+                {selectedUsers.length > 0 ? (
                     <div className="py-4 px-7 border-t">
                         <input
                             type="text"
