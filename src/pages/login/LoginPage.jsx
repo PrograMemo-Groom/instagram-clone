@@ -7,6 +7,7 @@ import imgConfig from "@/components/login/imgConfig.js";
 import LoginForm from "@/components/login/LoginForm.jsx";
 import facebookLogo from "@/assets/login/facebook.svg";
 import {useNavigate} from "react-router-dom";
+import MoreBox from "@/components/login/MoreBox.jsx";
 
 const LoginPage = () => {
     const settings = {
@@ -42,11 +43,7 @@ const LoginPage = () => {
                                  alt="instagramlogo"/>
                         </div>
                         <LoginForm/>
-                        <div className="flex flex-row w-[250px] mt-4 mb-4">
-                            <div className="flex ml-[5px] mr-[5px] w-[100px] h-[12px] border-b border-b-gray-500"/>
-                            <div className="flex w-[30px] text-[13px] justify-center">또는</div>
-                            <div className="flex ml-[5px] mr-[5px] w-[100px] h-[12px] border-b border-b-gray-500"/>
-                        </div>
+                        <MoreBox margin="5px" width="100px" contentWidth="250px"/>
                         <button
                             className="flex flex-row items-center gap-2 text-[13px] text-sky-500 font-semibold mb-4">
                             <img src={facebookLogo} alt="facebooklogo"/>Facebook으로 로그인
