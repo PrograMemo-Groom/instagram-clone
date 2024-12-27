@@ -20,7 +20,7 @@ const SideBar = () => {
          flex-col py-4">
         <div className="mb-6.5 px-7 py-7">
           <img src="/img/icons/instagram_line_icon.png" alt="Instagram" 
-          className="h-6 sidebarpoint:hidden" />
+          className="h-6 mb-[4px] sidebarpoint:hidden" />
           <img src="/img/icons/instagram_text_logo.png" alt="Instagram" 
           className="hidden sidebarpoint:block h-7" />
         </div>
