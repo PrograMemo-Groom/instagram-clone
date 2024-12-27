@@ -108,10 +108,22 @@ const Reels = () => {
             </div>
 
             {/* 모달 */}
-            {activeModal && <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={handleCloseModal}></div>}
-            {activeModal === "comments" && <ReelsComment onClose={handleCloseModal} />}
-            {activeModal === "share" && <ReelsShare onClose={handleCloseModal} />}
-            {activeModal === "menu" && <ReelsMenu onClose={handleCloseModal} />}
+            {activeModal && <div className="fixed inset-0 z-40" onClick={handleCloseModal}></div>}
+            {activeModal === "comments" && (
+                <div className="relative">
+                <ReelsComment onClose={handleCloseModal} />
+                </div>
+                )}
+            {activeModal === "share" && (
+                <div className="relative">
+                <ReelsShare onClose={handleCloseModal} />
+                </div>
+            )}
+            {activeModal === "menu" && (
+                <div className="relative">
+                    <ReelsMenu onClose={handleCloseModal}/>
+                </div>
+            )}
 
         </div>
     );
