@@ -1,5 +1,6 @@
 // import React from 'react';
 import StoryContainer from "./StoryContainer";
+import PostContainer from "./PostContainer";
 const MainPage = () => {
     return (
         // 메인 - (스토리, 포스트) / 오른쪽 사이드바) 
@@ -7,7 +8,7 @@ const MainPage = () => {
             <section className="w-[630px] mt-[16px]"
             style={{backgroundColor:"lightblue"}}> 
                <StoryContainer/>
-               <p>이다</p>
+               <PostContainer/>
                <p>d</p>
             </section>
             <aside className="w-[319px] ml-[64px] mt-[36px] hidden rightbarpoint:block" 
