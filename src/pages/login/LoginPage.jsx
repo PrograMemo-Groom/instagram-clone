@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import imgConfig from "@/components/login/imgConfig.js";
 import LoginForm from "@/components/login/LoginForm.jsx";
+import facebookLogo from "@/assets/login/facebook.svg";
+import {useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
     const settings = {
@@ -17,6 +19,7 @@ const LoginPage = () => {
         autoplaySpeed: 1000, // 자동 재생 속도 (ms)
         arrows: false // 좌우 화살표 표시
     }
+    const navigate = useNavigate();
 
     return (
         <div className="flex flex-col items-center justify-center">
@@ -32,11 +35,31 @@ const LoginPage = () => {
                         </Slider>
                     </div>
                 </div>
-                <div className="border-2 flex flex-col items-center justify-center w-[300px] h-[415px]">
-                    <div className="flex flex-col items-center justify-center">
-                        <img className="w-[160px] m-4" src="/img/icons/instagram_text_logo.png" alt="instagramlogo"/>
+                <div className="flex flex-col items-center justify-center">
+                    <div className="border-2 flex flex-col items-center w-[300px] h-[360px]">
+                        <div className="flex flex-col items-center justify-center mt-4 mb-4">
+                            <img className="w-[160px] m-4" src="/img/icons/instagram_text_logo.png"
+                                 alt="instagramlogo"/>
+                        </div>
+                        <LoginForm/>
+                        <div className="flex flex-row w-[250px] mt-4 mb-4">
+                            <div className="flex ml-[5px] mr-[5px] w-[100px] h-[12px] border-b border-b-gray-500"/>
+                            <div className="flex w-[30px] text-[13px] justify-center">또는</div>
+                            <div className="flex ml-[5px] mr-[5px] w-[100px] h-[12px] border-b border-b-gray-500"/>
+                        </div>
+                        <button
+                            className="flex flex-row items-center gap-2 text-[13px] text-sky-500 font-semibold mb-4">
+                            <img src={facebookLogo} alt="facebooklogo"/>Facebook으로 로그인
+                        </button>
+                        <button className="text-[13px] mb-4" onClick={() => navigate("/account/password")}>비밀번호를
+                            잊으셨나요?
+                        </button>
                     </div>
-                    <LoginForm/>
+                    <div className="border-2 flex justify-center items-center w-[300px] h-[50px] mt-2">
+                        <div className="text-[13px] select-none">계정이 없으신가요? <span
+                            className="text-sky-500 font-semibold cursor-pointer"
+                            onClick={() => navigate("/account/join")}>가입하기</span></div>
+                    </div>
                 </div>
             </section>
         </div>
