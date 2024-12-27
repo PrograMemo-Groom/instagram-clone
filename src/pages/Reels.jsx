@@ -95,7 +95,7 @@ const Reels = () => {
                             src="/assets/reels/bookmark_btn.svg"
                             alt="Bookmark"
                             className="w-6 h-6 mt-3 cursor-pointer"
-                            onClick={openMenu}
+
                         />
                     </div>
 
@@ -104,6 +104,7 @@ const Reels = () => {
                             src="/assets/reels/menu_btn.svg"
                             alt="Menu"
                             className="w-5 h-5 mt-3 cursor-pointer"
+                            onClick={openMenu}
                         />
                     </div>
 
