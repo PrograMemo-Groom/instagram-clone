@@ -5,27 +5,25 @@ const ExplorePage = () => {
     return (
         <div className={"explore-container"}>
             <header className="flex items-start w-full bg-gray-300">
-                {/*<div className="w-70 flex items-center">*/}
-                {/*    <input>*/}
-                {/*        <img alt={"돋보기"}/>*/}
-                {/*        <button>*/}
-                {/*            <img alt={"x"}/>*/}
-                {/*        </button>*/}
-                {/*    </input>*/}
-                {/*</div>*/}
-                {/*/!*<ExploreSearch/>*!/*/}
+                <div className="w-70 flex items-center">
+                    <img alt={"돋보기"}/>
+                    <input/>
+                    <button>
+                        <img alt={"x"}/>
+                    </button>
+                </div>
+                {/*<ExploreSearch/>*/}
             </header>
 
             <main className={"main"}>
-                {/*<div className={"main-search"}>*/}
-                {/*    <input className="w-full bg-gray-300 border-radius-full">*/}
-                {/*        <img alt={"돋보기"}/>*/}
-                {/*        <button>*/}
-                {/*            <img alt={"x"}/>*/}
-                {/*        </button>*/}
-                {/*    </input>*/}
-                {/*    /!*<ExploreSearch/>*!/*/}
-                {/*</div>*/}
+                <div className={"main-search"}>
+                    <input className="w-full bg-gray-300 border-radius-full"/>
+                    <img alt={"돋보기"}/>
+                    <button>
+                        <img alt={"x"}/>
+                    </button>
+                    {/*<ExploreSearch/>*/}
+                </div>
 
                 <div className={"main-container"}>
                     <div className="grid grid-cols-3 gap-1">
