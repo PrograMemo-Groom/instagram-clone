@@ -4,7 +4,7 @@ const ExplorePage = () => {
 
     return (
         <div className={"explore-container"}>
-            <header className="flex items-start w-full bg-gray-300">
+            <header className="flex items-start w-full bg-gray-300 md:hidden">
                 <div className="w-70 flex items-center">
                     <img alt={"돋보기"}/>
                     <input/>
@@ -16,7 +16,7 @@ const ExplorePage = () => {
             </header>
 
             <main className={"main"}>
-                <div className={"main-search"}>
+                <div className={"main-search md:hidden"}>
                     <input className="w-full bg-gray-300 border-radius-full"/>
                     <img alt={"돋보기"}/>
                     <button>
