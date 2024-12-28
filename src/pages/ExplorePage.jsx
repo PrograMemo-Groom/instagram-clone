@@ -1,19 +1,35 @@
-import ExploreSearch from '@/components/exploreSearch/ExploreSearch.jsx';
+//import ExploreSearch from '@/components/exploreSearch/ExploreSearch.jsx';
 
 const ExplorePage = () => {
 
     return (
         <div className={"explore-container"}>
-            <header className={"header"}>
-                <ExploreSearch />
+            <header className="flex items-start w-full bg-gray-300">
+                <div className="w-70 flex items-center">
+                    <input>
+                        <img alt={"돋보기"}/>
+                        <button>
+                            <img alt={"x"}/>
+                        </button>
+                    </input>
+                </div>
+                {/*<ExploreSearch/>*/}
             </header>
+
             <main className={"main"}>
                 <div className={"main-search"}>
-                    검색창
+                    <input className="w-full bg-gray-300 border-radius-full">
+                        <img alt={"돋보기"}/>
+                        <button>
+                            <img alt={"x"}/>
+                        </button>
+                    </input>
+                    {/*<ExploreSearch/>*/}
                 </div>
+
                 <div className={"main-container"}>
                     <div className="grid grid-cols-3 gap-1">
-                        {data.map((item, index) => {
+                    {data.map((item, index) => {
                             const setIndex = Math.floor(index/5 + 1); // 세트 번호 (5개의 아이템마다 1세트)
                             const isReelsRight = setIndex % 2 === 1; // 홀수번째 세트: 릴스가 오른쪽, 짝수번째 세트 : 릴스가 왼쪽
 
