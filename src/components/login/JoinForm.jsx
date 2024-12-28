@@ -1,6 +1,6 @@
 import React from 'react';
 import InputBox from "@/components/login/InputBox.jsx";
-import {toggleShowPassword} from "@/store/action/UserAction.js";
+import {setJoinUser, toggleShowPassword} from "@/store/action/UserAction.js";
 import unShowPasswordImg from "@/assets/login/unShowPassword.svg";
 import showPasswordImg from "@/assets/login/showPassword.svg";
 import {useDispatch, useSelector} from "react-redux";
@@ -16,8 +16,15 @@ const JoinForm = () => {
     const [userName, setUserName] = React.useState("");
     const [userRealName, setUserRealName] = React.useState("");
 
-    const handleFormSubmit = () => {
-
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        const newUser = {
+            id: userId,
+            password: userPwd,
+            name: userName,
+            realName: userRealName,
+        }
+        dispatch(setJoinUser(newUser));
     }
     const handleOpenInstagramPage = () => {
         window.open(
