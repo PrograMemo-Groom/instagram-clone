@@ -6,7 +6,7 @@ import Posts from "@/components/posts/Posts.jsx";
 
 const ProfilePage = () => {
     return (
-        <div className="bg-white dark:bg-black m-auto p-4 w-[935px]">
+        <div className="bg-white dark:bg-black m-auto p-4 w-[935px] min-w-96">
             <UserSection/>
             <SavedStories/>
             <Posts/>
