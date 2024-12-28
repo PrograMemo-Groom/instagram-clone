@@ -1,11 +1,11 @@
-
+import ExploreSearch from '@/components/exploreSearch/ExploreSearch.jsx';
 
 const ExplorePage = () => {
 
     return (
         <div className={"explore-container"}>
             <header className={"header"}>
-                헤더 검색창
+                <ExploreSearch />
             </header>
             <main className={"main"}>
                 <div className={"main-search"}>
