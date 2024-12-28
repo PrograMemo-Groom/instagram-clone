@@ -5,6 +5,8 @@ import unShowPasswordImg from "@/assets/login/unShowPassword.svg";
 import showPasswordImg from "@/assets/login/showPassword.svg";
 import {useDispatch, useSelector} from "react-redux";
 import SubmitButton from "@/components/login/SubmitButton.jsx";
+import {joinUserInfo} from "@/api/firebase/FirebaseUtils.js";
+import {setIsLoading} from "@/store/action/CommonAction.js";
 
 const JoinForm = () => {
 
@@ -16,7 +18,7 @@ const JoinForm = () => {
     const [userName, setUserName] = React.useState("");
     const [userRealName, setUserRealName] = React.useState("");
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
         const newUser = {
             id: userId,
@@ -25,6 +27,16 @@ const JoinForm = () => {
             realName: userRealName,
         }
         dispatch(setJoinUser(newUser));
+        try {
+            dispatch(setIsLoading(true));
+            console.log("회원가입 진행중입니다.");
+            await joinUserInfo(newUser.name, newUser);
+            console.log("회원가입 성공");
+            dispatch(setIsLoading(false));
+        } catch (e) {
+            dispatch(setIsLoading(false));
+            console.log(e.message);
+        }
     }
     const handleOpenInstagramPage = () => {
         window.open(
