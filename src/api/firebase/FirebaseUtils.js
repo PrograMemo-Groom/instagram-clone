@@ -10,7 +10,13 @@ import {db} from "@/../firebase.js";
 export async function joinUserInfo(userData) {
     console.log("Firestore Instance:", db);
     try {
-        await setDoc(doc(db, "users", userData.name), userData);
+        // 유저 정보 저장
+        await Promise.all([
+            setDoc(doc(db, "users", userData.id), userData),
+            setDoc(doc(db, "usingNames", userData.name), {reserved: true}),
+            setDoc(doc(db, "usingIds", userData.id), {reserved: true}),
+        ]);
+
         // todo : 회원정보가 성공적으로 저장되었는지 확인하기 위해 작성한 것 테스트 이후 제거
         const messages = "회원 정보가 성공적으로 저장되었습니다.";
         console.log(messages);
@@ -32,7 +38,7 @@ export async function joinUserInfo(userData) {
 export async function getDuplicateUser(userName, userId) {
     console.log("Firestore Instance:", db);
     try {
-        const userDoc = await getDoc(doc(db, "users", userName));
+        const userDoc = await getDoc(doc(db, "users", userId));
 
         if (userDoc.exists()) {
             const {id, name, realName} = userDoc.data();
@@ -66,6 +72,27 @@ export async function getDuplicateUser(userName, userId) {
     }
 }
 
+/**
+ * 유저 로그인 Firestore에서 갖고온 값이랑 비교
+ * @param {object} userData - 회원 정보( id, pw )
+ * @returns {object} - 처리 결과 success/messages
+ */
+export async function loginUserInfo(userData) {
+    console.log("Firestore Instance:", db);
+    try {
+        const userDoc = await getDoc(doc(db, "users", userData.id));
+        await getDoc(doc(db, "users", userData.name), userData);
+        // todo : 회원정보가 성공적으로 저장되었는지 확인하기 위해 작성한 것 테스트 이후 제거
+        const messages = "회원 정보가 성공적으로 저장되었습니다.";
+        console.log(messages);
+        return {
+            success: true,
+            messages
+        }
+    } catch (error) {
+        console.log("joinUserInfo: 회원정보 저장 실패: ", error.message);
+    }
+}
 
 
 
