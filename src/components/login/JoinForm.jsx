@@ -5,7 +5,7 @@ import unShowPasswordImg from "@/assets/login/unShowPassword.svg";
 import showPasswordImg from "@/assets/login/showPassword.svg";
 import {useDispatch, useSelector} from "react-redux";
 import SubmitButton from "@/components/login/SubmitButton.jsx";
-import {joinUserInfo} from "@/api/firebase/FirebaseUtils.js";
+import {getDuplicateUser, joinUserInfo} from "@/api/firebase/FirebaseUtils.js";
 import {setIsLoading} from "@/store/action/CommonAction.js";
 
 const JoinForm = () => {
@@ -29,15 +29,28 @@ const JoinForm = () => {
         dispatch(setJoinUser(newUser));
         try {
             dispatch(setIsLoading(true));
-            console.log("회원가입 진행중입니다.");
-            await joinUserInfo(newUser.name, newUser);
-            console.log("회원가입 성공");
-            dispatch(setIsLoading(false));
+            const {success, userData, messages} = await getUserInfo();
+            if (success) {
+                await joinUserInfo(newUser);
+            } else {
+                console.log("userData: ", userData);
+                console.log("messages: ", messages);
+            }
         } catch (e) {
+            console.log(e.message);
+        } finally {
             dispatch(setIsLoading(false));
+        }
+    }
+
+    const getUserInfo = async () => {
+        try {
+            return await getDuplicateUser(userName, userId);
+        } catch (e) {
             console.log(e.message);
         }
     }
+
     const handleOpenInstagramPage = () => {
         window.open(
             "https://www.facebook.com/help/instagram/261704639352628",
