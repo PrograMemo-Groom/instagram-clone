@@ -43,7 +43,7 @@ const LoginPage = () => {
                                  alt="instagramlogo"/>
                         </div>
                         <LoginForm/>
-                        <MoreBox margin="5px" width="100px" contentWidth="250px"/>
+                        <MoreBox/>
                         <button
                             className="flex flex-row items-center gap-2 text-[13px] text-sky-500 font-semibold mb-4">
                             <img src={facebookLogo} alt="facebooklogo"/>Facebook으로 로그인

@@ -18,7 +18,7 @@ const JoinPage = () => {
                     <p className="flex w-[250px] text-[14px] font-bold text-center mb-2">친구들의 사진과 동영상을 보려면 가입하세요.</p>
                     <SubmitButton addCss="flex flex-row gap-1 justify-center items-center"
                                   text={<><img src={facebookLogo} alt="facebooklogo"/>Facebook으로 로그인</>}/>
-                    <MoreBox margin="5px" width="100px" contentWidth="250px"/>
+                    <MoreBox/>
                     <JoinForm/>
                 </article>
                 <article className="border-2 flex justify-center items-center w-[300px] h-[50px] mt-2">
