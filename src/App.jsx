@@ -10,6 +10,7 @@ import Header from "@/pages/Header.jsx";
 import SideBar from '@/pages/SideBar.jsx';
 import ProfilePage from "@/pages/ProfilePage.jsx";
 import Reels from "@/pages/Reels.jsx";
+import ExplorePage from "@/pages/ExplorePage.jsx";
 
 
 function LayOut() {
@@ -53,6 +54,7 @@ function App() {
                 {/*<Route path="main/*" element={<MainPage/>}/>*/}
                 <Route path="/profile-page" element={<ProfilePage/>}/>
                 <Route path="/reels" element={<Reels/>}/>
+                <Route path="/explore" element={<ExplorePage/>}/>
             </Route>
         </Routes>
     )
