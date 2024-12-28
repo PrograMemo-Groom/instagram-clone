@@ -60,94 +60,97 @@ const ExplorePage = () => {
 
 export default ExplorePage;
 
+
+//세트 2개의 데이터 순서 : 게시글 2 > 릴스 1 > 게시글 2 > 릴스 1 > 게시글 4 > ... -> 2세트씩 반복
+
 const data = [
     {
         "media_type": "IMAGE",
-        "media_url": "/assets/images/postImg2.jpg",
+        "media_url": "/assets/image/postImg2.jpg",
         "thumbnail_url": null,
         "comments_count": 108
     },
     {
         "media_type": "IMAGE",
-        "media_url": "/assets/images/videoPostImg.jpg",
+        "media_url": "/assets/image/videoPostImg.jpg",
         "thumbnail_url": null,
         "comments_count": 32
     },
     {
         "media_type": "VIDEO",
         //"media_url": "https://example.com/video.mp4",
-        "thumbnail_url": "/assets/images/reelsImg.jpg",
+        "thumbnail_url": "/assets/image/reelsImg.jpg",
         "comments_count": 5
     },
     {
         "media_type": "IMAGE",
-        "media_url": "/assets/images/videoPostImg.jpg",
+        "media_url": "/assets/image/videoPostImg.jpg",
         "thumbnail_url": null,
         "comments_count": 32
     },
     {
         "media_type": "IMAGE",
-        "media_url": "/assets/images/postImg2.jpg",
+        "media_url": "/assets/image/postImg2.jpg",
         "thumbnail_url": null,
         "comments_count": 108
     },
     {
         "media_type": "VIDEO",
         //"media_url": "https://example.com/video.mp4",
-        "thumbnail_url": "/assets/images/reelsImg.jpg",
+        "thumbnail_url": "/assets/image/reelsImg.jpg",
         "comments_count": 5
     },
     {
         "media_type": "IMAGE",
-        "media_url": "/assets/images/postImg2.jpg",
+        "media_url": "/assets/image/postImg2.jpg",
         "thumbnail_url": null,
         "comments_count": 108
     },
     {
         "media_type": "IMAGE",
-        "media_url": "/assets/images/videoPostImg.jpg",
+        "media_url": "/assets/image/videoPostImg.jpg",
         "thumbnail_url": null,
         "comments_count": 32
     },
     {
         "media_type": "IMAGE",
-        "media_url": "/assets/images/videoPostImg.jpg",
+        "media_url": "/assets/image/videoPostImg.jpg",
         "thumbnail_url": null,
         "comments_count": 32
     },
     {
         "media_type": "IMAGE",
-        "media_url": "/assets/images/postImg2.jpg",
+        "media_url": "/assets/image/postImg2.jpg",
         "thumbnail_url": null,
         "comments_count": 108
     },
     {
         "media_type": "IMAGE",
-        "media_url": "/assets/images/postImg2.jpg",
+        "media_url": "/assets/image/postImg2.jpg",
         "thumbnail_url": null,
         "comments_count": 108
     },
     {
         "media_type": "IMAGE",
-        "media_url": "/assets/images/videoPostImg.jpg",
+        "media_url": "/assets/image/videoPostImg.jpg",
         "thumbnail_url": null,
         "comments_count": 32
     },
     {
         "media_type": "VIDEO",
         //"media_url": "https://example.com/video.mp4",
-        "thumbnail_url": "/assets/images/reelsImg.jpg",
+        "thumbnail_url": "/assets/image/reelsImg.jpg",
         "comments_count": 5
     },
     {
         "media_type": "IMAGE",
-        "media_url": "/assets/images/videoPostImg.jpg",
+        "media_url": "/assets/image/videoPostImg.jpg",
         "thumbnail_url": null,
         "comments_count": 32
     },
     {
         "media_type": "IMAGE",
-        "media_url": "/assets/images/postImg2.jpg",
+        "media_url": "/assets/image/postImg2.jpg",
         "thumbnail_url": null,
         "comments_count": 108
     },
