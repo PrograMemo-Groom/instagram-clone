@@ -3,7 +3,7 @@
 const ExplorePage = () => {
 
     return (
-        <div className={"explore-container"}>
+        <div className={"explore-container w-full h-full flex align-middle justify-center"}>
             <header className="flex items-start w-full bg-gray-300 md:hidden">
                 <div className="w-70 flex items-center">
                     <img alt={"돋보기"}/>
@@ -25,7 +25,7 @@ const ExplorePage = () => {
                     {/*<ExploreSearch/>*/}
                 </div>
 
-                <div className={"main-container"}>
+                <div className={"main-container inline-block pt-10 pr-5 pl-5"}>
                     <div className="grid grid-cols-3 gap-1">
                         {data.map((item, index) => {
                             const setIndex = Math.floor(index/5 + 1); // 세트 번호 (5개의 아이템마다 1세트)
