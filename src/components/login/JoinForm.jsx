@@ -6,12 +6,14 @@ import showPasswordImg from "@/assets/login/showPassword.svg";
 import {useDispatch, useSelector} from "react-redux";
 import SubmitButton from "@/components/login/SubmitButton.jsx";
 import {getDuplicateUser, joinUserInfo} from "@/api/firebase/FirebaseUtils.js";
-import {setIsLoading} from "@/store/action/CommonAction.js";
+import {setIsLoading, setIsLogin} from "@/store/action/CommonAction.js";
+import {useNavigate} from "react-router-dom";
 
 const JoinForm = () => {
 
     const {showPassword} = useSelector((state) => state.user);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [userId, setUserId] = React.useState("");
     const [userPwd, setUserPwd] = React.useState("");
@@ -32,6 +34,9 @@ const JoinForm = () => {
             const {success, userData, messages} = await getUserInfo();
             if (success) {
                 await joinUserInfo(newUser);
+
+                // 회원가입 완료 후 로그인 페이지 이동
+                navigate("/");
             } else {
                 console.log("userData: ", userData);
                 console.log("messages: ", messages);
