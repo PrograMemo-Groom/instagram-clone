@@ -34,28 +34,23 @@ export async function joinUserInfo(userData) {
  */
 export async function getDuplicateUser(userName, userId) {
     try {
-        const userDoc = await getDoc(doc(db, "users", userId));
-
-        if (userDoc.exists()) {
-            // 사용자가 가입했는지 여부 확인
-            const idValidation = await validateUserIds(userId);
-            if (!idValidation.success) {
-                return idValidation;
-            }
-            // 사용자 name이 중복되었는지 여부 확인
-            const nameValidation = await validateUserName(userName);
-            if (!nameValidation.success) {
-                return nameValidation;
-            }
+        // 사용자가 가입했는지 여부 확인
+        const idValidation = await validateUserIds(userId);
+        if (!idValidation.success) {
+            return idValidation;
         }
-        console.log("해당 유저 정보가 존재하지 않습니다.");
+        // 사용자 name이 중복되었는지 여부 확인
+        const nameValidation = await validateUserName(userName);
+        if (!nameValidation.success) {
+            return nameValidation;
+        }
         return {
             success: true,
             messages: "",
         };
     } catch (error) {
         console.error("getDuplicateUser: 유저 정보 불러오기 실패: ", error.message);
-        throw error; // 에러 발생 시 호출하는 곳에서 처리 가능
+        throw error;
     }
 }
 /**
