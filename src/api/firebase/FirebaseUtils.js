@@ -1,14 +1,12 @@
 import {doc, setDoc, getDoc} from "firebase/firestore";
 import {db} from "@/../firebase.js";
 
-
 /**
  * 유저 정보(회원가입)를 FireStore에 저장
  * @param {object} userData - 회원 정보( id, pw, name, realName )
  * @returns {object} - 처리 결과 success/messages
  */
 export async function joinUserInfo(userData) {
-    // console.log("Firestore Instance:", db);
     try {
         // 유저 정보 저장
         await Promise.all([
@@ -28,7 +26,6 @@ export async function joinUserInfo(userData) {
         console.log("joinUserInfo: 회원정보 저장 실패: ", error.message);
     }
 }
-
 /**
  * 유저 정보(회원가입)를 FireStore에 불러오기
  * @param {string} userName - 회원 고유Id (userName)
@@ -36,7 +33,6 @@ export async function joinUserInfo(userData) {
  * @returns {object} - 유저 정보 또는 null
  */
 export async function getDuplicateUser(userName, userId) {
-    console.log("Firestore Instance:", db);
     try {
         const userDoc = await getDoc(doc(db, "users", userId));
 
@@ -62,7 +58,6 @@ export async function getDuplicateUser(userName, userId) {
         throw error; // 에러 발생 시 호출하는 곳에서 처리 가능
     }
 }
-
 /**
  * 유저 정보 name의 중복 처리 값 확인하기
  * @param {string} userName - 회원 고유Id (userName)
@@ -77,7 +72,6 @@ export async function validateUserName(userName) {
         success: true
     }
 }
-
 /**
  * 유저 정보 id의 중복 처리 값 확인하기
  * @param {string} userId - 회원id (userId)
@@ -92,26 +86,31 @@ export async function validateUserIds(userId) {
         success: true
     }
 }
-
 /**
  * 유저 로그인 Firestore에서 갖고온 값이랑 비교
  * @param {object} userData - 회원 정보( id, pw )
  * @returns {object} - 처리 결과 success/messages
  */
 export async function loginUserInfo(userData) {
-    console.log("Firestore Instance:", db);
     try {
         const userDoc = await getDoc(doc(db, "users", userData.id));
-        await getDoc(doc(db, "users", userData.name), userData);
-        // todo : 회원정보가 성공적으로 저장되었는지 확인하기 위해 작성한 것 테스트 이후 제거
-        const messages = "회원 정보가 성공적으로 저장되었습니다.";
-        console.log(messages);
+        // 사용자 존재 여부 확인
+        if (!userDoc.exists()) {
+            return {
+                success: false,
+                messages: "존재하지 않는 사용자입니다.",
+            };
+        }
+        const isPasswordCorrect = userDoc.data().password === userData.password;
         return {
-            success: true,
-            messages
+            success: isPasswordCorrect,
+            messages: isPasswordCorrect ? "" : "비밀번호가 일치하지 않습니다."
         }
     } catch (error) {
-        console.log("joinUserInfo: 회원정보 저장 실패: ", error.message);
+        return {
+            success: false,
+            messages: "존재하지 않는 사용자입니다."
+        }
     }
 }
 
