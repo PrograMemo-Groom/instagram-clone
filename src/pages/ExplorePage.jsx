@@ -21,9 +21,11 @@ const ExplorePage = () => {
                             <input
                                 className={"w-full pl-4 bg-transparent outline-none focus:ring-0"}
                                 autoFocus
-                                onBlur={() => setSearchFocused(false)}
                             />
-                            <button className={"absolute right-3"}>
+                            <button
+                                className={"absolute right-3"}
+                                onClick={() => setSearchFocused(false)}
+                            >
                                 <img className={"w-4"} src="/img/icons/delete_icon.svg" alt={"삭제"}/>
                             </button>
                         </>
