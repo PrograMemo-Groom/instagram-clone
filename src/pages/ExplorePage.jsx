@@ -50,6 +50,7 @@ const ExplorePage = () => {
                                         bg-black bg-opacity-50
                                         flex items-center justify-center
                                         opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                            <img className="h-5 pr-1.5" src="/img/icons/comment_icon_white.svg" alt="댓글"/>
                                             <span className="text-white text-lg font-bold">
                                                 {item.comments_count}
                                             </span>
@@ -74,6 +75,7 @@ const ExplorePage = () => {
                                         bg-black bg-opacity-50
                                         flex items-center justify-center
                                         opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                            <img className="h-5 pr-1.5" src="/img/icons/comment_icon_white.svg" alt="댓글"/>
                                             <span className="text-white text-lg font-bold">
                                                 {item.comments_count}
                                             </span>
