@@ -4,12 +4,12 @@ const ExplorePage = () => {
 
     return (
         <div className={"explore-container w-full h-full flex flex-col align-middle justify-center"}>
-            <header className="flex items-center w-full h-10 bg-gray-200 md:hidden">
-                <div className="w-70 h-6 bg-white flex items-center">
-                    <img alt={"돋보기"}/>
-                    <input/>
-                    <button>
-                        <img alt={"x"}/>
+            <header className="flex items-center w-full h-11 bg-gray-200 bg-opacity-50 border-b border-gray-300 md:hidden"> {/*페이지 헤더 없앤 후 fixed 추가해야함*/}
+                <div className="w-64 h-9 left-5 relative bg-gray-200 bg-opacity-80 rounded-xl flex items-center">
+                    <img className={"absolute left-4 h-5"} src="/img/icons/search-icon-gray.svg" alt={"돋보기"}/>
+                    <input className={"w-full bg-transparent"}/>
+                    <button className={"absolute right-3"}>
+                        <img className={"w-4"} src="/img/icons/delete_icon.svg" alt={"x"}/>
                     </button>
                 </div>
                 {/*<ExploreSearch/>*/}
@@ -17,11 +17,11 @@ const ExplorePage = () => {
 
             <main className={"main flex flex-col justify-center items-center"}>
                 <div className={"w-full h-6"}/>
-                <div className={"main-search w-full flex relative md:hidden"}>
-                    <input className="w-full bg-gray-300 border-radius-full"/>
-                    <img className={"absolute"} alt={"돋보기"}/>
-                    <button className={"absolute right-3"}>
-                        <img alt={"x"}/>
+                <div className={"main-search w-full items-center flex relative md:hidden"}>
+                    <input className="w-full h-10 bg-gray-200 bg-opacity-70 rounded-xl mx-2"/>
+                    <img className={"absolute left-7 h-5"} src="/img/icons/search-icon-gray.svg" alt={"돋보기"}/>
+                    <button className={"absolute right-7"}>
+                        <img className={"w-4"} src="/img/icons/delete_icon.svg" alt={"x"}/>
                     </button>
                     {/*<ExploreSearch/>*/}
                 </div>
