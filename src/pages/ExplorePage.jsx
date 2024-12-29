@@ -16,6 +16,7 @@ const ExplorePage = () => {
             </header>
 
             <main className={"main flex flex-col justify-center items-center"}>
+                <div className={"w-full h-6"}/>
                 <div className={"main-search w-full flex relative md:hidden"}>
                     <input className="w-full bg-gray-300 border-radius-full"/>
                     <img className={"absolute"} alt={"돋보기"}/>
@@ -25,7 +26,7 @@ const ExplorePage = () => {
                     {/*<ExploreSearch/>*/}
                 </div>
 
-                <div className={"main-container w-full  max-w-5xl inline-block pt-10 px-0 md:px-7"}>
+                <div className={"main-container w-full  max-w-5xl inline-block pt-6 px-0 md:px-7"}>
                     <div className="grid grid-cols-3 gap-1">
                         {data.map((item, index) => {
                             const setIndex = Math.floor(index/5 + 1); // 세트 번호 (5개의 아이템마다 1세트)
