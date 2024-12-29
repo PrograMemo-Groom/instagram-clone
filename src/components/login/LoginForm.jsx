@@ -5,19 +5,39 @@ import showPasswordImg from "@/assets/login/showPassword.svg";
 import {useDispatch, useSelector} from "react-redux";
 import SubmitButton from "@/components/login/SubmitButton.jsx";
 import InputBox from "@/components/login/InputBox.jsx";
+import {setIsLoading, setIsLogin} from "@/store/action/CommonAction.js";
+import {loginUserInfo} from "@/api/firebase/FirebaseUtils.js";
+import {useNavigate} from "react-router-dom";
 
 const LoginForm = () => {
-    const {user, showPassword} = useSelector((state) => state.user);
+    const {showPassword} = useSelector((state) => state.user);
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const [userIdInputValue, setUserIdInputValue] = useState("");
     const [userPwInputValue, setUserPwInputValue] = useState("");
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
-        // console.log(userIdInputValue, userPwInputValue);
-        dispatch(setUserLogin({id: userIdInputValue, password: userPwInputValue}));
-        console.log("user:", user.id, user.password);
+        const user = {
+            id: userIdInputValue,
+            password: userPwInputValue
+        }
+
+        dispatch(setUserLogin(user));
+        dispatch(setIsLoading(true));
+
+        const {success, messages} = await loginUserInfo(user);
+
+        if (success) {
+            dispatch(setIsLogin(true));
+            navigate("/");
+        } else {
+            // todo : dialog로 로그인 실패 처리 띄우기
+            console.log(messages);
+        }
+
+        dispatch(setIsLoading(false));
     }
 
     return (
