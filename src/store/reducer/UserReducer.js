@@ -15,7 +15,7 @@ const userState = {
 const UserReducer = (state = userState, action) => {
     switch (action.type) {
         case 'SET_LOGIN_USER':
-            console.log("SET_LOGIN_USER PayLoad: ", action.payload);
+            // console.log("SET_LOGIN_USER PayLoad: ", action.payload);
             return {...state, user: {id: action.payload.id, password: action.payload.password}}
         case 'SET_JOIN_USER':
             // console.log("SET_JOIN_USER PayLoad: ",action.payload);
