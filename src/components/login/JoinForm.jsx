@@ -31,14 +31,13 @@ const JoinForm = () => {
         dispatch(setJoinUser(newUser));
         try {
             dispatch(setIsLoading(true));
-            const {success, userData, messages} = await getUserInfo();
+            const {success, messages} = await getUserInfo();
             if (success) {
                 await joinUserInfo(newUser);
 
                 // 회원가입 완료 후 로그인 페이지 이동
                 navigate("/");
             } else {
-                console.log("userData: ", userData);
                 console.log("messages: ", messages);
             }
         } catch (e) {
