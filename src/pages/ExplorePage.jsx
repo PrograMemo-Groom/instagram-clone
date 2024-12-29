@@ -1,16 +1,33 @@
 //import ExploreSearch from '@/components/exploreSearch/ExploreSearch.jsx';
+import { useState } from "react";
 
 const ExplorePage = () => {
+    const [searchFocused, setSearchFocused] = useState(false);
 
     return (
         <div className={"explore-container w-full h-full flex flex-col align-middle justify-center"}>
             <header className="flex items-center w-full h-11 bg-gray-200 bg-opacity-50 border-b border-gray-300 md:hidden"> {/*페이지 헤더 없앤 후 fixed 추가해야함*/}
                 <div className="w-64 h-9 left-5 relative bg-gray-200 bg-opacity-80 rounded-xl flex items-center">
-                    <img className={"absolute left-4 h-5"} src="/img/icons/search-icon-gray.svg" alt={"돋보기"}/>
-                    <input className={"w-full bg-transparent"}/>
-                    <button className={"absolute right-3"}>
-                        <img className={"w-4"} src="/img/icons/delete_icon.svg" alt={"x"}/>
-                    </button>
+                    {!searchFocused ? (
+                        <>
+                            <img className={"absolute left-4 h-5"} src="/img/icons/search-icon-gray.svg" alt={"돋보기"}/>
+                            <span
+                                className="pl-12 text-gray-500 w-full cursor-text"
+                                onClick={() => setSearchFocused(true)} // 클릭 시 focus 상태로 전환
+                            > 검색 </span>
+                        </>
+                    ) : (
+                        <>
+                            <input
+                                className={"w-full pl-4 bg-transparent outline-none focus:ring-0"}
+                                autoFocus
+                                onBlur={() => setSearchFocused(false)}
+                            />
+                            <button className={"absolute right-3"}>
+                                <img className={"w-4"} src="/img/icons/delete_icon.svg" alt={"삭제"}/>
+                            </button>
+                        </>
+                    )}
                 </div>
                 {/*<ExploreSearch/>*/}
             </header>
@@ -21,7 +38,7 @@ const ExplorePage = () => {
                     <input className="w-full h-10 bg-gray-200 bg-opacity-70 rounded-xl mx-2"/>
                     <img className={"absolute left-7 h-5"} src="/img/icons/search-icon-gray.svg" alt={"돋보기"}/>
                     <button className={"absolute right-7"}>
-                        <img className={"w-4"} src="/img/icons/delete_icon.svg" alt={"x"}/>
+                        <img className={"w-4"} src="/img/icons/delete_icon.svg" alt={"삭제"}/>
                     </button>
                     {/*<ExploreSearch/>*/}
                 </div>
