@@ -25,7 +25,7 @@ const ExplorePage = () => {
                     {/*<ExploreSearch/>*/}
                 </div>
 
-                <div className={"main-container inline-block pt-10 pr-5 pl-5"}>
+                <div className={"main-container w-full  max-w-5xl inline-block pt-10 pr-8 pl-6"}>
                     <div className="grid grid-cols-3 gap-1">
                         {data.map((item, index) => {
                             const setIndex = Math.floor(index/5 + 1); // 세트 번호 (5개의 아이템마다 1세트)
@@ -38,7 +38,7 @@ const ExplorePage = () => {
                                         key={index}
                                         className={`col-span-1 row-span-2 ${
                                             isReelsRight ? "col-start-3" : "col-start-1"
-                                        } w-80 h-160 bg-gray-300 relative group`}
+                                        } w-full h-auto bg-gray-300 relative group`}
                                     >
                                         <img
                                             src={item.thumbnail_url}
@@ -63,7 +63,7 @@ const ExplorePage = () => {
                                 return (
                                     <div
                                         key={index}
-                                        className="bg-gray-300 h-80 w-80 relative group"
+                                        className="bg-gray-300 h-auto w-full aspect-square relative group"
                                     >
                                         <img
                                             src={item.media_url}
