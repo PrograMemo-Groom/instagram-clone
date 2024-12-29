@@ -5,18 +5,22 @@ import unShowPasswordImg from "@/assets/login/unShowPassword.svg";
 import showPasswordImg from "@/assets/login/showPassword.svg";
 import {useDispatch, useSelector} from "react-redux";
 import SubmitButton from "@/components/login/SubmitButton.jsx";
+import {getDuplicateUser, joinUserInfo} from "@/api/firebase/FirebaseUtils.js";
+import {setIsLoading, setIsLogin} from "@/store/action/CommonAction.js";
+import {useNavigate} from "react-router-dom";
 
 const JoinForm = () => {
 
     const {showPassword} = useSelector((state) => state.user);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [userId, setUserId] = React.useState("");
     const [userPwd, setUserPwd] = React.useState("");
     const [userName, setUserName] = React.useState("");
     const [userRealName, setUserRealName] = React.useState("");
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
         const newUser = {
             id: userId,
@@ -25,7 +29,32 @@ const JoinForm = () => {
             realName: userRealName,
         }
         dispatch(setJoinUser(newUser));
+        try {
+            dispatch(setIsLoading(true));
+            const {success, messages} = await getUserInfo();
+            if (success) {
+                await joinUserInfo(newUser);
+
+                // 회원가입 완료 후 로그인 페이지 이동
+                navigate("/");
+            } else {
+                console.log("messages: ", messages);
+            }
+        } catch (e) {
+            console.log(e.message);
+        } finally {
+            dispatch(setIsLoading(false));
+        }
     }
+
+    const getUserInfo = async () => {
+        try {
+            return await getDuplicateUser(userName, userId);
+        } catch (e) {
+            console.log(e.message);
+        }
+    }
+
     const handleOpenInstagramPage = () => {
         window.open(
             "https://www.facebook.com/help/instagram/261704639352628",
