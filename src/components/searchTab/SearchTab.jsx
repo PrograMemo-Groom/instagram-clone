@@ -10,7 +10,7 @@ const SearchTab = () => {
                  ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}
                  sidebarpoint:left-[16rem] left-[4.5rem] hidden md:block`}
                  style={{visibility: isOpen ? 'visible' : 'hidden',}}>
-                <h2 className="p-4 font-bold">검색</h2>
+                <h2 className="p-4 font-semibold mt-4 ml-2 text-2xl">검색</h2>
                 <input type="text"
                        placeholder="검색"
                        className="w-full p-2 border-b border-gray-200 focus:outline-none"/>
