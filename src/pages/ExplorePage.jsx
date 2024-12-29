@@ -3,6 +3,7 @@ import { useState } from "react";
 
 const ExplorePage = () => {
     const [searchFocused, setSearchFocused] = useState(false);
+    const [mainSearchFocused, setMainSearchFocused] = useState(false);
 
     return (
         <div className={"explore-container w-full h-full flex flex-col align-middle justify-center"}>
@@ -12,7 +13,7 @@ const ExplorePage = () => {
                         <>
                             <img className={"absolute left-4 h-5"} src="/img/icons/search-icon-gray.svg" alt={"돋보기"}/>
                             <span
-                                className="pl-12 text-gray-500 w-full cursor-text"
+                                className="pl-12 text-gray-500 w-full font-light cursor-text"
                                 onClick={() => setSearchFocused(true)} // 클릭 시 focus 상태로 전환
                             > 검색 </span>
                         </>
@@ -36,18 +37,35 @@ const ExplorePage = () => {
 
             <main className={"main flex flex-col justify-center items-center"}>
                 <div className={"w-full h-6"}/>
-                <div className={"main-search w-full items-center flex relative md:hidden"}>
-                    <input className="w-full h-10 bg-gray-200 bg-opacity-70 rounded-xl mx-2"/>
-                    <img className={"absolute left-7 h-5"} src="/img/icons/search-icon-gray.svg" alt={"돋보기"}/>
-                    <button className={"absolute right-7"}>
-                        <img className={"w-4"} src="/img/icons/delete_icon.svg" alt={"삭제"}/>
-                    </button>
+                <div className={"main-search w-full items-center h-10 bg-gray-200 bg-opacity-70 rounded-xl mx-2 flex relative md:hidden"}>
+                    {!mainSearchFocused ? (
+                        <>
+                            <img className={"pl-4 h-5"} src="/img/icons/search-icon-gray.svg" alt={"돋보기"}/>
+                            <span
+                                className="flex-1 text-gray-500 pl-3 font-light cursor-text"
+                                onClick={() => setMainSearchFocused(true)} // 클릭 시 focus 상태로 전환
+                            > 검색 </span>
+                        </>
+                    ) : (
+                        <>
+                            <input
+                                className="w-full h-10 pl-2 bg-gray-200 bg-opacity-70 rounded-xl mx-2 outline-none focus:ring-0"
+                                autoFocus
+                            />
+                            <button
+                                className={"absolute right-7"}
+                                onClick={() => setMainSearchFocused(false)}
+                            >
+                                <img className={"w-4"} src="/img/icons/delete_icon.svg" alt={"삭제"}/>
+                            </button>
+                        </>
+                    )}
                     {/*<ExploreSearch/>*/}
                 </div>
 
                 <div className={"main-container w-full  max-w-5xl inline-block pt-6 px-0 md:px-7"}>
                     <div className="grid grid-cols-3 gap-1">
-                        {data.map((item, index) => {
+                    {data.map((item, index) => {
                             const setIndex = Math.floor(index/5 + 1); // 세트 번호 (5개의 아이템마다 1세트)
                             const isReelsRight = setIndex % 2 === 1; // 홀수번째 세트: 릴스가 오른쪽, 짝수번째 세트 : 릴스가 왼쪽
 
