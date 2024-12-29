@@ -3,9 +3,9 @@
 const ExplorePage = () => {
 
     return (
-        <div className={"explore-container w-full h-full flex align-middle justify-center"}>
-            <header className="flex items-start w-full bg-gray-300 md:hidden">
-                <div className="w-70 flex items-center">
+        <div className={"explore-container w-full h-full flex flex-col align-middle justify-center"}>
+            <header className="flex items-center w-full h-10 bg-gray-200 md:hidden">
+                <div className="w-70 h-6 bg-white flex items-center">
                     <img alt={"돋보기"}/>
                     <input/>
                     <button>
@@ -16,10 +16,10 @@ const ExplorePage = () => {
             </header>
 
             <main className={"main"}>
-                <div className={"main-search md:hidden"}>
+                <div className={"main-search flex relative md:hidden"}>
                     <input className="w-full bg-gray-300 border-radius-full"/>
-                    <img alt={"돋보기"}/>
-                    <button>
+                    <img className={"absolute"} alt={"돋보기"}/>
+                    <button className={"absolute right-3"}>
                         <img alt={"x"}/>
                     </button>
                     {/*<ExploreSearch/>*/}
