@@ -15,8 +15,8 @@ const ExplorePage = () => {
                 {/*<ExploreSearch/>*/}
             </header>
 
-            <main className={"main"}>
-                <div className={"main-search flex relative md:hidden"}>
+            <main className={"main flex flex-col justify-center items-center"}>
+                <div className={"main-search w-full flex relative md:hidden"}>
                     <input className="w-full bg-gray-300 border-radius-full"/>
                     <img className={"absolute"} alt={"돋보기"}/>
                     <button className={"absolute right-3"}>
