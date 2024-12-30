@@ -5,8 +5,7 @@ const MainPage = () => {
     return (
         // 메인 - (스토리, 포스트) / 오른쪽 사이드바) 
         <main className="flex">
-            <section className="w-[630px] mt-[16px]"
-            style={{backgroundColor:"lightblue"}}> 
+            <section className="w-[630px] mt-[16px]"> 
                <StoryContainer/>
                <PostContainer/>
             </section>
