@@ -1,4 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getUserReels } from "@/api/instagramAPI";
+import { setReelsData } from "@/store/reducer/ReelsReducer";
 import { setActiveModal, toggleLike } from "@/store/action/ReelsAction";
 import ReelsComment from './ReelsComment.jsx';
 import ReelsShare from "./ReelsShare.jsx";
@@ -6,7 +9,18 @@ import ReelsMenu from "@/pages/Reels/ReelsMenu.jsx";
 
 const Reels = () => {
     const dispatch = useDispatch();
-    const { isLiked, activeModal } = useSelector((state) => state.reels);
+    const { isLiked, activeModal, reelsData, accessToken } = useSelector((state) => state.reels);
+
+    // Access Token을 사용하여 Reels 데이터를 가져옴
+    useEffect(() => {
+        if (accessToken) {
+            getUserReels(accessToken)
+                .then((data) => {
+                    dispatch(setReelsData(data)); // 가져온 데이터를 Redux에 저장
+                })
+                .catch((err) => console.error("Error fetching Reels data:", err));
+        }
+    }, [accessToken, dispatch]);
 
     const handleToggleLike = () => dispatch(toggleLike());
     const handleOpenModal = (modal) => dispatch(setActiveModal(modal));
@@ -14,12 +28,34 @@ const Reels = () => {
 
     return (
         <div className="flex justify-center items-start h-screen mt-10">
-            <div className="relative flex">
-                <div className="relative bg-gray-300 rounded overflow-hidden cursor-pointer
+            {/* Reels 데이터가 없을 경우 로딩 상태 표시 */}
+            { reelsData.length === 0 ? (
+                <p>Loading Reels...</p>
+            ) : (
+                reelsData.map((reel) => (
+                    <div
+                        key={reel.id} // 고유 key 추가
+                        className="relative flex"
+                    >
+                <div
+                     className="relative bg-gray-300 rounded overflow-hidden cursor-pointer
                      lg:w-[440px] lg:h-[780px]
                      sm:w-[400px] sm:h-[720px]
                       w-[350px] h-[620px]
                      ">
+                    {reel.media_type === "VIDEO" ? (
+                        <video
+                            src={reel.media_url}
+                            controls
+                            className="w-full h-full rounded"
+                        />
+                    ) : (
+                        <img
+                            src={reel.media_url}
+                            alt={reel.caption || "No caption"}
+                            className="w-full h-full rounded"
+                        />
+                    )}
 
                     <div className="absolute bottom-0 left-0 w-full p-4">
                         <div className="flex items-center">
@@ -48,6 +84,7 @@ const Reels = () => {
                         </div>
                     </div>
                 </div>
+
 
                 <div className="absolute bottom-4 right-[-60px] flex flex-col items-center space-y-4">
                     <div className="flex flex-col items-center hover:opacity-40">
@@ -107,6 +144,8 @@ const Reels = () => {
                 </div>
             </div>
 
+                ))
+            )}
             {/* 모달 */}
             {activeModal && <div className="fixed inset-0 z-40" onClick={handleCloseModal}></div>}
             {activeModal === "comments" && (
