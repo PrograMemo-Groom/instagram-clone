@@ -1,6 +1,6 @@
 const RecmndProfile = () => {
     return (
-       <div className="flex flex-row justify-between items-center px-[2px] py-[8px]">
+       <div className="flex flex-row justify-between items-center px-[8px] py-[8px]">
         <div className="flex flex-row" >
             <img className="rounded-full h-[44px] w-[44px] mr-[10px] object-cover"
                 src="https://d2day.mycafe24.com/data/photo/ecri/thumb-20241021162115_3401_4_700x875.jpg" />
