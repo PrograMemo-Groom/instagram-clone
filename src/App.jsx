@@ -14,6 +14,7 @@ import Search from "@/pages/Search.jsx";
 import LoginPage from "@/pages/login/LoginPage.jsx";
 import JoinPage from "@/pages/login/JoinPage.jsx";
 import ForgetPasswordPage from "@/pages/login/ForgetPasswordPage.jsx";
+import AuthCallback from "@/pages/reels/AuthCallback.jsx";
 
 function LayOut() {
     const {isLoading} = useSelector((state) => state.common);
@@ -69,6 +70,7 @@ function App() {
             <Route path="/privacy" element={<PrivacyPolicy/>}/>
             <Route path="/data-deletion" element={<DataDeletion/>}/>
             {/*<Route path="*" element={<Navigate to="/" replace />} />*/}
+            <Route path="/auth/callback" element={<AuthCallback />} />
         </Routes>
     )
 
