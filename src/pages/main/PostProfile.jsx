@@ -1,7 +1,7 @@
 const PostProfile = () => {
     return (
-       <div className="flex flex-row justify-between">
-        <div className="flex flex-row">
+       <div className="flex flex-row justify-between items-center">
+        <div className="flex flex-row items-center">
             <div className="h-[42px] w-[42px] bg-[#D301C5;] rounded-full  border border-[#E5E5E5]
                     flex justify-center items-center box-border mb-[2px]">
                 <div className="h-[36px] w-[36px] bg-[white] rounded-full
@@ -11,12 +11,12 @@ const PostProfile = () => {
                 </div>
             </div>
 
-            <p>nani_seolgi_ongsim</p>
-            <p> • </p>
-            <p>1일</p>
+            <p className="ml-[6px] text-[14px] font-bold">xfhif_shd_djj</p>
+            <p className="ml-[5px] text-[14px] text-[#828282] font-bold"> • </p>
+            <p className="ml-[5px] text-[14px] text-[#828282]">1일</p>
         </div>
         <div>
-            <p>...</p>
+            <p className="font-bold">...</p>
         </div>
        </div>
     );
