@@ -68,7 +68,7 @@ const Reels = () => {
                     <div className="absolute bottom-0 left-0 w-full p-4">
                         <div className="flex items-center">
                             <img
-                                src={userProfile?.profile_picture_url || "/assets/reels/reels_profile.png"}
+                                src={userProfile?.profile_picture_url || "/assets/reels/profile.png"}
                                 alt={userProfile?.username || "Profile"}
                                 className="w-8 h-8 rounded-full cursor-pointer"
                             />
