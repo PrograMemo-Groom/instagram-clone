@@ -86,7 +86,7 @@ const Reels = () => {
                         </div>
 
                         <div className="mt-3">
-                            <p className="text-sm text-white">내용</p>
+                            <p className="text-sm text-white">{reel.caption || ""}</p>
                         </div>
 
                         <div className="mt-3 flex items-center bg-gray-500 bg-opacity-50 p-2 rounded-3xl">
