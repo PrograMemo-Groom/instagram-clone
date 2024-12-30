@@ -1,6 +1,6 @@
 const ProfileBox = () => {
     return (
-        <div className="flex justify-between">
+        <div className="flex">
             <div className="flex flex-col justify-center items-center w-[64px] h-[84px] px-[6px]"
             style={{backgroundColor:"lightgreen"}}>
                 <div className="h-[62px] w-[62px] bg-[#D301C5;] rounded-full  border border-[#E5E5E5]
