@@ -1,4 +1,4 @@
-const MainPage = () => {
+const MainFooter = () => {
     return (
         <footer className="text-[12px] text-[#C7C7C7]"
             style={{ backgroundColor: "white" }}>
@@ -20,4 +20,4 @@ const MainPage = () => {
     );
 };
 
-export default MainPage;
+export default MainFooter;
