@@ -11,9 +11,16 @@ const SearchTab = () => {
                  sidebarpoint:left-[16rem] left-[4.5rem] hidden md:block`}
                  style={{visibility: isOpen ? 'visible' : 'hidden',}}>
                 <h2 className="p-4 font-semibold mt-4 ml-2 text-2xl">검색</h2>
-                <input type="text"
-                       placeholder="검색"
-                       className="w-full p-2 border-b border-gray-200 focus:outline-none"/>
+                <div className="flex items-center w-18 bg-gray-100 rounded-sm px-4 py-2">
+                    <input type="text"
+                           placeholder="검색"
+                           className="bg-transparent w-full outline-none text-gray-600 placeholder-gray-400"/>
+                    <button
+                        className="flex items-center justify-center w-6 h-6 bg-gray-300 text-white rounded-full hover:bg-gray-400">&times;</button>
+                </div>
+                {/*<input type="text"*/}
+                {/*       placeholder="검색"*/}
+                {/*       className="w-full p-2 border-b border-gray-200 focus:outline-none"/>*/}
                 <div className="p-4">
                     <h3 className="text-sm font-semibold">최근 검색 항목</h3>
                     <ul>
