@@ -1,25 +1,42 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 
 const SearchTab = () => {
     const userId = "test1";
     const isOpen = useSelector((state) => state.search.isOpen);
     const [searchTerm, setSearchTerm] = useState("");
+    const [searches, setSearches] = useState([]);
 
     // 사용자별 고유 키 -> 기존 검색어 가져오기 => 고유 ID 생성 -> 새 검색어 추가 -> 로컬스토리지에 저장
-    const saveSearchToLocalStorage = (term) => {
+    // 로컬스토리지에 검색어 저장 함수
+    const saveSearchToLocalStorage = (newSearch) => {
         const key = `searches_${userId}`;
-        const existingSearches = JSON.parse(localStorage.getItem(key)) || [];
-        const newSearch = {id: Date.now(), value: term};
-        const updatedSearches = [...existingSearches, newSearch];
+        const updatedSearches = [...searches, newSearch];
         localStorage.setItem(key, JSON.stringify(updatedSearches));
+        setSearches(updatedSearches);
     };
 
+    // 엔터 키 이벤트 핸들러
     const handleKeyDown = (e) => {
         if (e.key === "Enter" && searchTerm.trim() !== "") {
-            saveSearchToLocalStorage(searchTerm);
-            setSearchTerm("");
+            const newSearch = { id: Date.now(), value: searchTerm };
+            saveSearchToLocalStorage(newSearch);
+            setSearchTerm(""); // 입력창 초기화
         }
+    };
+
+    // 로컬스토리지에서 검색어 가져오기
+    useEffect(() => {
+        const key = `searches_${userId}`;
+        const savedSearches = JSON.parse(localStorage.getItem(key)) || [];
+        setSearches(savedSearches);
+    }, [userId]);
+
+    // 모두 지우기 버튼 클릭 핸들러
+    const clearAllSearches = () => {
+        const key = `searches_${userId}`;
+        localStorage.removeItem(key);
+        setSearches([]);
     };
 
     return (
@@ -34,28 +51,29 @@ const SearchTab = () => {
                            placeholder="검색"
                            className="bg-transparent w-full outline-none text-gray-600 placeholder-gray-400"
                            value={searchTerm}
-                           onChange={(e) => setSearchTerm(e.target.value)}
+                           onChange={(e) => setSearchTerm(e.target.value)} // 입력 값 업데이트
                            onKeyDown={handleKeyDown}
                     />
                     <button
-                        className="flex items-center justify-center w-5 h-5 bg-gray-300 text-white pb-1 rounded-full hover:bg-gray-400">&times;</button>
+                        className="flex items-center justify-center w-5 h-5 bg-gray-300 text-white pb-1 rounded-full hover:bg-gray-400"
+                        onClick={() => setSearchTerm("")}>
+                        &times;</button>
                 </div>
                 <div className="w-full h-[1px] bg-gray-200 mt-5 mb-5"></div>
                 <div className="pl-4 pr-4">
-                    <h3 className="text-md font-semibold">최근 검색 항목</h3>
+                    <div className="flex items-center  justify-between">
+                        <h3 className="text-md font-semibold">최근 검색 항목</h3>
+                        <button className="text-sm font-semibold text-blue-400"
+                                onClick={clearAllSearches}>모두 지우기
+                        </button>
+                    </div>
                     <ul>
-                        <li className="flex items-center justify-between p-2 hover:bg-gray-100">
-                            <span className="text-sm">검색 항목 1</span>
-                            <button className="text-red-500">X</button>
-                        </li>
-                        <li className="flex items-center justify-between p-2 hover:bg-gray-100">
-                            <span className="text-sm">검색 항목 2</span>
-                            <button className="text-red-500">X</button>
-                        </li>
-                        <li className="flex items-center justify-between p-2 hover:bg-gray-100">
-                            <span className="text-sm">검색 항목 3</span>
-                            <button className="text-red-500">X</button>
-                        </li>
+                        {searches.map((search) => (
+                            <li className="flex items-center justify-between p-2 hover:bg-gray-100">
+                                <span className="text-sm">{search.value}</span>
+                                <button className="text-red-500">X</button>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>
