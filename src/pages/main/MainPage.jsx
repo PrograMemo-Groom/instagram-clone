@@ -9,7 +9,6 @@ const MainPage = () => {
             style={{backgroundColor:"lightblue"}}> 
                <StoryContainer/>
                <PostContainer/>
-               <p>d</p>
             </section>
             <aside className="w-[319px] ml-[64px] mt-[36px] hidden rightbarpoint:block" 
             style={{backgroundColor:"pink"}}>
