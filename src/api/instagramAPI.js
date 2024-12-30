@@ -77,4 +77,20 @@ export const getUserReels = async (accessToken) => {
     }
 };
 
+export const getReelComments = async (mediaId, accessToken) => {
+    try {
+        const response = await axios.get(`https://graph.instagram.com/${mediaId}/comments`, {
+            params: {
+                fields: "id,text,username,timestamp",
+                access_token: accessToken,
+            },
+        });
+        return response.data.data; // 댓글 배열 반환
+    } catch (error) {
+        console.error("Error fetching comments:", error.response?.data || error.message);
+        throw error;
+    }
+};
+
+
 
