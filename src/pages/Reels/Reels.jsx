@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getUserReels } from "@/api/instagramAPI";
-import { setReelsData } from "@/store/reducer/ReelsReducer";
+import { getUserReels, getUserProfile } from "@/api/instagramAPI";
+import { setReelsData, setUserProfile } from "@/store/reducer/ReelsReducer";
 import { setActiveModal, toggleLike } from "@/store/action/ReelsAction";
 import ReelsComment from './ReelsComment.jsx';
 import ReelsShare from "./ReelsShare.jsx";
@@ -9,11 +9,19 @@ import ReelsMenu from "@/pages/Reels/ReelsMenu.jsx";
 
 const Reels = () => {
     const dispatch = useDispatch();
-    const { isLiked, activeModal, reelsData, accessToken } = useSelector((state) => state.reels);
+    const { isLiked, activeModal, reelsData, accessToken, userProfile } = useSelector((state) => state.reels);
 
     // Access Token을 사용하여 Reels 데이터를 가져옴
     useEffect(() => {
         if (accessToken) {
+            // 사용자 프로필 가져오기
+            getUserProfile(accessToken)
+                .then((profile) => {
+                    dispatch(setUserProfile(profile)); // Redux에 사용자 프로필 저장
+                })
+                .catch((err) => console.error("Error fetching user profile:", err));
+
+            // Reels 데이터 가져오기
             getUserReels(accessToken)
                 .then((data) => {
                     dispatch(setReelsData(data)); // 가져온 데이터를 Redux에 저장
@@ -60,8 +68,8 @@ const Reels = () => {
                     <div className="absolute bottom-0 left-0 w-full p-4">
                         <div className="flex items-center">
                             <img
-                                src="/assets/reels/reels_profile.png"
-                                alt="Profile"
+                                src={userProfile?.profile_picture_url || "/assets/reels/reels_profile.png"}
+                                alt={userProfile?.username || "Profile"}
                                 className="w-8 h-8 rounded-full cursor-pointer"
                             />
                             <div className="ml-3">
