@@ -1,6 +1,6 @@
 const commonState = {
     isLoading: false,
-    isLogin: false,
+    isLogin: JSON.parse(localStorage.getItem("isLogin")) || false,
 }
 
 const CommonReducer = (state = commonState, action) => {
@@ -8,6 +8,7 @@ const CommonReducer = (state = commonState, action) => {
         case 'IS_LOADING':
             return {...state, isLoading: action.payload}
         case 'IS_LOGIN':
+            localStorage.setItem("isLogin", JSON.stringify(action.payload));
             return {...state, isLogin: action.payload}
         default:
             return state;
