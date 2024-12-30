@@ -9,7 +9,10 @@ export default {
             screens: {
                 'sidebarpoint': '1264px',
                 'md': '988px',
-            }
+            },
+            width: {
+                '18': '18rem',
+            },
         },
     },
     darkMode: 'class',
