@@ -1,5 +1,5 @@
 import './index.css';
-import MainPage from "@/pages/MainPage.jsx";
+import MainPage from "@/pages/main/MainPage.jsx";
 import {Navigate, Outlet, Route, Routes} from "react-router-dom";
 import PrivacyPolicy from "@/pages/PrivacyPolicy.jsx";
 import DataDeletion from "@/pages/DataDeletion.jsx";
