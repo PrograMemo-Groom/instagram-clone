@@ -59,3 +59,22 @@ export const getUserProfile = async (accessToken) => {
         throw error;
     }
 };
+
+export const getUserReels = async (accessToken) => {
+    console.log("Fetching reels data with token:", accessToken);
+    try {
+        const response = await axios.get("https://graph.instagram.com/me/media", {
+            params: {
+                fields: "id,caption,media_type,media_url,thumbnail_url,username,timestamp",
+                access_token: accessToken,
+            },
+        });
+        console.log("Fetched reels data:", response.data.data);
+        return response.data.data;
+    } catch (error) {
+        console.error("Error fetching media:", error.response?.data || error.message);
+        throw error;
+    }
+};
+
+
