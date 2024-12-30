@@ -9,6 +9,7 @@ export default {
       screens: {
         'sidebarpoint' : '1264px',
         'rightbarpoint' : '1159px'
+    //  'md': '988px',
       },
       fontSize: {
         'main-story-size' : '12px',
