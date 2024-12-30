@@ -1,6 +1,7 @@
 // import React from 'react';
 import StoryContainer from "./StoryContainer";
 import PostContainer from "./PostContainer";
+import RecmndProfile from "./RecmndProfile";
 const MainPage = () => {
     return (
         // 메인 - (스토리, 포스트) / 오른쪽 사이드바) 
@@ -12,8 +13,29 @@ const MainPage = () => {
             <aside className="w-[319px] ml-[64px] mt-[36px] hidden rightbarpoint:block" 
             style={{backgroundColor:"pink"}}>
                 오른쪽 사이드바
-                <footer>
-                    푸터
+                <div className="flex justify-between font-bold py-[4px]">
+                    <span className="text-[14px] text-[#737373]">회원님을 위한 추천</span>
+                    <span className="text-[12px]">모두 보기</span>
+                </div>
+
+                <RecmndProfile/>
+                <RecmndProfile/>
+                
+                <footer className="text-[12px] text-[#C7C7C7]"
+                style={{backgroundColor:"white"}}>
+                <ul className="flex flex-wrap py-[30px]">
+                    <li className="after:content-['·'] after:mx-2 last:after:content-['']">소개</li>
+                    <li className="after:content-['·'] after:mx-2 last:after:content-['']">도움말</li>
+                    <li className="after:content-['·'] after:mx-2 last:after:content-['']">홍보 센터</li>
+                    <li className="after:content-['·'] after:mx-2 last:after:content-['']">API</li>
+                    <li className="after:content-['·'] after:mx-2 last:after:content-['']">채용 정보</li>
+                    <li className="after:content-['·'] after:mx-2 last:after:content-['']">개인정보처리방침</li>
+                    <li className="after:content-['·'] after:mx-2 last:after:content-['']">약관</li>
+                    <li className="after:content-['·'] after:mx-2 last:after:content-['']">위치</li>
+                    <li className="after:content-['·'] after:mx-2 last:after:content-['']">언어</li>
+                    <li>Meta Verified</li>
+                </ul>
+                <p>© 2024 Instagram from Meta</p>
                 </footer>
             </aside>
         </main>
