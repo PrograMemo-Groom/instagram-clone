@@ -73,7 +73,9 @@ const Reels = () => {
                                 className="w-8 h-8 rounded-full cursor-pointer"
                             />
                             <div className="ml-3">
-                                <p className="font-bold text-white text-sm cursor-pointer">사용자 id</p>
+                                <p className="font-bold text-white text-sm cursor-pointer">
+                                    {userProfile?.username || "사용자 id"}
+                                </p>
                             </div>
                             <div className="ml-3">
                                 <p className="text-white"> • </p>
