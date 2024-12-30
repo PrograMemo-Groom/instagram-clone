@@ -1,6 +1,6 @@
 const commonState = {
     isLoading: false,
-    isLogin: true,
+    isLogin: false,
 }
 
 const CommonReducer = (state = commonState, action) => {
