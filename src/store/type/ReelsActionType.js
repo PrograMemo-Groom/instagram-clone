@@ -1,0 +1,2 @@
+export const SET_ACTIVE_MODAL = "SET_ACTIVE_MODAL";
+export const TOGGLE_LIKE = "TOGGLE_LIKE";

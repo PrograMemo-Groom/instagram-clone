@@ -4,6 +4,7 @@ import commonReducer from "@/store/reducer/CommonReducer.js";
 import searchReducer from "@/components/searchTab/searchSlice.js";
 import profilePageReducer from "@/store/reducer/ProfilePageReducer.js";
 import userReducer from "@/store/reducer/UserReducer.js";
+import reelsReducer from "@/store/reducer/ReelsReducer.js"
 
 export const Store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ export const Store = configureStore({
         search: searchReducer,
         profile: profilePageReducer,
         user: userReducer,
+        reels: reelsReducer,
     }
 });
 
