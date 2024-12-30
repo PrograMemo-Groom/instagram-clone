@@ -2,7 +2,7 @@ const PostProfile = () => {
     return (
        <div className="flex flex-row justify-between items-center pb-[12px] pl-[2px]">
         <div className="flex flex-row items-center">
-            <div className="h-[42px] w-[42px] bg-[#D301C5;] rounded-full  border border-[#E5E5E5]
+            <div className="h-[42px] w-[42px] bg-gradient-to-b from-[#D600C1] to-[#FFC303] rounded-full  border border-[#E5E5E5]
                     flex justify-center items-center box-border mb-[2px]">
                 <div className="h-[36px] w-[36px] bg-[white] rounded-full
                 flex justify-center items-center box-border">

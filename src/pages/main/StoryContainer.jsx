@@ -6,7 +6,7 @@ const StoryContainer = () => {
 
       <div className="flex flex-col justify-center items-center w-[64px] h-[84px] px-[6px]">
         {/* 프로필 배경 */}
-        <div className="h-[65px] w-[65px] bg-[#D301C5;] rounded-full border border-[#E5E5E5]
+        <div className="h-[65px] w-[65px] bg-gradient-to-b from-[#D600C1] to-[#FFC303] rounded-full border border-[#E5E5E5]
                 flex justify-center items-center box-border">
           <div className="h-[58px] w-[58px] bg-[white] rounded-full
                 flex justify-center items-center box-border">
@@ -32,7 +32,7 @@ const StoryContainer = () => {
 
       <div className="flex flex-col justify-center items-center w-[64px] h-[84px] px-[6px]">
         {/* 프로필 배경 */}
-        <div className="h-[65px] w-[65px] bg-[#D301C5;] rounded-full border border-[#E5E5E5]
+        <div className="h-[65px] w-[65px] bg-gradient-to-b from-[#D600C1] to-[#FFC303] rounded-full border border-[#E5E5E5]
                 flex justify-center items-center box-border">
           <div className="h-[58px] w-[58px] bg-[white] rounded-full
                 flex justify-center items-center box-border">
@@ -45,7 +45,7 @@ const StoryContainer = () => {
 
       <div className="flex flex-col justify-center items-center w-[64px] h-[84px] px-[6px]">
         {/* 프로필 배경 */}
-        <div className="h-[65px] w-[65px] bg-[#D301C5;] rounded-full border border-[#E5E5E5]
+        <div className="h-[65px] w-[65px] bg-gradient-to-b from-[#D600C1] to-[#FFC303] rounded-full border border-[#E5E5E5]
                 flex justify-center items-center box-border">
           <div className="h-[58px] w-[58px] bg-[white] rounded-full
                 flex justify-center items-center box-border">
@@ -58,7 +58,7 @@ const StoryContainer = () => {
 
       <div className="flex flex-col justify-center items-center w-[64px] h-[84px] px-[6px]">
         {/* 프로필 배경 */}
-        <div className="h-[65px] w-[65px] bg-[#D301C5;] rounded-full border border-[#E5E5E5]
+        <div className="h-[65px] w-[65px] bg-gradient-to-b from-[#D600C1] to-[#FFC303] rounded-full border border-[#E5E5E5]
                 flex justify-center items-center box-border">
           <div className="h-[58px] w-[58px] bg-[white] rounded-full
                 flex justify-center items-center box-border">
@@ -97,7 +97,7 @@ const StoryContainer = () => {
 
       <div className="flex flex-col justify-center items-center w-[64px] h-[84px] px-[6px]">
         {/* 프로필 배경 */}
-        <div className="h-[65px] w-[65px] bg-[#D301C5;] rounded-full border border-[#E5E5E5]
+        <div className="h-[65px] w-[65px] bg-gradient-to-b from-[#D600C1] to-[#FFC303] rounded-full border border-[#E5E5E5]
                 flex justify-center items-center box-border">
           <div className="h-[58px] w-[58px] bg-[white] rounded-full
                 flex justify-center items-center box-border">
