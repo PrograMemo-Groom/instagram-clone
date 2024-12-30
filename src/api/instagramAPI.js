@@ -48,7 +48,7 @@ export const getUserProfile = async (accessToken) => {
     try {
         const response = await axios.get("https://graph.instagram.com/me", {
             params: {
-                fields: "id,username",
+                fields: "id,username,profile_picture_url",
                 access_token: accessToken,
             },
         });
