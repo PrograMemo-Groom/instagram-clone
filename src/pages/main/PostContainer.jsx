@@ -1,5 +1,6 @@
 import PostProfile from "./PostProfile";
 import PostImg from "./PostImg";
+import PostAction from "./PostAction";
 const PostContainer = () => {
     return (
        <div className="flex justify-center">
@@ -7,7 +8,7 @@ const PostContainer = () => {
           style={{backgroundColor:"white"}}>
           <PostProfile/>
           <PostImg/>
-          <p>좋아요랑 댓글박스</p>
+          <PostAction/>
          </div>
        </div>
     );
