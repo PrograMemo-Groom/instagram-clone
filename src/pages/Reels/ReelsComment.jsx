@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 const ReelsComment = ({ mediaId, onClose }) => {
     const comments = useSelector((state) => state.reels.comments[mediaId] || []);
 
+    console.log("Rendering comments for mediaId:", mediaId, comments);
+
     return (
         <div className="absolute top-[40px] left-[-320px] bg-white rounded-lg shadow-lg z-50 p-6
             lg:w-[350px] lg:h-[500px]
@@ -24,9 +26,9 @@ const ReelsComment = ({ mediaId, onClose }) => {
             </div>
 
             <div className="overflow-y-auto flex-1 mb-4 pt-4">
-                {comments.length > 0 ? (
-                    comments.map((comment, index) => (
-                        <div key={comment.id || index} className="mb-4 flex items-start">
+                {comments?.length > 0 ? (
+                    comments.map((comment) => (
+                        <div key={comment.id} className="mb-4 flex items-start">
                             <img
                                 src="/assets/reels/reels_profile.png"
                                 alt="프로필"
@@ -40,10 +42,6 @@ const ReelsComment = ({ mediaId, onClose }) => {
                                     </p>
                                 </div>
                                 <p className="text-sm">{comment.text}</p>
-                                <div className="flex items-center mt-1 text-neutral-500 text-sm">
-                                    <span className="text-xs cursor-pointer">좋아요 0개</span>
-                                    <span className="text-xs ml-3 cursor-pointer">답글 달기</span>
-                                </div>
                             </div>
                         </div>
                     ))

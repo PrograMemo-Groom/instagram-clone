@@ -34,6 +34,7 @@ const Reels = () => {
         if (!comments[mediaId]) {
             getReelComments(mediaId, accessToken)
                 .then((fetchedComments) => {
+                    console.log("Storing comments for mediaId:", mediaId, fetchedComments); // 디버깅용 로그
                     dispatch(setComments(mediaId, fetchedComments));
                     dispatch(setActiveModal({ type: "comments", mediaId }));
                 })
@@ -42,6 +43,7 @@ const Reels = () => {
             dispatch(setActiveModal({ type: "comments", mediaId }));
         }
     };
+
 
     const handleToggleLike = () => dispatch(toggleLike());
     const handleOpenModal = (modal) => dispatch(setActiveModal(modal));

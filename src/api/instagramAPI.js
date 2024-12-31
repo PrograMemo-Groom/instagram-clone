@@ -13,11 +13,33 @@ const instagramInstance = axios.create({
         "Content-Type": "application/x-www-form-urlencoded",
     },
 });
+export const debugAccessToken = async (accessToken) => {
+    try {
+        const response = await axios.get(
+            `https://graph.facebook.com/debug_token`,
+            {
+                params: {
+                    input_token: accessToken,
+                    access_token: `${INSTAGRAM_CLIENT_ID}|${INSTAGRAM_CLIENT_SECRET}`, // App Access Token
+                },
+            }
+        );
+        console.log("Access Token Debug Info:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error debugging access token:", error.response?.data || error.message);
+        throw error;
+    }
+
+};
+
+
 
 /* Oauth 인증 url 생성 - firebase 연동시 변경 필요 */
 export const getAuthUrl = () => {
-    return `${INSTAGRAM_AUTH_URL}?client_id=${INSTAGRAM_CLIENT_ID}&redirect_uri=${INSTAGRAM_REDIRECT_URI}&scope=user_profile,user_media&response_type=code`;
-}
+    return `${INSTAGRAM_AUTH_URL}?client_id=${INSTAGRAM_CLIENT_ID}&redirect_uri=${INSTAGRAM_REDIRECT_URI}&scope=instagram_graph_user_media,instagram_graph_user_comments&response_type=code`;
+};
+
 
 /* Access Token 교환 */
 export const exchangeAccessToken = async (code) => {
@@ -79,18 +101,24 @@ export const getUserReels = async (accessToken) => {
 
 export const getReelComments = async (mediaId, accessToken) => {
     try {
-        const response = await axios.get(`https://graph.instagram.com/${mediaId}/comments`, {
-            params: {
-                fields: "id,text,username,timestamp",
-                access_token: accessToken,
-            },
-        });
-        return response.data.data; // 댓글 배열 반환
+        const response = await axios.get(
+            `https://graph.instagram.com/${mediaId}/comments`,
+            {
+                params: {
+                    fields: "id,username,text,timestamp",
+                    access_token: accessToken,
+                },
+            }
+        );
+        return response.data.data; // 댓글 데이터 배열 반환
     } catch (error) {
         console.error("Error fetching comments:", error.response?.data || error.message);
-        throw error;
+        return [];
     }
 };
+
+
+
 
 
 
