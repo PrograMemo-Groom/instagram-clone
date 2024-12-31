@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getUserReels, getUserProfile } from "@/api/instagramAPI";
+import { getUserReels, getUserProfile, getReelComments } from "@/api/instagramAPI";
 import { setReelsData, setUserProfile } from "@/store/reducer/ReelsReducer";
-import { setActiveModal, toggleLike } from "@/store/action/ReelsAction";
+import { setActiveModal, setComments, toggleLike } from "@/store/action/ReelsAction";
 import ReelsComment from './ReelsComment.jsx';
 import ReelsShare from "./ReelsShare.jsx";
 import ReelsMenu from "@/pages/Reels/ReelsMenu.jsx";
 
 const Reels = () => {
     const dispatch = useDispatch();
-    const { isLiked, activeModal, reelsData, accessToken, userProfile } = useSelector((state) => state.reels);
+    const { isLiked, activeModal, reelsData, accessToken, userProfile, comments } = useSelector((state) => state.reels);
 
     // Access Token을 사용하여 Reels 데이터를 가져옴
     useEffect(() => {
@@ -29,6 +29,19 @@ const Reels = () => {
                 .catch((err) => console.error("Error fetching Reels data:", err));
         }
     }, [accessToken, dispatch]);
+
+    const handleOpenComments = (mediaId) => {
+        if (!comments[mediaId]) {
+            getReelComments(mediaId, accessToken)
+                .then((fetchedComments) => {
+                    dispatch(setComments(mediaId, fetchedComments));
+                    dispatch(setActiveModal({ type: "comments", mediaId }));
+                })
+                .catch((err) => console.error("Error fetching comments:", err));
+        } else {
+            dispatch(setActiveModal({ type: "comments", mediaId }));
+        }
+    };
 
     const handleToggleLike = () => dispatch(toggleLike());
     const handleOpenModal = (modal) => dispatch(setActiveModal(modal));
@@ -107,14 +120,14 @@ const Reels = () => {
                                 <p className="text-xs">5.8만</p>
                             </div>
 
-                            <div className="flex flex-col items-center hover:opacity-40">
+                            <div className="flex flex-col items-center hover:opacity-40 cursor-pointer"
+                                 onClick={() => handleOpenComments(reel.id)}>
                                 <img
                                     src="/assets/reels/comment_btn.svg"
                                     alt="Comment"
                                     className="w-6 h-6 mt-2 cursor-pointer"
-                                    onClick={() => handleOpenModal("comments")}
                                 />
-                                <p className="text-xs">223</p>
+                                <p className="text-xs">{comments[reel.id]?.length || 0}</p>
                             </div>
 
                             <div className="flex flex-col items-center hover:opacity-40">
@@ -158,9 +171,9 @@ const Reels = () => {
             )}
             {/* 모달 */}
             {activeModal && <div className="fixed inset-0 z-40" onClick={handleCloseModal}></div>}
-            {activeModal === "comments" && (
+            {activeModal?.type === "comments" && (
                 <div className="relative">
-                    <ReelsComment onClose={handleCloseModal} />
+                    <ReelsComment mediaId={activeModal.mediaId} onClose={handleCloseModal} />
                 </div>
             )}
             {activeModal === "share" && (
