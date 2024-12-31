@@ -151,109 +151,108 @@ const SearchTab = () => {
         }
     }, [accessToken, dispatch]);
     return (
-        <div className="p-4">
-            {userProfile ? (
-                <div className="flex items-center space-x-4">
-                    <img
-                        src={userProfile.profile_picture_url}
-                        alt={userProfile.username}
-                        className="w-16 h-16 rounded-full"
-                    />
-                    <div>
-                        <h2 className="text-xl font-bold">{userProfile.username}</h2>
-                        <p className="text-gray-500">{userProfile.biography || 'No bio available'}</p>
-                    </div>
-                </div>
-            ) : (
-                <p>Loading user profile...</p>
-            )}
-        </div>
-        // <>
-        //     <div className={`fixed top-0 h-screen w-80 bg-white shadow-lg transform transition-transform duration-300
-        //          ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}
-        //          sidebarpoint:left-[16rem] left-[4.5rem] hidden md:block`}
-        //          style={{visibility: isOpen ? 'visible' : 'hidden',}}>
-        //         <h2 className="p-4 font-semibold mt-4 ml-2 text-2xl">검색</h2>
-        //         <div className="flex items-center w-18 bg-gray-100 rounded-md px-4 py-2 ml-4">
-        //             <input type="text"
-        //                    placeholder="검색"
-        //                    className="bg-transparent w-full outline-none text-gray-600 placeholder-gray-400"
-        //                    value={searchTerm}
-        //                    onChange={(e) => setSearchTerm(e.target.value)}
-        //                    onKeyDown={handleKeyDown}
+        // <div className="p-4">
+        //     {userProfile ? (
+        //         <div className="flex items-center space-x-4">
+        //             <img
+        //                 src={userProfile.profile_picture_url}
+        //                 alt={userProfile.username}
+        //                 className="w-16 h-16 rounded-full"
         //             />
-        //             <button
-        //                 className="flex items-center justify-center w-5 h-5 bg-gray-300 text-white pb-1 rounded-full hover:bg-gray-400"
-        //                 onClick={() => setSearchTerm("")}
-        //             >
-        //                 &times;
-        //             </button>
-        //         </div>
-        //         <div className="w-full h-[1px] bg-gray-200 mt-5 mb-5"></div>
-        //         <div className="pl-4 pr-4">
-        //             <div className="flex items-center  justify-between">
-        //                 <h3 className="text-md font-semibold">최근 검색 항목</h3>
-        //                 <button className="text-sm font-semibold text-blue-400"
-        //                         onClick={clearAllSearches}>모두 지우기
-        //                 </button>
+        //             <div>
+        //                 <h2 className="text-xl font-bold">{userProfile.username}</h2>
+        //                 <p className="text-gray-500">{userProfile.biography || 'No bio available'}</p>
         //             </div>
-        //             <div className="bg-white rounded-lg p-4">
-        //                 <ul>
-        //                     {results.map((user) => (
-        //                         <li key={user.id} className="flex items-center mb-4">
-        //                             <img
-        //                                 src={user.profile_picture_url}
-        //                                 alt={user.username}
-        //                                 className="w-10 h-10 rounded-full mr-4"
-        //                             />
-        //                             <div>
-        //                                 <p className="text-sm font-bold">{user.username}</p>
-        //                                 <p className="text-sm text-gray-500">
-        //                                     팔로워: {user.followers_count || "정보 없음"}
-        //                                 </p>
-        //                             </div>
-        //                         </li>
-        //                     ))}
-        //                 </ul>
-        //             </div>
-        //
-        //
-        //             {/*<ul>*/}
-        //             {/*    {searches.map((search) => (*/}
-        //             {/*        <li className="flex items-center justify-between p-2 hover:bg-gray-100">*/}
-        //             {/*            <span className="text-sm">{search.value}</span>*/}
-        //             {/*            <button className="text-red-500">X</button>*/}
-        //             {/*        </li>*/}
-        //             {/*    ))}*/}
-        //             {/*</ul>*/}
         //         </div>
-        //     </div>
-        //     <div className={`fixed top-16 right-4 w-64 bg-white shadow-lg rounded-lg
-        //          ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}
-        //          sm:block md:hidden transition-opacity duration-300`}>
-        //         <h2 className="p-4 font-bold">검색</h2>
-        //         <input type="text"
-        //                placeholder="검색"
-        //                className="w-full p-2 border-b border-gray-200 focus:outline-none"/>
-        //         <div className="p-4">
-        //             <h3 className="text-sm font-semibold">최근 검색 항목</h3>
-        //             <ul>
-        //                 <li className="flex items-center justify-between p-2 hover:bg-gray-100">
-        //                     <span className="text-sm">검색 항목 1</span>
-        //                     <button className="text-red-500">X</button>
-        //                 </li>
-        //                 <li className="flex items-center justify-between p-2 hover:bg-gray-100">
-        //                     <span className="text-sm">검색 항목 2</span>
-        //                     <button className="text-red-500">X</button>
-        //                 </li>
-        //                 <li className="flex items-center justify-between p-2 hover:bg-gray-100">
-        //                     <span className="text-sm">검색 항목 3</span>
-        //                     <button className="text-red-500">X</button>
-        //                 </li>
-        //             </ul>
-        //         </div>
-        //     </div>
-        // </>
+        //     ) : (
+        //         <p>Loading user profile...</p>
+        //     )}
+        // </div>
+        // <>
+        <div className={`fixed top-0 h-screen w-80 bg-white shadow-lg transform transition-transform duration-300
+                 ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}
+                 sidebarpoint:left-[16rem] left-[4.5rem] hidden md:block`}
+             style={{visibility: isOpen ? 'visible' : 'hidden',}}>
+            <h2 className="p-4 font-semibold mt-4 ml-2 text-2xl">검색</h2>
+            <div className="flex items-center w-18 bg-gray-100 rounded-md px-4 py-2 ml-4">
+                <input type="text"
+                       placeholder="검색"
+                       className="bg-transparent w-full outline-none text-gray-600 placeholder-gray-400"
+                       value={searchTerm}
+                       onChange={(e) => setSearchTerm(e.target.value)}
+                       onKeyDown={handleKeyDown}
+                />
+                <button
+                    className="flex items-center justify-center w-5 h-5 bg-gray-300 text-white pb-1 rounded-full hover:bg-gray-400"
+                    onClick={() => setSearchTerm("")}
+                >
+                    &times;
+                </button>
+            </div>
+            <div className="w-full h-[1px] bg-gray-200 mt-5 mb-5"></div>
+            <div className="pl-4 pr-4">
+                <div className="flex items-center  justify-between">
+                    <h3 className="text-md font-semibold">최근 검색 항목</h3>
+                    <button className="text-sm font-semibold text-blue-400"
+                            onClick={clearAllSearches}>모두 지우기
+                    </button>
+                </div>
+                <div className="bg-white rounded-lg p-4">
+                    <ul>
+                        {results.map((user) => (
+                            <li key={user.id} className="flex items-center mb-4">
+                                <img
+                                    src={user.profile_picture_url}
+                                    alt={user.username}
+                                    className="w-10 h-10 rounded-full mr-4"
+                                />
+                                <div>
+                                    <p className="text-sm font-bold">{user.username}</p>
+                                    <p className="text-sm text-gray-500">
+                                        팔로워: {user.followers_count || "정보 없음"}
+                                    </p>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                {/*<ul>*/}
+                {/*    {searches.map((search) => (*/}
+                {/*        <li className="flex items-center justify-between p-2 hover:bg-gray-100">*/}
+                {/*            <span className="text-sm">{search.value}</span>*/}
+                {/*            <button className="text-red-500">X</button>*/}
+                {/*        </li>*/}
+                {/*    ))}*/}
+                {/*</ul>*/}
+
+            </div>
+            <div className={`fixed top-16 right-4 w-64 bg-white shadow-lg rounded-lg
+                 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}
+                 sm:block md:hidden transition-opacity duration-300`}>
+                <h2 className="p-4 font-bold">검색</h2>
+                <input type="text"
+                       placeholder="검색"
+                       className="w-full p-2 border-b border-gray-200 focus:outline-none"/>
+                <div className="p-4">
+                    <h3 className="text-sm font-semibold">최근 검색 항목</h3>
+                    <ul>
+                        <li className="flex items-center justify-between p-2 hover:bg-gray-100">
+                            <span className="text-sm">검색 항목 1</span>
+                            <button className="text-red-500">X</button>
+                        </li>
+                        <li className="flex items-center justify-between p-2 hover:bg-gray-100">
+                            <span className="text-sm">검색 항목 2</span>
+                            <button className="text-red-500">X</button>
+                        </li>
+                        <li className="flex items-center justify-between p-2 hover:bg-gray-100">
+                            <span className="text-sm">검색 항목 3</span>
+                            <button className="text-red-500">X</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </>
     )
         ;
 };
