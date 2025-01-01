@@ -92,7 +92,13 @@ const reelsReducer = (state = initialState, action) => {
         }
         case ADD_COMMENT: {
             const { mediaId, comment } = action.payload;
+
+            // 이미 존재하는 댓글인지 확인
             const mediaComments = state.comments[mediaId] || [];
+            if (mediaComments.find((c) => c.id === comment.id)) {
+                return state; // 이미 존재하면 상태 변경 없음
+            }
+
             return {
                 ...state,
                 comments: {
@@ -101,6 +107,7 @@ const reelsReducer = (state = initialState, action) => {
                 },
             };
         }
+
         default:
             return state;
     }

@@ -10,6 +10,8 @@ const ReelsComment = ({ mediaId, onClose }) => {
     const { accessToken, userProfile } = useSelector((state) => state.reels);
     const comments = useSelector((state) => state.reels.comments[mediaId] || []);
     const [newComment, setNewComment] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
 
     // 사용자 프로필 가져오기
     useEffect(() => {
@@ -18,20 +20,35 @@ const ReelsComment = ({ mediaId, onClose }) => {
                 .then((profile) => dispatch(setUserProfile(profile)))
                 .catch((err) => console.error("Error fetching user profile:", err));
         }
-    }, [accessToken, userProfile, dispatch]);
+    }, [accessToken, userProfile, dispatch]); // 'userProfile' 추가
+
+    const handleInputChange = (e) => {
+        setNewComment(e.target.value); // 입력값 업데이트
+    };
 
     const handleAddComment = (e) => {
-        if (e.key === "Enter" && newComment.trim() !== "") {
-            const comment = {
-                id: new Date().getTime().toString(), // 임시 ID 생성
-                username: userProfile?.username || "anonymous", // 현재 사용자 이름
-                text: newComment.trim(),
-                timestamp: new Date().toISOString(),
-            };
-            dispatch(addComment(mediaId, comment));
-            setNewComment(""); // 입력창 초기화
-        }
+        if (e.key !== "Enter" || isSubmitting) return;
+        const trimmedComment = newComment.trim();
+        if (trimmedComment === "") return;
+
+        setIsSubmitting(true);
+
+        const comment = {
+            id: new Date().getTime().toString(),
+            username: userProfile?.username || "anonymous",
+            text: newComment.trim(),
+            timestamp: new Date().toISOString(),
+        };
+
+        dispatch(addComment(mediaId, comment));
+        setNewComment("");
+
+        // 입력 후 다시 활성화
+        setTimeout(() => setIsSubmitting(false), 100); // 100ms 딜레이로 중복 방지
+
     };
+
+
 
     return (
         <div className="bg-white rounded-lg shadow-lg p-6 absolute
@@ -92,11 +109,12 @@ const ReelsComment = ({ mediaId, onClose }) => {
                 <input
                     type="text"
                     placeholder="댓글 달기..."
-                    value={newComment}
-                    onChange={(e) => setNewComment(e.target.value)}
-                    onKeyDown={handleAddComment}
+                    value={newComment} // 입력 상태 연결
+                    onChange={handleInputChange} // 상태 업데이트
+                    onKeyDown={handleAddComment} // Enter 키 입력 처리
                     className="flex-1 bg-transparent outline-none text-sm"
                 />
+
             </div>
         </div>
     );
