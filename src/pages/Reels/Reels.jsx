@@ -103,10 +103,12 @@ const Reels = () => {
                                     <div className="mt-3">
                                         <p className="text-sm text-white">{reel.caption || ""}</p>
                                     </div>
-
-                                    <div className="mt-3 flex items-center bg-gray-500 bg-opacity-50 p-2 rounded-3xl">
-                                        <div className="text-white text-sm cursor-pointer">노래노래</div>
+                                    <div className="mt-4 mb-2">
+                                        <p className="text-xs text-gray-200">{reel.date || ""}</p>
                                     </div>
+                                    {/*<div className="mt-3 flex items-center bg-gray-500 bg-opacity-50 p-2 rounded-3xl">*/}
+                                    {/*    <div className="text-white text-sm cursor-pointer">노래노래</div>*/}
+                                    {/*</div>*/}
                                 </div>
                             </div>
 
