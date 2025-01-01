@@ -94,7 +94,7 @@ export const getUserReels = async (accessToken) => {
         console.log("Fetched reels data:", response.data.data);
 
         // 날짜 변환 처리
-        const reelsWithFormattedDate = response.data.data.map((reel) => ({
+        return response.data.data.map((reel) => ({
             ...reel,
             date: new Date(reel.timestamp).toLocaleDateString("ko-KR", {
                 year: "numeric",
@@ -102,8 +102,6 @@ export const getUserReels = async (accessToken) => {
                 day: "numeric",
             }),
         }));
-
-        return reelsWithFormattedDate;
     } catch (error) {
         console.error("Error fetching media:", error.response?.data || error.message);
         throw error;
@@ -127,9 +125,3 @@ export const getReelComments = async (mediaId, accessToken) => {
         return [];
     }
 };
-
-
-
-
-
-
