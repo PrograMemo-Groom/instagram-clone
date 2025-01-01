@@ -49,150 +49,158 @@ const Reels = () => {
     const handleCloseModal = () => dispatch(setActiveModal(null));
 
     return (
-        <div className="h-screen overflow-y-scroll scrollbar-hide scroll-smooth snap-y snap-mandatory">
-            {/* Reels 데이터가 없을 경우 로딩 상태 표시 */}
-            {reelsData.length === 0 ? (
-                <p className="text-white text-center mt-20">Loading Reels...</p>
-            ) : (
-                reelsData.map((reel) => (
-                    <div
-                        key={reel.id} // 고유 key 추가
-                        className="h-screen snap-start flex flex-row justify-center items-center relative px-4"
-                    >
+        <div className="relative">
+            <div className="h-screen overflow-y-scroll scrollbar-hide scroll-smooth snap-y snap-mandatory">
+                {/* Reels 데이터가 없을 경우 로딩 상태 표시 */}
+                {reelsData.length === 0 ? (
+                    <p className="text-white text-center mt-20">Loading Reels...</p>
+                ) : (
+                    reelsData.map((reel) => (
                         <div
-                            className="relative bg-gray-300 rounded overflow-hidden cursor-pointer
-                             lg:w-[440px] lg:h-[780px]
-                             sm:w-[400px] sm:h-[710px]
-                             w-[350px] h-[620px]"
+                            key={reel.id} // 고유 key 추가
+                            className="h-screen snap-start flex flex-row justify-center items-center relative px-4"
                         >
-                            {reel.media_type === "VIDEO" ? (
-                                <video
-                                    src={reel.media_url}
-                                    controls
-                                    className="w-full h-full rounded"
-                                />
-                            ) : (
-                                <img
-                                    src={reel.media_url}
-                                    alt={reel.caption || "No caption"}
-                                    className="w-full h-full rounded"
-                                />
-                            )}
-
-                            <div className="absolute bottom-0 left-0 w-full p-4">
-                                <div className="flex items-center">
-                                    <img
-                                        src={userProfile?.profile_picture_url || "/assets/reels/profile.png"}
-                                        alt={userProfile?.username || "Profile"}
-                                        className="w-8 h-8 rounded-full cursor-pointer"
-                                    />
-                                    <div className="ml-3">
-                                        <p className="font-bold text-white text-sm cursor-pointer">
-                                            {userProfile?.username || "사용자 id"}
-                                        </p>
-                                    </div>
-                                    <div className="ml-3">
-                                        <p className="text-white"> • </p>
-                                    </div>
-                                    <div className="ml-3">
-                                        <button className="font-bold text-white text-sm border rounded-lg px-1.5 py-1 cursor-pointer">팔로우</button>
-                                    </div>
-                                </div>
-
-                                <div className="mt-3">
-                                    <p className="text-sm text-white">{reel.caption || ""}</p>
-                                </div>
-
-                                <div className="mt-3 flex items-center bg-gray-500 bg-opacity-50 p-2 rounded-3xl">
-                                    <div className="text-white text-sm cursor-pointer">노래노래</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* 사이드 메뉴 */}
-                        <div className="ml-6 flex flex-col items-center space-y-4 z-10
-                                        lg:mb-12 lg:mt-auto
-                                        sm:mb-20 sm:mt-auto
-                                        mb-32 mt-auto
-                        ">
-                            <div className="flex flex-col items-center hover:opacity-40">
-                                <img
-                                    src={reel.isLiked ? "/assets/reels/liked_btn.svg" : "/assets/reels/like_btn.svg"}
-                                    alt="Like"
-                                    className="w-6 h-6 cursor-pointer"
-                                    onClick={() => handleToggleLike(reel.id)}
-                                />
-                                <p className="text-xs">5.8만</p>
-                            </div>
-
                             <div
-                                className="flex flex-col items-center hover:opacity-40 cursor-pointer"
-                                onClick={() => handleOpenComments(reel.id)}
+                                className="relative bg-gray-300 rounded overflow-hidden cursor-pointer
+                                 lg:w-[440px] lg:h-[780px]
+                                 sm:w-[400px] sm:h-[710px]
+                                 w-[350px] h-[620px]"
                             >
-                                <img
-                                    src="/assets/reels/comment_btn.svg"
-                                    alt="Comment"
-                                    className="w-6 h-6 mt-2 cursor-pointer"
-                                />
-                                <p className="text-xs">{comments[reel.id]?.length || 0}</p>
+                                {reel.media_type === "VIDEO" ? (
+                                    <video
+                                        src={reel.media_url}
+                                        controls
+                                        className="w-full h-full rounded"
+                                    />
+                                ) : (
+                                    <img
+                                        src={reel.media_url}
+                                        alt={reel.caption || "No caption"}
+                                        className="w-full h-full rounded"
+                                    />
+                                )}
+
+                                <div className="absolute bottom-0 left-0 w-full p-4">
+                                    <div className="flex items-center">
+                                        <img
+                                            src={userProfile?.profile_picture_url || "/assets/reels/profile.png"}
+                                            alt={userProfile?.username || "Profile"}
+                                            className="w-8 h-8 rounded-full cursor-pointer"
+                                        />
+                                        <div className="ml-3">
+                                            <p className="font-bold text-white text-sm cursor-pointer">
+                                                {userProfile?.username || "사용자 id"}
+                                            </p>
+                                        </div>
+                                        <div className="ml-3">
+                                            <p className="text-white"> • </p>
+                                        </div>
+                                        <div className="ml-3">
+                                            <button className="font-bold text-white text-sm border rounded-lg px-1.5 py-1 cursor-pointer">팔로우</button>
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-3">
+                                        <p className="text-sm text-white">{reel.caption || ""}</p>
+                                    </div>
+
+                                    <div className="mt-3 flex items-center bg-gray-500 bg-opacity-50 p-2 rounded-3xl">
+                                        <div className="text-white text-sm cursor-pointer">노래노래</div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div className="flex flex-col items-center hover:opacity-40">
-                                <img
-                                    src="/assets/reels/share_btn.svg"
-                                    alt="Share"
-                                    className="w-6 h-6 mt-2 cursor-pointer"
-                                    onClick={() => handleOpenModal("share", reel.id)}
-                                />
-                            </div>
+                            {/* 사이드 메뉴 */}
+                            <div className="ml-6 flex flex-col items-center space-y-4 z-10
+                                            lg:mb-12 lg:mt-auto
+                                            sm:mb-20 sm:mt-auto
+                                            mb-32 mt-auto
+                            ">
+                                <div className="flex flex-col items-center hover:opacity-40">
+                                    <img
+                                        src={reel.isLiked ? "/assets/reels/liked_btn.svg" : "/assets/reels/like_btn.svg"}
+                                        alt="Like"
+                                        className="w-6 h-6 cursor-pointer"
+                                        onClick={() => handleToggleLike(reel.id)}
+                                    />
+                                    <p className="text-xs">5.8만</p>
+                                </div>
 
-                            <div className="flex flex-col items-center hover:opacity-40">
-                                <img
-                                    src="/assets/reels/bookmark_btn.svg"
-                                    alt="Bookmark"
-                                    className="w-6 h-6 mt-3 cursor-pointer"
-                                />
-                            </div>
+                                <div
+                                    className="flex flex-col items-center hover:opacity-40 cursor-pointer"
+                                    onClick={() => handleOpenComments(reel.id)}
+                                >
+                                    <img
+                                        src="/assets/reels/comment_btn.svg"
+                                        alt="Comment"
+                                        className="w-6 h-6 mt-2 cursor-pointer"
+                                    />
+                                    <p className="text-xs">{comments[reel.id]?.length || 0}</p>
+                                </div>
 
-                            <div className="flex flex-col items-center hover:opacity-40">
-                                <img
-                                    src="/assets/reels/menu_btn.svg"
-                                    alt="Menu"
-                                    className="w-5 h-5 mt-3 cursor-pointer"
-                                    onClick={() => handleOpenModal("menu", reel.id)}
-                                />
-                            </div>
+                                <div className="flex flex-col items-center hover:opacity-40">
+                                    <img
+                                        src="/assets/reels/share_btn.svg"
+                                        alt="Share"
+                                        className="w-6 h-6 mt-2 cursor-pointer"
+                                        onClick={() => handleOpenModal("share", reel.id)}
+                                    />
+                                </div>
 
-                            <div className="flex flex-col items-center hover:opacity-60">
-                                <img
-                                    src="/assets/reels/song.png"
-                                    alt="Song"
-                                    className="w-7 h-7 mt-4 rounded border border-black cursor-pointer"
-                                />
+                                <div className="flex flex-col items-center hover:opacity-40">
+                                    <img
+                                        src="/assets/reels/bookmark_btn.svg"
+                                        alt="Bookmark"
+                                        className="w-6 h-6 mt-3 cursor-pointer"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col items-center hover:opacity-40">
+                                    <img
+                                        src="/assets/reels/menu_btn.svg"
+                                        alt="Menu"
+                                        className="w-5 h-5 mt-3 cursor-pointer"
+                                        onClick={() => handleOpenModal("menu", reel.id)}
+                                    />
+                                </div>
+
+                                <div className="flex flex-col items-center hover:opacity-60">
+                                    <img
+                                        src="/assets/reels/song.png"
+                                        alt="Song"
+                                        className="w-7 h-7 mt-4 rounded border border-black cursor-pointer"
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))
-            )}
+                    ))
+                )}
+            </div>
+
             {/* 모달 */}
-            {activeModal && <div className="fixed inset-0 z-40" onClick={handleCloseModal}></div>}
-            {activeModal?.type === "comments" && (
-                <div className="relative">
-                    <ReelsComment mediaId={activeModal.mediaId} onClose={handleCloseModal} />
-                </div>
-            )}
-            {activeModal?.type === "share" && activeModal.mediaId && (
-                <div className="relative">
-                    <ReelsShare reelId={activeModal.mediaId} onClose={handleCloseModal} />
-                </div>
-            )}
-            {activeModal?.type === "menu" && activeModal.mediaId && (
-                <div className="relative">
-                    <ReelsMenu reelId={activeModal.mediaId} onClose={handleCloseModal}/>
+            {activeModal && (
+                <div
+                    className="fixed inset-0 z-40 flex justify-center items-center "
+                    onClick={handleCloseModal}
+                >
+                    <div
+                        onClick={(e) => e.stopPropagation()} // 모달 내부 클릭 시 이벤트 전파 방지
+                    >
+                        {activeModal.type === "comments" && (
+                            <ReelsComment mediaId={activeModal.mediaId} onClose={handleCloseModal} />
+                        )}
+                        {activeModal.type === "share" && activeModal.mediaId && (
+                            <ReelsShare reelId={activeModal.mediaId} onClose={handleCloseModal} />
+                        )}
+                        {activeModal.type === "menu" && activeModal.mediaId && (
+                            <ReelsMenu reelId={activeModal.mediaId} onClose={handleCloseModal} />
+                        )}
+                    </div>
                 </div>
             )}
         </div>
     );
+
 };
 
 export default Reels;

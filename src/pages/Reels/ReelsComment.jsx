@@ -7,26 +7,26 @@ const ReelsComment = ({ mediaId, onClose }) => {
     console.log("Rendering comments for mediaId:", mediaId, comments);
 
     return (
-        <div className="absolute top-[40px] left-[-320px] bg-white rounded-lg shadow-lg z-50 p-6
-            lg:w-[350px] lg:h-[500px]
-            sm:w-[350px] sm:h-[470px]
-            w-[350px] h-[370px]
-            flex flex-col
-        ">
+        <div
+            className="bg-white rounded-lg shadow-lg p-6
+                lg:w-[350px] lg:h-[500px]
+                sm:w-[350px] sm:h-[470px]
+                w-[350px] h-[370px]
+                flex flex-col"
+            onClick={(e) => e.stopPropagation()} // 클릭 이벤트 버블링 방지
+        >
             <div className="flex items-center justify-between mb-4 relative">
                 <button
-                    className="absolute left-3 top-1/2 transform -translate-y-1/2 "
+                    className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
                     onClick={onClose}
                 >
                     ✕
                 </button>
-
                 <h2 className="text-base font-bold text-center flex-1">댓글</h2>
-
             </div>
 
             <div className="overflow-y-auto flex-1 mb-4 pt-4">
-                {comments?.length > 0 ? (
+                {comments.length > 0 ? (
                     comments.map((comment) => (
                         <div key={comment.id} className="mb-4 flex items-start">
                             <img
