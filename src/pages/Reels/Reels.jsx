@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect } from "react";
 import { getUserReels, getUserProfile, getReelComments } from "@/api/instagramAPI";
 import { setReelsData, setUserProfile } from "@/store/reducer/ReelsReducer";
 import { setActiveModal, setComments, toggleLike } from "@/store/action/ReelsAction";
@@ -9,8 +9,7 @@ import ReelsMenu from "@/pages/Reels/ReelsMenu.jsx";
 
 const Reels = () => {
     const dispatch = useDispatch();
-    const { isLiked, activeModal, reelsData, accessToken, userProfile, comments } = useSelector((state) => state.reels);
-    const [visibleReelsCount, setVisibleReelsCount] = useState(1); // Track visible Reels
+    const { activeModal, reelsData, accessToken, userProfile, comments } = useSelector((state) => state.reels);
 
     // Access Token을 사용하여 Reels 데이터를 가져옴
     useEffect(() => {
@@ -45,49 +44,27 @@ const Reels = () => {
         }
     };
 
-
-    const handleScroll = useCallback(() => {
-        const scrollTop = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const fullHeight = document.documentElement.scrollHeight;
-
-        // When the user is within 100px of the bottom, load more Reels
-        if (scrollTop + windowHeight >= fullHeight - 100) {
-            setVisibleReelsCount((prevCount) => {
-                if (prevCount < reelsData.length) {
-                    return prevCount + 1;
-                }
-                return prevCount;
-            });
-        }
-    }, [reelsData.length]);
-
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [handleScroll]);
-
-    const handleToggleLike = () => dispatch(toggleLike());
-    const handleOpenModal = (modal) => dispatch(setActiveModal(modal));
+    const handleToggleLike = (reelId) => dispatch(toggleLike(reelId));
+    const handleOpenModal = (modal, reelId = null) => dispatch(setActiveModal({ type: modal, mediaId: reelId }));
     const handleCloseModal = () => dispatch(setActiveModal(null));
 
     return (
-        <div className="flex flex-col items-center mt-10">
+        <div className="h-screen overflow-y-scroll scroll-smooth snap-y snap-mandatory">
             {/* Reels 데이터가 없을 경우 로딩 상태 표시 */}
             {reelsData.length === 0 ? (
-                <p className="text-white">Loading Reels...</p>
+                <p className="text-white text-center mt-20">Loading Reels...</p>
             ) : (
-                reelsData.slice(0, visibleReelsCount).map((reel) => (
+                reelsData.map((reel) => (
                     <div
                         key={reel.id} // 고유 key 추가
-                        className="relative flex mb-10"
+                        className="h-screen snap-start flex flex-row justify-center items-center relative px-4"
                     >
                         <div
                             className="relative bg-gray-300 rounded overflow-hidden cursor-pointer
-                     lg:w-[440px] lg:h-[780px]
-                     sm:w-[400px] sm:h-[720px]
-                      w-[350px] h-[620px]
-                     ">
+                             lg:w-[440px] lg:h-[780px]
+                             sm:w-[400px] sm:h-[710px]
+                             w-[350px] h-[620px]"
+                        >
                             {reel.media_type === "VIDEO" ? (
                                 <video
                                     src={reel.media_url}
@@ -132,20 +109,26 @@ const Reels = () => {
                             </div>
                         </div>
 
-
-                        <div className="absolute bottom-4 right-[-60px] flex flex-col items-center space-y-4">
+                        {/* 사이드 메뉴 */}
+                        <div className="ml-6 flex flex-col items-center space-y-4 z-10
+                                        lg:mb-12 lg:mt-auto
+                                        sm:mb-20 sm:mt-auto
+                                        mb-32 mt-auto
+                        ">
                             <div className="flex flex-col items-center hover:opacity-40">
                                 <img
-                                    src={isLiked ? "/assets/reels/liked_btn.svg" : "/assets/reels/like_btn.svg"}
+                                    src={reel.isLiked ? "/assets/reels/liked_btn.svg" : "/assets/reels/like_btn.svg"}
                                     alt="Like"
                                     className="w-6 h-6 cursor-pointer"
-                                    onClick={handleToggleLike}
+                                    onClick={() => handleToggleLike(reel.id)}
                                 />
                                 <p className="text-xs">5.8만</p>
                             </div>
 
-                            <div className="flex flex-col items-center hover:opacity-40 cursor-pointer"
-                                 onClick={() => handleOpenComments(reel.id)}>
+                            <div
+                                className="flex flex-col items-center hover:opacity-40 cursor-pointer"
+                                onClick={() => handleOpenComments(reel.id)}
+                            >
                                 <img
                                     src="/assets/reels/comment_btn.svg"
                                     alt="Comment"
@@ -159,7 +142,7 @@ const Reels = () => {
                                     src="/assets/reels/share_btn.svg"
                                     alt="Share"
                                     className="w-6 h-6 mt-2 cursor-pointer"
-                                    onClick={() => handleOpenModal("share")}
+                                    onClick={() => handleOpenModal("share", reel.id)}
                                 />
                             </div>
 
@@ -168,7 +151,6 @@ const Reels = () => {
                                     src="/assets/reels/bookmark_btn.svg"
                                     alt="Bookmark"
                                     className="w-6 h-6 mt-3 cursor-pointer"
-
                                 />
                             </div>
 
@@ -177,7 +159,7 @@ const Reels = () => {
                                     src="/assets/reels/menu_btn.svg"
                                     alt="Menu"
                                     className="w-5 h-5 mt-3 cursor-pointer"
-                                    onClick={() => handleOpenModal("menu")}
+                                    onClick={() => handleOpenModal("menu", reel.id)}
                                 />
                             </div>
 
@@ -185,12 +167,11 @@ const Reels = () => {
                                 <img
                                     src="/assets/reels/song.png"
                                     alt="Song"
-                                    className="w-7 h-7 mt-4 rounded border-1 border-black cursor-pointer"
+                                    className="w-7 h-7 mt-4 rounded border border-black cursor-pointer"
                                 />
                             </div>
                         </div>
                     </div>
-
                 ))
             )}
             {/* 모달 */}
@@ -200,17 +181,16 @@ const Reels = () => {
                     <ReelsComment mediaId={activeModal.mediaId} onClose={handleCloseModal} />
                 </div>
             )}
-            {activeModal === "share" && (
+            {activeModal?.type === "share" && activeModal.mediaId && (
                 <div className="relative">
-                    <ReelsShare onClose={handleCloseModal} />
+                    <ReelsShare reelId={activeModal.mediaId} onClose={handleCloseModal} />
                 </div>
             )}
-            {activeModal === "menu" && (
+            {activeModal?.type === "menu" && activeModal.mediaId && (
                 <div className="relative">
-                    <ReelsMenu onClose={handleCloseModal}/>
+                    <ReelsMenu reelId={activeModal.mediaId} onClose={handleCloseModal}/>
                 </div>
             )}
-
         </div>
     );
 };
