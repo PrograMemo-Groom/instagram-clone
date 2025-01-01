@@ -1,2 +1,3 @@
 export const SET_ACTIVE_MODAL = "SET_ACTIVE_MODAL";
 export const TOGGLE_LIKE = "TOGGLE_LIKE";
+export const SET_COMMENTS = "SET_COMMENTS";

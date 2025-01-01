@@ -1,6 +1,4 @@
-import { SET_ACTIVE_MODAL, TOGGLE_LIKE } from "../type/ReelsActionType";
-
-export const SET_COMMENTS = "SET_COMMENTS";
+import { SET_ACTIVE_MODAL, TOGGLE_LIKE, SET_COMMENTS } from "../type/ReelsActionType";
 
 // 액티브 모달 설정
 export const setActiveModal = (modal) => ({
@@ -9,8 +7,9 @@ export const setActiveModal = (modal) => ({
 });
 
 // 좋아요 토글
-export const toggleLike = () => ({
+export const toggleLike = (reelId) => ({
     type: TOGGLE_LIKE,
+    payload: reelId,
 });
 
 export const setComments = (mediaId, comments) => ({
