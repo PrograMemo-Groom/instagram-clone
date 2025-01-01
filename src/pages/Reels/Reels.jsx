@@ -197,8 +197,11 @@ const Reels = () => {
                             <ReelsShare reelId={activeModal.mediaId} onClose={handleCloseModal} />
                         )}
                         {activeModal.type === "menu" && activeModal.mediaId && (
-                            <ReelsMenu reelId={activeModal.mediaId} onClose={handleCloseModal} />
-                        )}
+                            <div className="relative">
+                                <ReelsMenu reelId={activeModal.mediaId} onClose={handleCloseModal}/>
+                            </div>
+                                )}
+
                     </div>
                 </div>
             )}
