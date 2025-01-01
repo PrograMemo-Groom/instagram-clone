@@ -112,9 +112,9 @@ const Reels = () => {
 
                             {/* 사이드 메뉴 */}
                             <div className="ml-6 flex flex-col items-center space-y-4 z-10
-                                            lg:mb-12 lg:mt-auto
-                                            sm:mb-20 sm:mt-auto
-                                            mb-32 mt-auto
+                                            lg:mb-4 lg:mt-auto
+                                            sm:mb-4 sm:mt-auto
+                                            mb-4 mt-auto
                             ">
                                 <div className="flex flex-col items-center hover:opacity-40">
                                     <img
