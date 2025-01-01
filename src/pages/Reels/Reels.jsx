@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { getUserReels, getUserProfile, getReelComments } from "@/api/instagramAPI";
 import { setReelsData, setUserProfile } from "@/store/reducer/ReelsReducer";
 import { setActiveModal, setComments, toggleLike } from "@/store/action/ReelsAction";
@@ -10,6 +10,7 @@ import ReelsMenu from "@/pages/Reels/ReelsMenu.jsx";
 const Reels = () => {
     const dispatch = useDispatch();
     const { isLiked, activeModal, reelsData, accessToken, userProfile, comments } = useSelector((state) => state.reels);
+    const [visibleReelsCount, setVisibleReelsCount] = useState(1); // Track visible Reels
 
     // Access Token을 사용하여 Reels 데이터를 가져옴
     useEffect(() => {
@@ -45,20 +46,41 @@ const Reels = () => {
     };
 
 
+    const handleScroll = useCallback(() => {
+        const scrollTop = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const fullHeight = document.documentElement.scrollHeight;
+
+        // When the user is within 100px of the bottom, load more Reels
+        if (scrollTop + windowHeight >= fullHeight - 100) {
+            setVisibleReelsCount((prevCount) => {
+                if (prevCount < reelsData.length) {
+                    return prevCount + 1;
+                }
+                return prevCount;
+            });
+        }
+    }, [reelsData.length]);
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [handleScroll]);
+
     const handleToggleLike = () => dispatch(toggleLike());
     const handleOpenModal = (modal) => dispatch(setActiveModal(modal));
     const handleCloseModal = () => dispatch(setActiveModal(null));
 
     return (
-        <div className="flex justify-center items-start h-screen mt-10">
+        <div className="flex flex-col items-center mt-10">
             {/* Reels 데이터가 없을 경우 로딩 상태 표시 */}
-            { reelsData.length === 0 ? (
-                <p>Loading Reels...</p>
+            {reelsData.length === 0 ? (
+                <p className="text-white">Loading Reels...</p>
             ) : (
-                reelsData.map((reel) => (
+                reelsData.slice(0, visibleReelsCount).map((reel) => (
                     <div
                         key={reel.id} // 고유 key 추가
-                        className="relative flex"
+                        className="relative flex mb-10"
                     >
                         <div
                             className="relative bg-gray-300 rounded overflow-hidden cursor-pointer
