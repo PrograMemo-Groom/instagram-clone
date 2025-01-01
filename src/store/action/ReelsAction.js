@@ -1,4 +1,4 @@
-import { SET_ACTIVE_MODAL, TOGGLE_LIKE, SET_COMMENTS, INCREMENT_LIKE_COUNT } from "../type/ReelsActionType";
+import {SET_ACTIVE_MODAL, TOGGLE_LIKE, SET_COMMENTS, INCREMENT_LIKE_COUNT, ADD_COMMENT} from "../type/ReelsActionType";
 
 // 액티브 모달 설정
 export const setActiveModal = (modal) => ({
@@ -21,4 +21,9 @@ export const setComments = (mediaId, comments) => ({
 export const incrementLikeCount = (reelId) => ({
     type: INCREMENT_LIKE_COUNT,
     payload: reelId,
+});
+
+export const addComment = (mediaId, comment) => ({
+    type: ADD_COMMENT,
+    payload: { mediaId, comment },
 });
