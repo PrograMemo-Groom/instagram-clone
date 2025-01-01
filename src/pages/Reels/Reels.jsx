@@ -187,7 +187,11 @@ const Reels = () => {
                         onClick={(e) => e.stopPropagation()} // 모달 내부 클릭 시 이벤트 전파 방지
                     >
                         {activeModal.type === "comments" && (
-                            <ReelsComment mediaId={activeModal.mediaId} onClose={handleCloseModal} />
+                            <div className="relative">
+                                <ReelsComment
+                                    mediaId={activeModal.mediaId} onClose={handleCloseModal} />
+                            </div>
+
                         )}
                         {activeModal.type === "share" && activeModal.mediaId && (
                             <ReelsShare reelId={activeModal.mediaId} onClose={handleCloseModal} />

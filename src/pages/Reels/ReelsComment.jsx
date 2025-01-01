@@ -8,10 +8,10 @@ const ReelsComment = ({ mediaId, onClose }) => {
 
     return (
         <div
-            className="bg-white rounded-lg shadow-lg p-6
-                lg:w-[350px] lg:h-[500px]
-                sm:w-[350px] sm:h-[470px]
-                w-[350px] h-[370px]
+            className="bg-white rounded-lg shadow-lg p-6 absolute
+                lg:w-[350px] lg:h-[500px] lg:left-[-20px] lg:bottom-[-200px]
+                sm:w-[350px] sm:h-[470px] sm:left-[-130px] sm:bottom-[-150px]
+                w-[350px] h-[370px] left-[-200px] bottom-[-100px]
                 flex flex-col"
             onClick={(e) => e.stopPropagation()} // 클릭 이벤트 버블링 방지
         >
