@@ -1,4 +1,4 @@
-import { SET_ACTIVE_MODAL, TOGGLE_LIKE, SET_COMMENTS } from "../type/ReelsActionType";
+import {SET_ACTIVE_MODAL, TOGGLE_LIKE, SET_COMMENTS, INCREMENT_LIKE_COUNT} from "../type/ReelsActionType";
 
 export const SET_ACCESS_TOKEN = "SET_ACCESS_TOKEN";
 export const SET_REELS_DATA = "SET_REELS_DATA";
@@ -39,6 +39,7 @@ const reelsReducer = (state = initialState, action) => {
             const reelsWithLikes = action.payload.map(reel => ({
                 ...reel,
                 isLiked: false,
+                likeCount : 0,
             }));
             return {
                 ...state,
@@ -63,7 +64,11 @@ const reelsReducer = (state = initialState, action) => {
                 ...state,
                 reelsData: state.reelsData.map(reel =>
                     reel.id === action.payload
-                        ? { ...reel, isLiked: !reel.isLiked }
+                        ? {
+                            ...reel,
+                            isLiked: !reel.isLiked,
+                            likeCount: reel.isLiked ? reel.likeCount - 1 : reel.likeCount + 1,
+                        }
                         : reel
                 ),
             };
@@ -75,6 +80,16 @@ const reelsReducer = (state = initialState, action) => {
                     [action.payload.mediaId]: action.payload.comments,
                 },
             };
+        case INCREMENT_LIKE_COUNT: {
+            return {
+                ...state,
+                reelsData: state.reelsData.map(reel =>
+                    reel.id === action.payload
+                        ? { ...reel, likeCount: reel.likeCount + 1 }
+                        : reel
+                ),
+            };
+        }
         default:
             return state;
     }
