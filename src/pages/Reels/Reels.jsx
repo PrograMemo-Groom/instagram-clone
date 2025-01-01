@@ -50,7 +50,7 @@ const Reels = () => {
 
     return (
         <div className="relative">
-            <div className="h-screen overflow-y-scroll scrollbar-hide scroll-smooth snap-y snap-mandatory">
+            <div className="mt-7 h-screen overflow-y-scroll scrollbar-hide scroll-smooth snap-y snap-mandatory">
                 {/* Reels 데이터가 없을 경우 로딩 상태 표시 */}
                 {reelsData.length === 0 ? (
                     <p className="text-white text-center mt-20">Loading Reels...</p>
@@ -58,7 +58,7 @@ const Reels = () => {
                     reelsData.map((reel) => (
                         <div
                             key={reel.id} // 고유 key 추가
-                            className="h-screen snap-start flex flex-row justify-center items-center relative px-4"
+                            className="mb-7 snap-start flex flex-row justify-center items-center relative px-4"
                         >
                             <div
                                 className="relative bg-gray-300 rounded overflow-hidden cursor-pointer
