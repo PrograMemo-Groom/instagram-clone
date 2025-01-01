@@ -49,7 +49,7 @@ const Reels = () => {
     const handleCloseModal = () => dispatch(setActiveModal(null));
 
     return (
-        <div className="h-screen overflow-y-scroll scroll-smooth snap-y snap-mandatory">
+        <div className="h-screen overflow-y-scroll scrollbar-hide scroll-smooth snap-y snap-mandatory">
             {/* Reels 데이터가 없을 경우 로딩 상태 표시 */}
             {reelsData.length === 0 ? (
                 <p className="text-white text-center mt-20">Loading Reels...</p>
