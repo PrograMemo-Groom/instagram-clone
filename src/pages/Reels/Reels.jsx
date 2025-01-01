@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUserReels, getUserProfile, getReelComments } from "@/api/instagramAPI";
 import { setReelsData, setUserProfile } from "@/store/reducer/ReelsReducer";
-import { setActiveModal, setComments, toggleLike } from "@/store/action/ReelsAction";
+import {setActiveModal, setComments, toggleLike} from "@/store/action/ReelsAction";
 import ReelsComment from './ReelsComment.jsx';
 import ReelsShare from "./ReelsShare.jsx";
 import ReelsMenu from "@/pages/Reels/ReelsMenu.jsx";
@@ -47,6 +47,7 @@ const Reels = () => {
     const handleToggleLike = (reelId) => dispatch(toggleLike(reelId));
     const handleOpenModal = (modal, reelId = null) => dispatch(setActiveModal({ type: modal, mediaId: reelId }));
     const handleCloseModal = () => dispatch(setActiveModal(null));
+
 
     return (
         <div className="relative">
@@ -123,9 +124,11 @@ const Reels = () => {
                                         src={reel.isLiked ? "/assets/reels/liked_btn.svg" : "/assets/reels/like_btn.svg"}
                                         alt="Like"
                                         className="w-6 h-6 cursor-pointer"
-                                        onClick={() => handleToggleLike(reel.id)}
+                                        onClick={() =>{
+                                            handleToggleLike(reel.id);
+                                        }}
                                     />
-                                    <p className="text-xs">5.8만</p>
+                                    <p className="text-xs">{reel.likeCount}</p>
                                 </div>
 
                                 <div
