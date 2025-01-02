@@ -229,7 +229,7 @@ const ReelsShare = ({ onClose }) => {
                                     <div key={index} className="flex flex-col items-center mr-2">
                                         <button
                                             className="w-14 h-14 rounded-full bg-gray-100 flex justify-center items-center"
-                                            onClick={() => window.location.href = item.link}
+                                            onClick={() => window.open(item.link, '_blank')} // 새 창에서 열기
                                         >
                                             <img src={item.src} alt={item.alt} className="w-5 h-5"/>
                                         </button>
