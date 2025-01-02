@@ -84,7 +84,6 @@ const Reels = () => {
                                         controls
                                         className="w-full h-full rounded"
                                         ref={(el) => (videoRefs.current[reel.id] = el)} // Ref 설정
-                                        muted // 초기 상태 음소거
                                     />
                                 ) : (
                                     <img
