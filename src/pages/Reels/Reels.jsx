@@ -96,6 +96,18 @@ const Reels = () => {
             videoElement.muted = !videoElement.muted;
         }
     };
+    const handleVideoClick = (reelId) => {
+        const videoElement = videoRefs.current[reelId];
+        if (videoElement) {
+            if (videoElement.paused) {
+                videoElement.play().catch((error) =>
+                    console.error(`Error playing video for reel: ${reelId}`, error)
+                );
+            } else {
+                videoElement.pause();
+            }
+        }
+    };
 
     return (
         <div className="relative">
@@ -115,12 +127,11 @@ const Reels = () => {
                                         src={reel.media_url}
                                         className="w-full h-full rounded"
                                         ref={(el) => {
-                                            if (el) {
-                                                videoRefs.current[reel.id] = el;
-                                                console.log(`Video ref set for reel: ${reel.id}`);
-                                            }
+                                            if (el) videoRefs.current[reel.id] = el;
                                         }}
+                                        onClick={() => handleVideoClick(reel.id)}
                                     />
+
                                 ) : (
                                     <img src={reel.media_url} alt={reel.caption || "No caption"} className="w-full h-full rounded" />
                                 )}
