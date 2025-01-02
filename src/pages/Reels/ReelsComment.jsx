@@ -42,6 +42,8 @@ const ReelsComment = ({ mediaId, onClose }) => {
             username: userProfile?.username || "anonymous",
             text: newComment.trim(),
             timestamp: new Date().toISOString(),
+            isLiked: false,
+            likeCount: 0,
         };
 
         dispatch(addComment(mediaId, comment));

@@ -123,7 +123,9 @@ const reelsReducer = (state = initialState, action) => {
                             ? {
                                 ...comment,
                                 isLiked: !comment.isLiked,
-                                likeCount: comment.isLiked ? comment.likeCount - 1 : comment.likeCount + 1,
+                                likeCount: comment.isLiked
+                                    ? (comment.likeCount || 0) - 1 // 기본값 0
+                                    : (comment.likeCount || 0) + 1, // 기본값 0
                             }
                             : comment
                     ),
