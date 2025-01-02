@@ -119,7 +119,12 @@ export const getReelComments = async (mediaId, accessToken) => {
                 },
             }
         );
-        return response.data.data; // 댓글 데이터 배열 반환
+        // 댓글 데이터 배열에 기본값 추가
+        return (response.data.data || []).map((comment) => ({
+            ...comment,
+            isLiked: false, // 좋아요 상태 기본값
+            likeCount: 0,   // 좋아요 수 기본값
+        }));
     } catch (error) {
         console.error("Error fetching comments:", error.response?.data || error.message);
         return [];

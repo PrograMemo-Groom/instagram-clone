@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addComment } from "@/store/action/ReelsAction";
 import { getUserProfile } from "@/api/instagramAPI";
 import { setUserProfile } from "@/store/reducer/ReelsReducer";
+import { toggleCommentLike } from "@/store/action/ReelsAction";
 import PropTypes from 'prop-types';
 
 const ReelsComment = ({ mediaId, onClose }) => {
@@ -12,6 +13,9 @@ const ReelsComment = ({ mediaId, onClose }) => {
     const [newComment, setNewComment] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+    const handleToggleCommentLike = (commentId) => {
+        dispatch(toggleCommentLike(mediaId, commentId));
+    };
 
     // 사용자 프로필 가져오기
     useEffect(() => {
@@ -88,10 +92,12 @@ const ReelsComment = ({ mediaId, onClose }) => {
                             </div>
                             <div className="flex items-center justify-center">
                                 <img
-                                    src="/assets/reels/like_btn2.svg"
+                                    src={comment.isLiked ? "/assets/reels/liked_btn.svg" : "/assets/reels/like_btn.svg"}
                                     alt="좋아요"
                                     className="w-5 h-5 mr-3 cursor-pointer"
+                                    onClick={() => handleToggleCommentLike(comment.id)}
                                 />
+                                <span className="text-xs ml-2">{comment.likeCount || 0}</span>
                             </div>
                         </div>
                     ))

@@ -27,3 +27,8 @@ export const addComment = (mediaId, comment) => ({
     type: ADD_COMMENT,
     payload: { mediaId, comment },
 });
+
+export const toggleCommentLike = (mediaId, commentId) => ({
+    type: "TOGGLE_COMMENT_LIKE",
+    payload: { mediaId, commentId },
+});

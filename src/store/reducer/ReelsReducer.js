@@ -77,7 +77,11 @@ const reelsReducer = (state = initialState, action) => {
                 ...state,
                 comments: {
                     ...state.comments,
-                    [action.payload.mediaId]: action.payload.comments,
+                    [action.payload.mediaId]: action.payload.comments.map((comment) => ({
+                        ...comment,
+                        likeCount: comment.likeCount || 0,
+                        isLiked: comment.isLiked || false,
+                    })),
                 },
             };
         case INCREMENT_LIKE_COUNT: {
@@ -104,6 +108,25 @@ const reelsReducer = (state = initialState, action) => {
                 comments: {
                     ...state.comments,
                     [mediaId]: [...mediaComments, comment],
+                },
+            };
+        }
+        case "TOGGLE_COMMENT_LIKE": {
+            const { mediaId, commentId } = action.payload;
+
+            return {
+                ...state,
+                comments: {
+                    ...state.comments,
+                    [mediaId]: state.comments[mediaId].map((comment) =>
+                        comment.id === commentId
+                            ? {
+                                ...comment,
+                                isLiked: !comment.isLiked,
+                                likeCount: comment.isLiked ? comment.likeCount - 1 : comment.likeCount + 1,
+                            }
+                            : comment
+                    ),
                 },
             };
         }
