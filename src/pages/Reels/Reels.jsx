@@ -33,6 +33,43 @@ const Reels = () => {
         }
     }, [accessToken, dispatch]);
 
+    // Intersection Observer를 사용해 현재 활성화된 릴스를 감지
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const reelId = entry.target.getAttribute("data-reel-id");
+                    const videoElement = videoRefs.current[reelId];
+
+                    if (entry.isIntersecting) {
+                        console.log(`Playing reel: ${reelId}`);
+                        if (videoElement) {
+                            videoElement.play();
+                        }
+                    } else {
+                        console.log(`Pausing reel: ${reelId}`);
+                        if (videoElement) {
+                            videoElement.pause();
+                            videoElement.currentTime = 0; // 이전 릴스 초기화
+                        }
+                    }
+                });
+            },
+            {
+                threshold: 0.5, // 50% 이상 보이는 경우 감지
+                rootMargin: "0px 0px -50% 0px", // 화면 아래쪽에서 미리 감지
+            }
+        );
+
+        const reelElements = document.querySelectorAll(".reel-item");
+        reelElements.forEach((element) => observer.observe(element));
+
+        return () => {
+            reelElements.forEach((element) => observer.unobserve(element));
+        };
+    }, []);
+
+
     const handleOpenComments = (mediaId) => {
         if (!comments[mediaId]) {
             getReelComments(mediaId, accessToken)
@@ -63,34 +100,29 @@ const Reels = () => {
     return (
         <div className="relative">
             <div className="mt-7 h-screen overflow-y-scroll scrollbar-hide scroll-smooth snap-y snap-mandatory">
-                {/* Reels 데이터가 없을 경우 로딩 상태 표시 */}
                 {reelsData.length === 0 ? (
                     <p className="text-white text-center mt-20">Loading Reels...</p>
                 ) : (
                     reelsData.map((reel) => (
                         <div
-                            key={reel.id} // 고유 key 추가
-                            className="mb-7 snap-start flex flex-row justify-center items-center relative px-4"
+                            key={reel.id}
+                            className="reel-item mb-7 snap-start flex flex-row justify-center items-center relative px-4"
+                            data-reel-id={reel.id}
                         >
-                            <div
-                                className="relative bg-gray-300 rounded overflow-hidden cursor-pointer
-                                 lg:w-[440px] lg:h-[780px]
-                                 sm:w-[400px] sm:h-[710px]
-                                 w-[350px] h-[620px]"
-                            >
+                            <div className="relative bg-gray-300 rounded overflow-hidden cursor-pointer lg:w-[440px] lg:h-[780px] sm:w-[400px] sm:h-[710px] w-[350px] h-[620px]">
                                 {reel.media_type === "VIDEO" ? (
                                     <video
                                         src={reel.media_url}
-                                        controls
                                         className="w-full h-full rounded"
-                                        ref={(el) => (videoRefs.current[reel.id] = el)} // Ref 설정
+                                        ref={(el) => {
+                                            if (el) {
+                                                videoRefs.current[reel.id] = el;
+                                                console.log(`Video ref set for reel: ${reel.id}`);
+                                            }
+                                        }}
                                     />
                                 ) : (
-                                    <img
-                                        src={reel.media_url}
-                                        alt={reel.caption || "No caption"}
-                                        className="w-full h-full rounded"
-                                    />
+                                    <img src={reel.media_url} alt={reel.caption || "No caption"} className="w-full h-full rounded" />
                                 )}
 
                                 <div className="absolute bottom-0 left-0 w-full p-4">
