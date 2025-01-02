@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import {useEffect, useRef} from "react";
 import { getUserReels, getUserProfile, getReelComments } from "@/api/instagramAPI";
 import { setReelsData, setUserProfile } from "@/store/reducer/ReelsReducer";
 import {setActiveModal, setComments, toggleLike} from "@/store/action/ReelsAction";
@@ -10,6 +10,9 @@ import ReelsMenu from "@/pages/Reels/ReelsMenu.jsx";
 const Reels = () => {
     const dispatch = useDispatch();
     const { activeModal, reelsData, accessToken, userProfile, comments } = useSelector((state) => state.reels);
+
+    // 각 릴스의 음소거 상태를 관리하기 위한 Ref 배열
+    const videoRefs = useRef({});
 
     // Access Token을 사용하여 Reels 데이터를 가져옴
     useEffect(() => {
@@ -49,6 +52,14 @@ const Reels = () => {
     const handleCloseModal = () => dispatch(setActiveModal(null));
 
 
+    // 특정 릴스의 음소거 상태를 토글
+    const handleToggleMute = (reelId) => {
+        const videoElement = videoRefs.current[reelId];
+        if (videoElement) {
+            videoElement.muted = !videoElement.muted;
+        }
+    };
+
     return (
         <div className="relative">
             <div className="mt-7 h-screen overflow-y-scroll scrollbar-hide scroll-smooth snap-y snap-mandatory">
@@ -72,6 +83,8 @@ const Reels = () => {
                                         src={reel.media_url}
                                         controls
                                         className="w-full h-full rounded"
+                                        ref={(el) => (videoRefs.current[reel.id] = el)} // Ref 설정
+                                        muted // 초기 상태 음소거
                                     />
                                 ) : (
                                     <img
@@ -174,6 +187,7 @@ const Reels = () => {
                                         src="/assets/reels/song_img.png"
                                         alt="Song"
                                         className="w-5 h-5 mt-4 cursor-pointer"
+                                        onClick={() => handleToggleMute(reel.id)} // 음소거 토글
                                     />
                                 </div>
                             </div>
@@ -205,7 +219,7 @@ const Reels = () => {
                             <div className="relative">
                                 <ReelsMenu reelId={activeModal.mediaId} onClose={handleCloseModal}/>
                             </div>
-                                )}
+                        )}
 
                     </div>
                 </div>
