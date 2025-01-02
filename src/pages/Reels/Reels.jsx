@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import { getUserReels, getUserProfile, getReelComments } from "@/api/instagramAPI";
 import { setReelsData, setUserProfile } from "@/store/reducer/ReelsReducer";
 import {setActiveModal, setComments, toggleLike} from "@/store/action/ReelsAction";
@@ -13,6 +13,7 @@ const Reels = () => {
 
     // 각 릴스의 음소거 상태를 관리하기 위한 Ref 배열
     const videoRefs = useRef({});
+    const [activeReelId, setActiveReelId] = useState(null);
 
     // Access Token을 사용하여 Reels 데이터를 가져옴
     useEffect(() => {
@@ -35,39 +36,45 @@ const Reels = () => {
 
     // Intersection Observer를 사용해 현재 활성화된 릴스를 감지
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    const reelId = entry.target.getAttribute("data-reel-id");
-                    const videoElement = videoRefs.current[reelId];
+        if (reelsData.length > 0) {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        const reelId = entry.target.getAttribute("data-reel-id");
+                        const videoElement = videoRefs.current[reelId];
 
-                    if (entry.isIntersecting) {
-                        console.log(`Playing reel: ${reelId}`);
-                        if (videoElement) {
-                            videoElement.play();
+                        if (entry.isIntersecting) {
+                            setActiveReelId(reelId); // 활성화된 릴스 설정
+                            if (videoElement) {
+                                videoElement.muted = false; // 음소거 해제
+                                videoElement.play().catch((err) =>
+                                    console.error(`Error playing video for reel: ${reelId}`, err)
+                                );
+                            }
+                        } else {
+                            if (videoElement) {
+                                videoElement.pause();
+                                videoElement.currentTime = 0; // 비활성 릴스 초기화
+                                videoElement.muted = true; // 음소거 설정
+                            }
                         }
-                    } else {
-                        console.log(`Pausing reel: ${reelId}`);
-                        if (videoElement) {
-                            videoElement.pause();
-                            videoElement.currentTime = 0; // 이전 릴스 초기화
-                        }
-                    }
-                });
-            },
-            {
-                threshold: 0.5, // 50% 이상 보이는 경우 감지
-                rootMargin: "0px 0px -50% 0px", // 화면 아래쪽에서 미리 감지
+                    });
+                },
+                { threshold: 0.5 } // 50% 이상 보이는 경우 감지
+            );
+
+            const reelElements = document.querySelectorAll(".reel-item");
+
+            // DOM이 완전히 로드된 후 관찰 시작
+            if (reelElements.length > 0) {
+                reelElements.forEach((element) => observer.observe(element));
             }
-        );
 
-        const reelElements = document.querySelectorAll(".reel-item");
-        reelElements.forEach((element) => observer.observe(element));
-
-        return () => {
-            reelElements.forEach((element) => observer.unobserve(element));
-        };
-    }, []);
+            return () => {
+                reelElements.forEach((element) => observer.unobserve(element));
+            };
+        }
+    }, [reelsData]);
 
 
     const handleOpenComments = (mediaId) => {
@@ -96,12 +103,37 @@ const Reels = () => {
             videoElement.muted = !videoElement.muted;
         }
     };
+    // 페이지 로드 시 첫 번째 릴스 자동 재생
+    useEffect(() => {
+        const initializeFirstReel = () => {
+            if (reelsData.length > 0) {
+                const firstReelId = reelsData[0].id;
+                setActiveReelId(firstReelId);
+                const videoElement = videoRefs.current[firstReelId];
+                if (videoElement) {
+                    videoElement.muted = false; // 음소거 해제
+                    videoElement.play().catch((err) =>
+                        console.error(`Error autoplaying video for reel: ${firstReelId}`, err)
+                    );
+                }
+            }
+        };
+
+        // DOMContentLoaded 이벤트가 발생한 후 초기화
+        if (document.readyState === "complete") {
+            initializeFirstReel();
+        } else {
+            window.addEventListener("DOMContentLoaded", initializeFirstReel);
+            return () => window.removeEventListener("DOMContentLoaded", initializeFirstReel);
+        }
+    }, [reelsData]);
+
     const handleVideoClick = (reelId) => {
         const videoElement = videoRefs.current[reelId];
         if (videoElement) {
             if (videoElement.paused) {
-                videoElement.play().catch((error) =>
-                    console.error(`Error playing video for reel: ${reelId}`, error)
+                videoElement.play().catch((err) =>
+                    console.error(`Error playing video for reel: ${reelId}`, err)
                 );
             } else {
                 videoElement.pause();
@@ -129,9 +161,9 @@ const Reels = () => {
                                         ref={(el) => {
                                             if (el) videoRefs.current[reel.id] = el;
                                         }}
-                                        onClick={() => handleVideoClick(reel.id)}
+                                        onClick={() => handleVideoClick(reel.id)} // 클릭 시 일시정지/재생
+                                        muted={activeReelId !== reel.id} // 활성화된 릴스가 아닌 경우 음소거
                                     />
-
                                 ) : (
                                     <img src={reel.media_url} alt={reel.caption || "No caption"} className="w-full h-full rounded" />
                                 )}
