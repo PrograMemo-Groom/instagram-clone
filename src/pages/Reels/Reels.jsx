@@ -171,9 +171,9 @@ const Reels = () => {
 
                                 <div className="flex flex-col items-center hover:opacity-60">
                                     <img
-                                        src="/assets/reels/song.png"
+                                        src="/assets/reels/song_img.png"
                                         alt="Song"
-                                        className="w-7 h-7 mt-4 rounded border border-black cursor-pointer"
+                                        className="w-5 h-5 mt-4 cursor-pointer"
                                     />
                                 </div>
                             </div>
