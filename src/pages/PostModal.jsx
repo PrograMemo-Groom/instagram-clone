@@ -6,6 +6,17 @@ const PostModal = () => {
     const [content, setContent] = useState("");
     const [text, setText] = useState(""); // 입력된 텍스트 상태
 
+    const [isAccessibilityOpen, setAccessibilityOpen] = useState(false);
+    const [isAdvancedSettingsOpen, setAdvancedSettingsOpen] = useState(false);
+
+    const toggleAccessibilityDropdown = () => {
+        setAccessibilityOpen(!isAccessibilityOpen);
+    };
+
+    const toggleAdvancedSettingsDropdown = () => {
+        setAdvancedSettingsOpen(!isAdvancedSettingsOpen);
+    };
+
     const handleTextChange = (e) => {
         const inputText = e.target.value;
         // 입력된 텍스트가 최대 문자 수를 초과하지 않도록 제한
@@ -120,9 +131,7 @@ const PostModal = () => {
             </div>
         </div>),
     }, {
-        title: "새 게시물 만들기",
-        content: (
-            <div className="flex">
+        title: "새 게시물 만들기", content: (<div className="flex">
                 {/* 좌측 이미지 영역 */}
                 <div className="w-full max-w-[855px] h-full flex-shrink-0">
                     <img
@@ -160,27 +169,62 @@ const PostModal = () => {
                     </div>
 
                     {/* 옵션 영역 */}
-                    <div className="flex flex-col gap-4 pt-2 ">
-                        <button
-                            className="flex items-center justify-between w-full px-4 py-2 text-black">
+                    <div className="flex flex-col gap-4 pt-2">
+                        <button className="flex items-center justify-between w-full px-4 py-2 text-black">
                             위치 추가
                             <img src="/assets/icon/locationPin.svg" alt="위치 아이콘" className="w-5 h-5"/>
                         </button>
-                        <button
-                            className="flex items-center justify-between w-full px-4 py-2 text-black">
+                        <button className="flex items-center justify-between w-full px-4 py-2 text-black">
                             공동 작업자 추가
                             <img src="/assets/icon/tagUser.svg" alt="공동 작업자 아이콘" className="w-5 h-5"/>
                         </button>
-                        <button
-                            className="flex items-center justify-between w-full px-4 py-2 text-black">
-                            접근성
-                            <img src="/assets/icon/dropdown.svg" alt="접근성 아이콘" className="w-5 h-5"/>
-                        </button>
-                        <button
-                            className="flex items-center justify-between w-full px-4 py-2 text-black">
-                            고급 설정
-                            <img src="/assets/icon/dropdown.svg" alt="고급 설정 아이콘" className="w-5 h-5"/>
-                        </button>
+
+                        {/* 접근성 버튼 및 드롭다운 */}
+                        <div className="relative">
+                            <button
+                                onClick={toggleAccessibilityDropdown}
+                                className="flex items-center justify-between w-full px-4 py-2 text-black"
+                            >
+                                접근성
+                                <img src="/assets/icon/dropdown.svg" alt="접근성 아이콘" className="w-5 h-5"/>
+                            </button>
+                            {isAccessibilityOpen && (
+                                <div className="absolute left-0 w-full bg-white border rounded shadow-md z-50">
+                                    <div className="text-xs text-gray-500 p-4">
+                                        <span>
+                                            대체 텍스트는 시각적으로 사진을 보기 어려운 사람들에게 사진 내용을 설명하는 텍스트입니다. 대체 텍스트는 회원님의 사진에 대해 자동으로 생성되며, 직접 입력할 수도 있습니다.
+                                        </span>
+                                        <div className="flex pt-4 w-full h-8 items-center gap-4 mt-4 mb-4">
+                                            <img alt="이미지" src={content} className="w-12 h-12"/>
+                                            <input
+                                                type="text"
+                                                placeholder="대체 텍스트 입력 ..."
+                                                className="w-full h-12 border rounded p-2"
+                                            ></input>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* 고급 설정 버튼 및 드롭다운 */}
+                        <div className="relative">
+                            <button
+                                onClick={toggleAdvancedSettingsDropdown}
+                                className="flex items-center justify-between w-full px-4 py-2 text-black"
+                            >
+                                고급 설정
+                                <img src="/assets/icon/dropdown.svg" alt="고급 설정 아이콘" className="w-5 h-5"/>
+                            </button>
+                            {isAdvancedSettingsOpen && (
+                                <div className="absolute left-0 w-full bg-white border rounded shadow-md">
+                                    <div className="px-4 py-2 hover:bg-gray-100 cursor-pointer">설정 1</div>
+                                    <div className="px-4 py-2 hover:bg-gray-100 cursor-pointer">설정 2</div>
+                                    <div className="px-4 py-2 hover:bg-gray-100 cursor-pointer">설정 3</div>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
