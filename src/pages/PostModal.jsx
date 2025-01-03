@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 const PostModal = () => {
     const [pageIndex, setPageIndex] = useState(0); // 현재 페이지 인덱스
     const fileInputRef = useRef(null);
+    const [content, setContent] = useState("");
 
     const handleButtonClick = () => {
         fileInputRef.current.click(); // 버튼 클릭 시 input을 실행
@@ -11,7 +12,11 @@ const PostModal = () => {
     const handleFileChange = (event) => {
         const selectedFiles = event.target.files;
         if (selectedFiles.length > 0) {
-            console.log("Selected files:", selectedFiles);
+            const file = selectedFiles[0];
+            console.log("Selected file:", file);
+            // 파일 URL을 생성하여 미리보기
+            const fileURL = URL.createObjectURL(file);
+            setContent(fileURL); // 선택한 이미지 URL을 상태에 저장
             handleNext();
         }
     };
@@ -48,7 +53,7 @@ const PostModal = () => {
             title: "자르기",
             content: (
                 <div className="flex-grow flex items-center justify-center">
-                    <p className="text-black">이미지를 자를 수 있는 페이지입니다.</p>
+                    <img src={content} />
                 </div>
             ),
         },
