@@ -40,7 +40,7 @@ const PostModal = () => {
             title: "새 게시물 만들기",
             content: (
                 <div
-                    className="flex-grow flex flex-col items-center justify-center space-y-3 border-2 border-dashed border-gray-400"
+                    className="flex-grow flex flex-col items-center justify-center space-y-3 border-1 "
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
                 >
