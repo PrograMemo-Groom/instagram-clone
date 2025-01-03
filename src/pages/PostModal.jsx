@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import {useRef, useState} from "react";
 
 const PostModal = () => {
     const [pageIndex, setPageIndex] = useState(0); // 현재 페이지 인덱스
@@ -35,6 +35,15 @@ const PostModal = () => {
         e.preventDefault(); // 기본 드래그 오버 동작 방지
     };
 
+    const filterData = [
+        {id: 1, image: "/img/pochaco.jpg", description: "필터 1"},
+        {id: 2, image: "/img/pochaco.jpg", description: "필터 2"},
+        {id: 3, image: "/img/pochaco.jpg", description: "필터 3"},
+        {id: 4, image: "/img/pochaco.jpg", description: "필터 4"},
+        {id: 5, image: "/img/pochaco.jpg", description: "필터 5"},
+        {id: 6, image: "/img/pochaco.jpg", description: "필터 6"},
+    ];
+
     const pages = [
         {
             title: "새 게시물 만들기",
@@ -70,17 +79,52 @@ const PostModal = () => {
         {
             title: "자르기",
             content: (
-                <div className="flex-grow flex items-center justify-center">
-                    <img src={content} />
+                <div className="flex items-center justify-center">
+                    <img src={content}/>
                 </div>
             ),
         },
         {
             title: "편집",
             content: (
-                <div className="flex-grow flex items-center justify-center">
-                    <p className="text-black">사진을 편집할 수 있는 페이지입니다.</p>
+                <div className="flex flex-wrap">
+                    {/* 좌측 이미지 영역 */}
+                    <div className="w-full max-w-[855px] h-full flex-shrink-0">
+                        <img
+                            src={content}
+                            alt="이미지"
+                            className="w-full h-full object-cover md:aspect-[1/1] xl:aspect-[1/1]"
+                        />
+                    </div>
+
+                    {/* 우측 편집 영역 */}
+                    <div className="w-full md:w-full lg:w-[340px] h-full border-l-2 flex-shrink-0">
+                        {/* 버튼 */}
+                        <div className="w-full flex mb-4 border-b-2">
+                            <button className="py-1 text-black border-r-2 w-1/2">
+                                필터
+                            </button>
+                            <button className="py-1 text-black w-1/2">
+                                조정
+                            </button>
+                        </div>
+
+                        <div className="w-full grid grid-cols-3 gap-4 p-2">
+                            {filterData.map(item => (
+                                <div key={item.id} className="flex flex-col items-center">
+                                    <img
+                                        src={item.image}
+                                        alt={item.description}
+                                        className="w-24 h-24 object-contain mb-2 border-2"
+                                    />
+                                    <p className="text-black">{item.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
+
+
             ),
         },
         {
@@ -107,7 +151,8 @@ const PostModal = () => {
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div className="flex flex-col bg-white rounded-lg shadow-lg h-3/4 w-8/12">
+            <div
+                className="flex flex-col bg-white rounded-lg shadow-lg min-h-[60%] h-fit  min-w-[60%] w-[1200px]">
 
                 {/* 상단 */}
                 <h2 className="flex justify-between items-center border-b-2 p-2 font-bold">
