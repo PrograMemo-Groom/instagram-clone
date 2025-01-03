@@ -21,11 +21,29 @@ const PostModal = () => {
         }
     };
 
+    const handleDrop = (e) => {
+        e.preventDefault();
+        const file = e.dataTransfer.files[0];
+        if (file) {
+            const tempImagePath = URL.createObjectURL(file);
+            setContent(tempImagePath);
+            handleNext(); // 드래그 후 페이지 전환
+        }
+    };
+
+    const handleDragOver = (e) => {
+        e.preventDefault(); // 기본 드래그 오버 동작 방지
+    };
+
     const pages = [
         {
             title: "새 게시물 만들기",
             content: (
-                <div className="flex-grow flex flex-col items-center justify-center space-y-3">
+                <div
+                    className="flex-grow flex flex-col items-center justify-center space-y-3 border-2 border-dashed border-gray-400"
+                    onDrop={handleDrop}
+                    onDragOver={handleDragOver}
+                >
                     <img
                         className="h-40 w-40 object-contain"
                         src="assets/icon/selectImg.svg"
@@ -126,7 +144,6 @@ const PostModal = () => {
             </div>
         </div>
     );
-
 };
 
 export default PostModal;
