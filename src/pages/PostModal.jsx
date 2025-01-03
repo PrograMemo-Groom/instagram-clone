@@ -10,19 +10,11 @@ const PostModal = () => {
     const [isAdvancedSettingsOpen, setAdvancedSettingsOpen] = useState(false);
 
     const toggleAccessibilityDropdown = () => {
-        // 다른 드롭다운 창이 열리면 닫히도록
-        if(isAdvancedSettingsOpen) {
-            setAdvancedSettingsOpen(!isAdvancedSettingsOpen);
-        }
         setAccessibilityOpen(!isAccessibilityOpen);
 
     };
 
     const toggleAdvancedSettingsDropdown = () => {
-        // 다른 드롭다운 창이 열리면 닫히도록
-        if(isAccessibilityOpen) {
-            setAccessibilityOpen(!isAccessibilityOpen);
-        }
         setAdvancedSettingsOpen(!isAdvancedSettingsOpen);
     };
 
@@ -140,7 +132,7 @@ const PostModal = () => {
             </div>
         </div>),
     }, {
-        title: "새 게시물 만들기", content: (<div className="flex">
+        title: "새 게시물 만들기", content: (<div className="flex h-[895px]">
                 {/* 좌측 이미지 영역 */}
                 <div className="w-full max-w-[855px] h-full flex-shrink-0">
                     <img
@@ -151,7 +143,7 @@ const PostModal = () => {
                 </div>
 
                 {/* 우측 편집 영역 */}
-                <div className="flex flex-col flex-grow w-full h-full border">
+                <div className="flex flex-col flex-grow w-full h-full border overflow-y-auto">
                     {/* 유저 네임 영역 */}
                     <div className="w-full gap-4 flex justify-start p-2">
             <span className="rounded-full border border-gray-400">
@@ -162,10 +154,9 @@ const PostModal = () => {
 
                     {/* 텍스트 입력 영역 */}
                     <textarea
-                        type="text"
                         placeholder="내용을 입력하세요"
                         onChange={handleTextChange}
-                        className="w-full h-[339px] p-2"
+                        className="w-full h-[500px] p-2"
                     ></textarea>
 
                     {/* 텍스트 상태 및 아이콘 */}
@@ -178,7 +169,7 @@ const PostModal = () => {
                     </div>
 
                     {/* 옵션 영역 */}
-                    <div className="flex flex-col gap-4 pt-2">
+                    <div className="flex flex-col gap-4 pt-2 h-full overscroll-y-auto">
                         <button className="flex items-center justify-between w-full px-4 py-2 text-black">
                             위치 추가
                             <img src="/assets/icon/locationPin.svg" alt="위치 아이콘" className="w-5 h-5"/>
@@ -198,7 +189,7 @@ const PostModal = () => {
                                 <img src="/assets/icon/dropdown.svg" alt="접근성 아이콘" className="w-5 h-5"/>
                             </button>
                             {isAccessibilityOpen && (
-                                <div className="absolute left-0 w-full bg-white border rounded shadow-md z-50">
+                                <div className="relative left-0 w-full bg-white z-50">
                                     <div className="text-xs text-gray-500 p-4">
                                         <span>
                                             대체 텍스트는 시각적으로 사진을 보기 어려운 사람들에게 사진 내용을 설명하는 텍스트입니다. 대체 텍스트는 회원님의 사진에 대해 자동으로 생성되며, 직접 입력할 수도 있습니다.
@@ -227,10 +218,63 @@ const PostModal = () => {
                                 <img src="/assets/icon/dropdown.svg" alt="고급 설정 아이콘" className="w-5 h-5"/>
                             </button>
                             {isAdvancedSettingsOpen && (
-                                <div className="absolute left-0 w-full bg-white border rounded shadow-md">
-                                    <div className="px-4 py-2 hover:bg-gray-100 cursor-pointer">설정 1</div>
-                                    <div className="px-4 py-2 hover:bg-gray-100 cursor-pointer">설정 2</div>
-                                    <div className="px-4 py-2 hover:bg-gray-100 cursor-pointer">설정 3</div>
+                                <div className="relative left-0 w-full bg-white">
+                                    {/* 게시글 좋아요 및 조회수 옵션*/}
+                                    <div className="flex flex-col p-4 gap-2">
+                                        <div className="flex items-center justify-between">
+                                            <span>이 게시글의 좋아요 수 및 조회수 숨기기</span>
+                                            <label className="relative inline-flex items-center cursor-pointer">
+                                                <input
+                                                    type="checkbox"
+                                                    className="sr-only peer"
+                                                />
+                                                <div
+                                                    className="w-10 h-5 bg-gray-200 rounded-full peer peer-checked:bg-blue-500 peer-checked:after:translate-x-5 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <span className="text-xs text-gray-500">
+                                                이 게시물의 총 좋아요 및 조회수는 회원님만 볼 수 있습니다. 나중에 게시물 상단에 있는 ··· 메뉴에서 이 설정을 변경할 수 있습니다. 다른 사람의 게시물에서 좋아요 수를 숨기려면 계정 설정으로 이동하세요.</span>
+                                        </div>
+                                    </div>
+
+                                    {/* 댓글 기능 해제 옵션 */}
+                                    <div className="flex flex-col p-4 gap-2">
+                                        <div className="flex items-center justify-between">
+                                            <span>댓글 기능 해제</span>
+                                            <label className="relative inline-flex items-center cursor-pointer">
+                                                <input
+                                                    type="checkbox"
+                                                    className="sr-only peer"
+                                                />
+                                                <div
+                                                    className="w-10 h-5 bg-gray-200 rounded-full peer peer-checked:bg-blue-500 peer-checked:after:translate-x-5 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <span className="text-xs text-gray-500">
+                                                나중에 게시물 상단의 메뉴(···)에서 이 설정을 변경할 수 있습니다.</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Threads에 자동으로 공유 옵션 */}
+                                    <div className="flex flex-col p-4 gap-2">
+                                        <div className="flex items-center justify-between">
+                                            <span>Threads에 자동으로 공유</span>
+                                            <label className="relative inline-flex items-center cursor-pointer">
+                                                <input
+                                                    type="checkbox"
+                                                    className="sr-only peer"
+                                                />
+                                                <div
+                                                    className="w-10 h-5 bg-gray-200 rounded-full peer peer-checked:bg-blue-500 peer-checked:after:translate-x-5 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <span className="text-xs text-gray-500">
+                                                회원님의 게시물이 항상 Threads에 공유됩니다. Threads 설정에서 공개 대상을 변경할 수 있습니다. </span>
+                                        </div>
+                                    </div>
                                 </div>
                             )}
                         </div>
