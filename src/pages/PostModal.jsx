@@ -10,10 +10,19 @@ const PostModal = () => {
     const [isAdvancedSettingsOpen, setAdvancedSettingsOpen] = useState(false);
 
     const toggleAccessibilityDropdown = () => {
+        // 다른 드롭다운 창이 열리면 닫히도록
+        if(isAdvancedSettingsOpen) {
+            setAdvancedSettingsOpen(!isAdvancedSettingsOpen);
+        }
         setAccessibilityOpen(!isAccessibilityOpen);
+
     };
 
     const toggleAdvancedSettingsDropdown = () => {
+        // 다른 드롭다운 창이 열리면 닫히도록
+        if(isAccessibilityOpen) {
+            setAccessibilityOpen(!isAccessibilityOpen);
+        }
         setAdvancedSettingsOpen(!isAdvancedSettingsOpen);
     };
 
