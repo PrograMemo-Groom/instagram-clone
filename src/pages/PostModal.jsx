@@ -93,8 +93,10 @@ const PostModal = () => {
         </div>),
     }, {
         title: "자르기", content: (<div className="flex items-center justify-center">
-            <img src={content}
-                 className="w-full h-full max-w-[855px] max-h-[855px]  object-cover md:aspect-[1/1] xl:aspect-[1/1]"/>
+            <img
+                alt="입력된 이미지"
+                src={content}
+                className="w-full h-full max-w-[855px] max-h-[855px]  object-cover md:aspect-[1/1] xl:aspect-[1/1]"/>
         </div>),
     }, {
         title: "편집", content: (<div className="flex flex-wrap">
@@ -147,7 +149,9 @@ const PostModal = () => {
                     {/* 유저 네임 영역 */}
                     <div className="w-full gap-4 flex justify-start p-2">
             <span className="rounded-full border border-gray-400">
-                <img src="/img/pochaco.jpg" className="w-8 h-8 rounded-full"/>
+                <img
+                    alt="예시 사용자 이미지"
+                    src="/img/pochaco.jpg" className="w-8 h-8 rounded-full"/>
             </span>
                         <span className="py-1 text-black">ddonghun__</span>
                     </div>
@@ -162,6 +166,7 @@ const PostModal = () => {
                     {/* 텍스트 상태 및 아이콘 */}
                     <div className="flex justify-between p-2 text-gray-700 border border-t-gray-200">
                         <img
+                            alt="웃는 이모티콘"
                             src="/assets/icon/smile.svg"
                             className="w-6 h-6 cursor-pointer"
                         />
