@@ -1,6 +1,7 @@
 const initialState = {
     mainResult: [],
     isDark : false,
+    openPostingModal : false,
 }
 
 const MainReducer = (state=initialState, action) => {
@@ -10,7 +11,12 @@ const MainReducer = (state=initialState, action) => {
         case 'SET_IS_DARK' :
             return {
                 ...state,
-                isDark : action.payload
+                isDark: action.payload
+            }
+        case 'SET_OPEN_POSTING_MODAL' :
+            return {
+                ...state,
+                openPostingModal: action.payload
             }
         default:
             return state;
