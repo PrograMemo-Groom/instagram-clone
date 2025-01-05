@@ -1,4 +1,6 @@
 import {useRef, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {setOpenPostingModal} from "@/store/action/MainAction.js";
 
 const PostModal = () => {
     const [pageIndex, setPageIndex] = useState(0); // 현재 페이지 인덱스
@@ -8,6 +10,14 @@ const PostModal = () => {
 
     const [isAccessibilityOpen, setAccessibilityOpen] = useState(false);
     const [isAdvancedSettingsOpen, setAdvancedSettingsOpen] = useState(false);
+
+    const {openPostingModal} = useSelector((state) => state.main);
+    const dispatch = useDispatch();
+
+    const handleTogglePostModal = () => {
+        dispatch(setOpenPostingModal(!openPostingModal))
+    }
+
 
     const toggleAccessibilityDropdown = () => {
         setAccessibilityOpen(!isAccessibilityOpen);
@@ -316,6 +326,12 @@ const PostModal = () => {
                 </button>)}
                 {/* 모달 제목 중앙에 위치 */}
                 <span className="flex-grow text-center">{pages[pageIndex].title}</span>
+                <button
+                    onClick={handleTogglePostModal}
+                    className="px-2 py-1 rounded bg-red-600 text-white hover:bg-red-900"
+                >
+                    X
+                </button>
                 {pageIndex > 0 && pageIndex < pages.length - 1 && (<button
                     onClick={handleNext}
                     className="px-2 py-1 rounded bg-blue-400 text-white hover:bg-blue-500"
