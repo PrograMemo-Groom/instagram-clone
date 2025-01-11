@@ -1,9 +1,38 @@
 //import ExploreSearch from '@/components/exploreSearch/ExploreSearch.jsx';
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { exchangeAccessToken, getHashtagID, getAuthUrl } from "@/api/instagramAPI.js";
 
 const ExplorePage = () => {
     const [searchFocused, setSearchFocused] = useState(false);
     const [mainSearchFocused, setMainSearchFocused] = useState(false);
+    const [accessToken, setAccessToken] = useState(null);
+    const [hashtagId, setHashtagId] = useState(null);
+
+    useEffect(() => {
+        // URL에서 Authorization Code 추출
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get("code");
+
+        if (code) {
+            // Access Token 교환
+            exchangeAccessToken(code)
+                .then((data) => {
+                    setAccessToken(data.access_token);
+                    console.log("Access Token:", data.access_token);
+
+                    // 해시태그 ID 가져오기
+                    return getHashtagID("selfie", data.access_token);
+                })
+                .then((id) => {
+                    setHashtagId(id);
+                    console.log("Hashtag ID:", id);
+                })
+                .catch((err) => console.error("Error:", err));
+        } else {
+            console.log("authcode가 없어요오오옹");
+        }
+    }, []);
+
 
     return (
         <div className={"explore-container w-full h-full flex flex-col align-middle justify-center"}>
