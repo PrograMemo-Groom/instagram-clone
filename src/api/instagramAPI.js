@@ -40,6 +40,40 @@ export const getAuthUrl = () => {
     return `${INSTAGRAM_AUTH_URL}?client_id=${INSTAGRAM_CLIENT_ID}&redirect_uri=${INSTAGRAM_REDIRECT_URI}&scope=instagram_graph_user_media,instagram_graph_user_comments&response_type=code`;
 };
 
+/* 리디렉션 URL에서 Authorization Code 추출 */
+export const getAuthCodeFromUrl = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get("code");
+};
+
+/* Access Token 자동 발급코드 !!! (exchangeAccessToken 변형코드)  */
+export const fetchAccessToken = async () => {
+    const authCode = getAuthCodeFromUrl();
+
+    if (!authCode) {
+        console.error("Authorization code not found in URL");
+        return null;
+    }
+
+    try {
+        const response = await instagramInstance.post("", null, {
+            params: {
+                client_id: INSTAGRAM_CLIENT_ID,
+                client_secret: INSTAGRAM_CLIENT_SECRET,
+                grant_type: "authorization_code",
+                redirect_uri: INSTAGRAM_REDIRECT_URI,
+                code: authCode,
+            },
+        });
+        const { access_token, user_id } = response.data;
+        console.log("Access Token:", access_token);
+        console.log("User ID:", user_id);
+        return { access_token, user_id };
+    } catch (error) {
+        console.error("Error fetching Access Token:", error.response?.data || error.message);
+        throw error;
+    }
+};
 
 /* Access Token 교환 */
 export const exchangeAccessToken = async (code) => {
@@ -130,3 +164,17 @@ export const getReelComments = async (mediaId, accessToken) => {
         return [];
     }
 };
+
+/* 해시태그 아이디 가져오기 */
+export const getHashtagID = async (hashtag, accessToken) => {
+    try {
+        const response = await axios.get(
+            `https://graph.facebook.com/v16.0/ig_hashtag_search?user_id=YOUR_USER_ID&q=${hashtag}&access_token=${accessToken}`
+        );
+        const hashtagId = response.data.data[0].id;
+        console.log(`${hashtag}:`, hashtagId);
+        return hashtagId;
+    } catch (error) {
+        console.error('Error fetching hashtag ID:', error.response.data.error);
+    }
+}
