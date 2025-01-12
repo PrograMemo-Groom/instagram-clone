@@ -3,7 +3,7 @@
 import UserSection from "@/components/userSection/UserSection.jsx";
 import SavedStories from "@/components/savedStories/SavedStories.jsx";
 import Posts from "@/components/posts/Posts.jsx";
-import PostModal from "@/pages/PostModal.jsx";
+import PostModal from "@/pages/makePost/PostModal.jsx";
 
 const ProfilePage = () => {
     return (

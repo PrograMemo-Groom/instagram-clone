@@ -2,7 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {toggleSearch} from "@/components/searchTab/searchSlice.js";
 import {setOpenPostingModal} from "@/store/action/MainAction.js";
-import PostModal from "@/pages/PostModal.jsx";
+import PostModal from "@/pages/makePost/PostModal.jsx";
 
 const SideBar = () => {
     const dispatch = useDispatch();

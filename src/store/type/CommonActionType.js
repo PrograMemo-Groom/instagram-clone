@@ -1,2 +1,3 @@
 export const IS_LOADING = "IS_LOADING";
 export const IS_LOGIN = "IS_LOGIN";
+export const OPEN_CONFIRM_EXIT_MODAL = "OPEN_CONFIRM_EXIT_MODAL";
