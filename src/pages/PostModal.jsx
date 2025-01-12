@@ -1,6 +1,7 @@
 import {useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {setOpenPostingModal} from "@/store/action/MainAction.js";
+import ConfirmExitModal from "@/components/confirmExitModal/ConfirmExitModal.jsx";
+import {setOpenConfirmExitModal} from "@/store/action/CommonAction.js";
 
 const PostModal = () => {
     const [pageIndex, setPageIndex] = useState(0); // 현재 페이지 인덱스
@@ -11,11 +12,13 @@ const PostModal = () => {
     const [isAccessibilityOpen, setAccessibilityOpen] = useState(false);
     const [isAdvancedSettingsOpen, setAdvancedSettingsOpen] = useState(false);
 
-    const {openPostingModal} = useSelector((state) => state.main);
+    const {OpenConfirmExitModal } = useSelector((state) => state.common);
+    // const {openPostingModal} = useSelector((state) => state.main)
     const dispatch = useDispatch();
 
+    // 취소 버튼 누르면 주의 메시지 출력
     const handleTogglePostModal = () => {
-        dispatch(setOpenPostingModal(!openPostingModal))
+        dispatch(setOpenConfirmExitModal(!OpenConfirmExitModal));
     }
 
 
@@ -312,6 +315,8 @@ const PostModal = () => {
         }
     };
 
+
+    console.log("OpenConfirmExitModal!@!@#@!#@!#!@#!@#!@#", OpenConfirmExitModal);
     return (<div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-200">
         <div
             className="flex flex-col bg-white rounded-lg shadow-lg min-h-[60%] h-fit  min-w-[60%] w-[1200px]">
@@ -326,6 +331,8 @@ const PostModal = () => {
                 </button>)}
                 {/* 모달 제목 중앙에 위치 */}
                 <span className="flex-grow text-center">{pages[pageIndex].title}</span>
+
+                {/* 모달 닫기 버튼 */}
                 <button
                     onClick={handleTogglePostModal}
                     className="px-2 py-1 rounded bg-red-600 text-white hover:bg-red-900"
@@ -349,6 +356,8 @@ const PostModal = () => {
             {/* 현재 페이지 콘텐츠 */}
             {pages[pageIndex].content}
         </div>
+        {OpenConfirmExitModal && <ConfirmExitModal/>}
+
     </div>);
 };
 

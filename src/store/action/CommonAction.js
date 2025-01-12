@@ -1,4 +1,4 @@
-import {IS_LOADING, IS_LOGIN} from "@/store/type/CommonActionType.js";
+import {IS_LOADING, IS_LOGIN, OPEN_CONFIRM_EXIT_MODAL} from "@/store/type/CommonActionType.js";
 
 export const setIsLoading = (isLoading) => ({
     type: IS_LOADING,
@@ -8,4 +8,9 @@ export const setIsLoading = (isLoading) => ({
 export const setIsLogin = (isLogin) => ({
     type: IS_LOGIN,
     payload: isLogin
+})
+
+export const setOpenConfirmExitModal = (OpenConfirmExitModal) => ({
+    type: OPEN_CONFIRM_EXIT_MODAL,
+    payload: OpenConfirmExitModal
 })
