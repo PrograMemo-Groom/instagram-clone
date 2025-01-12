@@ -1,36 +1,25 @@
 //import ExploreSearch from '@/components/exploreSearch/ExploreSearch.jsx';
 import { useState, useEffect } from "react";
-import { exchangeAccessToken, getHashtagID, getAuthUrl } from "@/api/instagramAPI.js";
+import { getUserPosts } from "@/api/instagramAPI.js";
 
 const ExplorePage = () => {
     const [searchFocused, setSearchFocused] = useState(false);
     const [mainSearchFocused, setMainSearchFocused] = useState(false);
-    const [accessToken, setAccessToken] = useState(null);
-    const [hashtagId, setHashtagId] = useState(null);
+    const accessToken = 'IGAAVZAzZAbMZBE5BZAFBHbDBZAQnczaDFRWFJXREFabW9wRHZArd2pEVG9TZAnRJeWVGUTUzTWhPUHZAWWHFCR1R0N280ekx1ZA1JQclRXRUNaV2lOMjJGNE85alFFWk1ldURzWDg1OG5sSkNNbngtUjZANQ2NFal9Kd0tuRktyNENqN0NwUQZDZD';
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        // URL에서 Authorization Code 추출
-        const urlParams = new URLSearchParams(window.location.search);
-        const code = urlParams.get("code");
+        const fetchData = async () => {
+            try {
+                const userPosts = await getUserPosts(accessToken);
+                setPosts(userPosts);
+                console.log(userPosts);
+            } catch (err) {
+                console.error("Error fetching posts:", err);
+            }
+        };
 
-        if (code) {
-            // Access Token 교환
-            exchangeAccessToken(code)
-                .then((data) => {
-                    setAccessToken(data.access_token);
-                    console.log("Access Token:", data.access_token);
-
-                    // 해시태그 ID 가져오기
-                    return getHashtagID("selfie", data.access_token);
-                })
-                .then((id) => {
-                    setHashtagId(id);
-                    console.log("Hashtag ID:", id);
-                })
-                .catch((err) => console.error("Error:", err));
-        } else {
-            console.log("authcode가 없어요오오옹");
-        }
+        fetchData();
     }, []);
 
 
