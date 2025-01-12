@@ -8,6 +8,7 @@ const ExplorePage = () => {
     const accessToken = 'IGAAVZAzZAbMZBE5BZAFBHbDBZAQnczaDFRWFJXREFabW9wRHZArd2pEVG9TZAnRJeWVGUTUzTWhPUHZAWWHFCR1R0N280ekx1ZA1JQclRXRUNaV2lOMjJGNE85alFFWk1ldURzWDg1OG5sSkNNbngtUjZANQ2NFal9Kd0tuRktyNENqN0NwUQZDZD';
     const [posts, setPosts] = useState([]);
     const [reels, setReels] = useState([]);
+    const [combinedData, setCombinedData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -34,6 +35,42 @@ const ExplorePage = () => {
         };
         fetchData();
     }, []);
+
+    // 게시글 2 > 릴스 1 > 게시글 2 > 릴스 1 > 게시글 4 패턴으로 정렬
+    useEffect(() => {
+        if (posts.length > 0 && reels.length > 0) {
+            const sortedData = [];
+            let postIndex = 0;
+            let reelIndex = 0;
+
+            // 패턴: 게시글 2 > 릴스 1 > 게시글 2 > 릴스 1 > 게시글 4 반복
+            const pattern = [2, 1, 2, 1, 4];
+            let patternIndex = 0;
+
+            while (postIndex < posts.length || reelIndex < reels.length) {
+                const currentPattern = pattern[patternIndex % pattern.length];
+
+                // 게시글 추가
+                if (currentPattern === 2 || currentPattern === 4) {
+                    for (let i = 0; i < currentPattern && postIndex < posts.length; i++) {
+                        sortedData.push(posts[postIndex]);
+                        postIndex++;
+                    }
+                }
+
+                // 릴스 추가
+                if (currentPattern === 1 && reelIndex < reels.length) {
+                    sortedData.push(reels[reelIndex]);
+                    reelIndex++;
+                }
+
+                patternIndex++;
+            }
+
+            setCombinedData(sortedData);
+            console.log("combinedData:", combinedData);
+        }
+    }, [posts, reels]);
 
     return (
         <div className={"explore-container w-full h-full flex flex-col align-middle justify-center"}>
