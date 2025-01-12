@@ -9,7 +9,7 @@ import {useEffect} from "react";
 import Header from "@/pages/Header.jsx";
 import SideBar from '@/pages/SideBar.jsx';
 import ProfilePage from "@/pages/ProfilePage.jsx";
-import ExplorePage from "@/pages/ExplorePage.jsx";
+import ExplorePage from "@/pages/explore/ExplorePage.jsx";
 import Reels from "@/pages/Reels/Reels.jsx";
 import Search from "@/pages/Search.jsx";
 import LoginPage from "@/pages/login/LoginPage.jsx";
