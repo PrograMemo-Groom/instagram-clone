@@ -136,7 +136,7 @@ export const getUserPostsOnly = async (accessToken) => {
     try {
         const response = await axios.get("https://graph.instagram.com/me/media", {
             params: {
-                fields: "id,caption,media_type,media_url,timestamp",
+                fields: "id,media_type,media_url",
                 access_token: accessToken,
             },
         });
@@ -158,7 +158,7 @@ export const getUserReelsOnly = async (accessToken) => {
     try {
         const response = await axios.get("https://graph.instagram.com/me/media", {
             params: {
-                fields: "id,caption,media_type,media_url,thumbnail_url,timestamp",
+                fields: "id,media_type,media_url,thumbnail_url",
                 access_token: accessToken,
             },
         });
