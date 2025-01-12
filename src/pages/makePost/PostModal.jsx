@@ -17,6 +17,8 @@ const PostModal = () => {
     const [openFilterPage, setOpenFilterPage] = useState(false);
     const [openEditPage, setOpenEditPage] = useState(false);
 
+    const [activeButton, setActiveButton] = useState("filter"); // 기본 활성화 상태를 'filter'로 설정
+
     const {OpenConfirmExitModal } = useSelector((state) => state.common);
     // const {openPostingModal} = useSelector((state) => state.main)
     const dispatch = useDispatch();
@@ -27,11 +29,13 @@ const PostModal = () => {
     }
 
     const handleOpenFilterPage = () => {
+        setActiveButton("filter"); // '필터' 버튼 활성화
         setOpenFilterPage(true);
         setOpenEditPage(false);
     }
 
     const handleOpenEditPage = () => {
+        setActiveButton("adjust"); // '조정' 버튼 활성화
         setOpenEditPage(true);
         setOpenFilterPage(false);
     }
@@ -132,19 +136,26 @@ const PostModal = () => {
             <div className="w-full md:w-full lg:w-[340px] h-full border-l-2 flex-shrink-0">
                 {/* 버튼 */}
                 <div className="w-full flex mb-4 border-b-2">
-                    <button className="py-1 text-black border-r-2 w-1/2"
-                            onClick={handleOpenFilterPage}
+                    <button
+                        className={`py-1 text-black w-1/2 ${
+                            activeButton === "filter" ? "border-b-4 border-blue-500" : ""
+                        }`}
+                        onClick={handleOpenFilterPage}
                     >
                         필터
                     </button>
-                    <button className="py-1 text-black w-1/2"
-                            onClick={handleOpenEditPage}>
+                    <button
+                        className={`py-1 text-black w-1/2 ${
+                            activeButton === "adjust" ? "border-b-4 border-blue-500" : ""
+                        }`}
+                        onClick={handleOpenEditPage}
+                    >
                         조정
                     </button>
                 </div>
 
-                { openFilterPage && <Filter/> }
-                { openEditPage && <EditImagePage/>}
+                {openFilterPage && <Filter/>}
+                {openEditPage && <EditImagePage/>}
             </div>
         </div>),
     }, {
