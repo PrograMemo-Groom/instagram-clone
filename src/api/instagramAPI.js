@@ -131,8 +131,30 @@ export const getReelComments = async (mediaId, accessToken) => {
     }
 };
 
-// 사용자 게시물 가져오기 (릴스 및 이미지/비디오 게시물 포함)
-export const getUserPosts = async (accessToken) => {
+// 사용자 게시물 가져오기 (사진 + 여러장 사진의 게시물만 필터링, 릴스 제외)
+export const getUserPostsOnly = async (accessToken) => {
+    try {
+        const response = await axios.get("https://graph.instagram.com/me/media", {
+            params: {
+                fields: "id,caption,media_type,media_url,timestamp",
+                access_token: accessToken,
+            },
+        });
+
+        const posts = response.data.data.filter(
+            (item) => item.media_type === "IMAGE" || item.media_type === "CAROUSEL_ALBUM"
+        );
+
+        console.log("User Posts:", posts);
+        return posts;
+    } catch (error) {
+        console.error("Error fetching user posts:", error.response?.data || error.message);
+        throw error;
+    }
+};
+
+// 사용자 릴스만! 가져오기
+export const getUserReelsOnly = async (accessToken) => {
     try {
         const response = await axios.get("https://graph.instagram.com/me/media", {
             params: {
@@ -141,10 +163,15 @@ export const getUserPosts = async (accessToken) => {
             },
         });
 
-        console.log("User Posts:", response.data.data);
-        return response.data.data;
+        // 릴스(비디오)만 필터링
+        const reels = response.data.data.filter(
+            (item) => item.media_type === "VIDEO"
+        );
+
+        console.log("User Reels:", reels);
+        return reels;
     } catch (error) {
-        console.error("Error fetching user posts:", error.response?.data || error.message);
+        console.error("Error fetching user reels:", error.response?.data || error.message);
         throw error;
     }
 };
