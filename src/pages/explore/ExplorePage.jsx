@@ -1,27 +1,39 @@
 //import ExploreSearch from '@/components/exploreSearch/ExploreSearch.jsx';
 import { useState, useEffect } from "react";
-import { getUserPosts } from "@/api/instagramAPI.js";
+import {getUserPostsOnly, getUserReelsOnly} from "@/api/instagramAPI.js";
 
 const ExplorePage = () => {
     const [searchFocused, setSearchFocused] = useState(false);
     const [mainSearchFocused, setMainSearchFocused] = useState(false);
     const accessToken = 'IGAAVZAzZAbMZBE5BZAFBHbDBZAQnczaDFRWFJXREFabW9wRHZArd2pEVG9TZAnRJeWVGUTUzTWhPUHZAWWHFCR1R0N280ekx1ZA1JQclRXRUNaV2lOMjJGNE85alFFWk1ldURzWDg1OG5sSkNNbngtUjZANQ2NFal9Kd0tuRktyNENqN0NwUQZDZD';
     const [posts, setPosts] = useState([]);
+    const [reels, setReels] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const userPosts = await getUserPosts(accessToken);
+                const userPosts = await getUserPostsOnly(accessToken);
                 setPosts(userPosts);
                 console.log(userPosts);
             } catch (err) {
                 console.error("Error fetching posts:", err);
             }
         };
-
         fetchData();
     }, []);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const userReels = await getUserReelsOnly(accessToken);
+                setReels(userReels);
+                console.log(userReels);
+            } catch (err) {
+                console.error("Error fetching reels:", err);
+            }
+        };
+        fetchData();
+    }, []);
 
     return (
         <div className={"explore-container w-full h-full flex flex-col align-middle justify-center"}>
