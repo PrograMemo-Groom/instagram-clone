@@ -2,6 +2,8 @@ import {useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import ConfirmExitModal from "@/components/confirmExitModal/ConfirmExitModal.jsx";
 import {setOpenConfirmExitModal} from "@/store/action/CommonAction.js";
+import Filter from "@/pages/makePost/Filter.jsx";
+import EditImagePage from "@/pages/makePost/EditImagePage.jsx";
 
 const PostModal = () => {
     const [pageIndex, setPageIndex] = useState(0); // 현재 페이지 인덱스
@@ -12,6 +14,9 @@ const PostModal = () => {
     const [isAccessibilityOpen, setAccessibilityOpen] = useState(false);
     const [isAdvancedSettingsOpen, setAdvancedSettingsOpen] = useState(false);
 
+    const [openFilterPage, setOpenFilterPage] = useState(false);
+    const [openEditPage, setOpenEditPage] = useState(false);
+
     const {OpenConfirmExitModal } = useSelector((state) => state.common);
     // const {openPostingModal} = useSelector((state) => state.main)
     const dispatch = useDispatch();
@@ -21,6 +26,15 @@ const PostModal = () => {
         dispatch(setOpenConfirmExitModal(!OpenConfirmExitModal));
     }
 
+    const handleOpenFilterPage = () => {
+        setOpenFilterPage(true);
+        setOpenEditPage(false);
+    }
+
+    const handleOpenEditPage = () => {
+        setOpenEditPage(true);
+        setOpenFilterPage(false);
+    }
 
     const toggleAccessibilityDropdown = () => {
         setAccessibilityOpen(!isAccessibilityOpen);
@@ -68,14 +82,6 @@ const PostModal = () => {
     const handleDragOver = (e) => {
         e.preventDefault(); // 기본 드래그 오버 동작 방지
     };
-
-    const filterData = [{id: 1, image: "/img/pochaco.jpg", description: "필터 1"}, {
-        id: 2, image: "/img/pochaco.jpg", description: "필터 2"
-    }, {id: 3, image: "/img/pochaco.jpg", description: "필터 3"}, {
-        id: 4, image: "/img/pochaco.jpg", description: "필터 4"
-    }, {id: 5, image: "/img/pochaco.jpg", description: "필터 5"}, {
-        id: 6, image: "/img/pochaco.jpg", description: "필터 6"
-    },];
 
     const pages = [{
         title: "새 게시물 만들기", content: (<div
@@ -126,24 +132,19 @@ const PostModal = () => {
             <div className="w-full md:w-full lg:w-[340px] h-full border-l-2 flex-shrink-0">
                 {/* 버튼 */}
                 <div className="w-full flex mb-4 border-b-2">
-                    <button className="py-1 text-black border-r-2 w-1/2">
+                    <button className="py-1 text-black border-r-2 w-1/2"
+                            onClick={handleOpenFilterPage}
+                    >
                         필터
                     </button>
-                    <button className="py-1 text-black w-1/2">
+                    <button className="py-1 text-black w-1/2"
+                            onClick={handleOpenEditPage}>
                         조정
                     </button>
                 </div>
 
-                <div className="w-full grid grid-cols-3 gap-4 p-2">
-                    {filterData.map(item => (<div key={item.id} className="flex flex-col items-center">
-                        <img
-                            src={item.image}
-                            alt={item.description}
-                            className="w-24 h-24 object-contain mb-2 border-2"
-                        />
-                        <p className="text-black">{item.description}</p>
-                    </div>))}
-                </div>
+                { openFilterPage && <Filter/> }
+                { openEditPage && <EditImagePage/>}
             </div>
         </div>),
     }, {
