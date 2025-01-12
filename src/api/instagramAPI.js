@@ -165,16 +165,20 @@ export const getReelComments = async (mediaId, accessToken) => {
     }
 };
 
-/* 해시태그 아이디 가져오기 */
-export const getHashtagID = async (hashtag, accessToken) => {
+// 사용자 게시물 가져오기 (릴스 및 이미지/비디오 게시물 포함)
+export const getUserPosts = async (accessToken) => {
     try {
-        const response = await axios.get(
-            `https://graph.facebook.com/v16.0/ig_hashtag_search?user_id=YOUR_USER_ID&q=${hashtag}&access_token=${accessToken}`
-        );
-        const hashtagId = response.data.data[0].id;
-        console.log(`${hashtag}:`, hashtagId);
-        return hashtagId;
+        const response = await axios.get("https://graph.instagram.com/me/media", {
+            params: {
+                fields: "id,caption,media_type,media_url,thumbnail_url,timestamp",
+                access_token: accessToken,
+            },
+        });
+
+        console.log("User Posts:", response.data.data);
+        return response.data.data;
     } catch (error) {
-        console.error('Error fetching hashtag ID:', error.response.data.error);
+        console.error("Error fetching user posts:", error.response?.data || error.message);
+        throw error;
     }
-}
+};
